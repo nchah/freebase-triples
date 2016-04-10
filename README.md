@@ -5,8 +5,7 @@ A reflection and review of the (now deprecated) Metaweb Query Language (MQL) .
 
 # Sample MQL Scripts
 
-(to be added)
-
+Some samples of MQL scripts that I wrote are enclosed as txt files in the mql-queries folder. 
 
 
 
