@@ -18,20 +18,20 @@ Following the deprecation of the Freebase APIs, the new Knowledge Graph Search A
 
 Some sources may no longer be available as the Freebase API was deprecated on June 30, 2015.
 
-Freebase
+**Freebase**
 - http://www.freebase.com/
 - http://wiki.freebase.com/wiki/Main_Page
 
-Knowledge Graph
+**Knowledge Graph**
 - https://www.google.com/intl/bn/insidesearch/features/search/knowledge.html
 
-Google Developers Resources
+**Google Developers Resources**
 
-**Freebase APIs**
+*Freebase APIs*
 - https://developers.google.com/freebase/
 - https://developers.google.com/freebase/mql/
 
-**Knowledge Graph Search APIs**
+*Knowledge Graph Search APIs*
 - https://plus.google.com/109936836907132434202/posts/iY8NZGFF6DN (released on Dec 16, 2015)
 - https://developers.google.com/knowledge-graph/
 
