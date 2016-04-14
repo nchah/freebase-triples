@@ -1,6 +1,6 @@
 # mql-scripts
 
-A reflection and review of the (now deprecated) Metaweb Query Language (MQL) . 
+A reflection and review of Freebase.com and the (now deprecated) Metaweb Query Language (MQL). 
 
 
 # Sample MQL Scripts
@@ -9,7 +9,7 @@ Some samples of MQL scripts that I wrote are enclosed as txt files in the mql-qu
 
 
 
-# Knowledge Graph
+# The Google Knowledge Graph
 
 Following the deprecation of the Freebase APIs, the new Knowledge Graph Search API was released. The new KG API does not support the use of the MQL as it did on Freebase. 
 
@@ -25,7 +25,8 @@ Freebase
 Knowledge Graph
 - https://www.google.com/intl/bn/insidesearch/features/search/knowledge.html
 
-Google Developers
+Google Developers Resources
+
 **Freebase APIs**
 - https://developers.google.com/freebase/
 - https://developers.google.com/freebase/mql/
@@ -33,3 +34,4 @@ Google Developers
 **Knowledge Graph Search APIs**
 - https://plus.google.com/109936836907132434202/posts/iY8NZGFF6DN (released on Dec 16, 2015)
 - https://developers.google.com/knowledge-graph/
+
