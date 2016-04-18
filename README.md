@@ -5,7 +5,7 @@ A reflection and review of Freebase.com and the (now deprecated) Metaweb Query L
 
 # Sample MQL Scripts
 
-Some samples of MQL scripts that I wrote are enclosed as txt files in the mql-queries folder. 
+Some samples of MQL scripts that I wrote are enclosed as txt files in the mql-queries folder. At the time, I queried these MQL scripts against the Freebase API using Python. Due to Python requirements, "None" may need to be replaced with "null" in the MQL queries. 
 
 
 
