@@ -1,6 +1,10 @@
 # mql-scripts
 
-A reflection and review of Freebase.com and the (now deprecated) Metaweb Query Language (MQL). 
+A reflection and review of [Freebase.com](http://www.freebase.com) and the (now deprecated) Metaweb Query Language (MQL). 
+
+# Freebase
+
+The [Freebase](https://en.wikipedia.org/wiki/Freebase) Wikipedia article provides a good overview of its beginnings at Metaweb Technologies, Inc., its acquisition by Google in 2010, and its eventual shutdown and move to Wikidata. Freebase accepted queries to its vast stores of data through the Metaweb Query Language (MQL).
 
 
 # Sample MQL Scripts
