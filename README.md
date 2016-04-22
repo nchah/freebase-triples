@@ -2,23 +2,46 @@
 
 A reflection and review of [Freebase.com](http://www.freebase.com) and the (now deprecated) Metaweb Query Language (MQL). 
 
-# Freebase
+## Freebase
 
 The [Freebase](https://en.wikipedia.org/wiki/Freebase) Wikipedia article provides a good overview of its beginnings at Metaweb Technologies, Inc., its acquisition by Google in 2010, and its eventual shutdown and move to Wikidata. Freebase accepted queries to its vast stores of data through the Metaweb Query Language (MQL).
 
 
-# Sample MQL Scripts
+## Sample MQL Scripts
 
 Some samples of MQL scripts that I wrote are enclosed as txt files in the mql-queries folder. At the time, I queried these MQL scripts against the Freebase API using Python. Due to Python requirements, "None" may need to be replaced with "null" in the MQL queries. 
 
+The [MQL Reference Guide](https://developers.google.com/freebase/mql/ch03#firstquery) presents the following as a first query using MQL.
+
+```
+	Query:
+	{
+	  "type" : "/music/artist",
+	  "name" : "The Police",
+	  "album" : []
+	}
+
+	Response:
+	{
+	  "type": "/music/artist",
+	  "name": "The Police",
+	  "album": [
+	    "Outlandos d'Amour",
+	    "Reggatta de Blanc",
+	    "Zenyatta Mondatta",
+	    "Ghost in the Machine",
+	    "Synchronicity",
+	  ]
+	}
+```
 
 
-# The Google Knowledge Graph
+## The Google Knowledge Graph
 
 Following the deprecation of the Freebase APIs, the new Knowledge Graph Search API was released. The new KG API does not support the use of the MQL as it did on Freebase. 
 
 
-# Sources
+## Sources
 
 Some sources may no longer be available as the Freebase API was deprecated on June 30, 2015.
 
