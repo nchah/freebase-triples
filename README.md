@@ -1,6 +1,7 @@
 # mql-scripts
 
-A reflection and review of [Freebase.com](http://www.freebase.com) and the (now deprecated) Metaweb Query Language (MQL). 
+A reflection and review of [Freebase.com](http://www.freebase.com) and the (now deprecated) Metaweb Query Language (MQL). This repo is a response to the increasing attention being given to Facebook's [GraphQL](https://code.facebook.com/posts/1691455094417024), which was released in September 2015. Those who have worked with MQL before would have immediately noticed the similiarities with GraphQL. 
+
 
 ## Freebase
 
@@ -32,6 +33,37 @@ The [MQL Reference Guide](https://developers.google.com/freebase/mql/ch03#firstq
 	    "Ghost in the Machine",
 	    "Synchronicity",
 	  ]
+	}
+```
+
+In comparison, the [GraphQL documentation](https://facebook.github.io/react/blog/2015/05/01/graphql-introduction.html) offers the following introductory query:
+```
+	Query:
+	{
+	  user(id: 3500401) {
+	    id,
+	    name,
+	    isViewerFriend,
+	    profilePicture(size: 50)  {
+	      uri,
+	      width,
+	      height
+	    }
+	  }
+	}
+
+	Response:
+	{
+	  "user" : {
+	    "id": 3500401,
+	    "name": "Jing Chen",
+	    "isViewerFriend": true,
+	    "profilePicture": {
+	      "uri": "http://someurl.cdn/pic.jpg",
+	      "width": 50,
+	      "height": 50
+	    }
+	  }
 	}
 ```
 
