@@ -70,27 +70,29 @@ In comparison, the [GraphQL documentation](https://facebook.github.io/react/blog
 
 ## The Google Knowledge Graph
 
-Following the deprecation of the Freebase APIs, the new Knowledge Graph Search API was released. The new KG API does not support the use of the MQL as it did on Freebase. 
+Following the deprecation of the Freebase APIs, the new Knowledge Graph Search API (KG API) was released. As of April 2016, the new KG API does not support queries written in MQL as it did on Freebase. 
+
+
 
 
 ## Sources
 
-Some sources may no longer be available as the Freebase API was deprecated on June 30, 2015.
+Some sources may no longer be available following the deprecation of the Freebase API on June 30, 2015.
 
 **Freebase**
 - http://www.freebase.com/
 - http://wiki.freebase.com/wiki/Main_Page
 
 **Knowledge Graph**
-- https://www.google.com/intl/bn/insidesearch/features/search/knowledge.html
+- https://www.google.com/intl/bn/insidesearch/features/search/knowledge.html (Google Inside Search explaining the Knowledge Graph)
 
 **Google Developers Resources**
 
-*Freebase APIs*
+*Freebase API*
 - https://developers.google.com/freebase/
 - https://developers.google.com/freebase/mql/
 
-*Knowledge Graph Search APIs*
+*Knowledge Graph Search API*
 - https://plus.google.com/109936836907132434202/posts/iY8NZGFF6DN (released on Dec 16, 2015)
 - https://developers.google.com/knowledge-graph/
 
