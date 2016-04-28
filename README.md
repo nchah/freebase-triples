@@ -67,12 +67,15 @@ In comparison, the [GraphQL documentation](https://facebook.github.io/react/blog
 	}
 ```
 
+The syntax has some differences but there are notable similarities in the general nested structure and query format. The query request essentially lays out the data structure that should be returned in the response. 
+
+
 
 ## The Google Knowledge Graph
 
 Following the deprecation of the Freebase APIs, the new Knowledge Graph Search API (KG API) was released. As of April 2016, the new KG API does not support queries written in MQL as it did on Freebase. 
 
-
+Further code to explore the Knowledge Graph API is in this [repository](https://github.com/nchah/knowledge-graph-api).
 
 
 ## Sources
