@@ -7,6 +7,8 @@ A reflection and review of [Freebase.com](http://www.freebase.com) and the (now 
 
 The [Freebase](https://en.wikipedia.org/wiki/Freebase) Wikipedia article provides a good overview of its beginnings at Metaweb Technologies, Inc., its acquisition by Google in 2010, and its eventual shutdown and move to Wikidata. Freebase accepted queries to its vast stores of data through the Metaweb Query Language (MQL).
 
+Although the shutdown of freebase.com was set for as early as June 30, 2015 according to this [Google+ post](https://plus.google.com/u/0/109936836907132434202/posts/bu3z2wVqcQc), the actual website could be accessed for quite a long time. On May 2, 2016, freebase.com was finally closed off as announced in this [Google Group post](https://groups.google.com/forum/#!topic/freebase-discuss/WEnyO8f7xOQ). 
+
 
 ## Sample MQL Scripts
 
@@ -73,14 +75,24 @@ The syntax has some differences but there are notable similarities in the genera
 
 ## The Google Knowledge Graph
 
-Following the deprecation of the Freebase APIs, the new Knowledge Graph Search API (KG API) was released. As of April 2016, the new KG API does not support queries written in MQL as it did on Freebase. 
+Following the deprecation of the Freebase APIs, the new Knowledge Graph Search API (KG API) was released by Google on December 16, 2015 ([Google+ post](https://plus.google.com/u/0/109936836907132434202/posts/iY8NZGFF6DN)). As of April 2016, the new KG API does not support queries written in MQL as it did on Freebase. 
 
-Further code to explore the Knowledge Graph API is in this [repository](https://github.com/nchah/knowledge-graph-api).
+I have some further code to explore the Knowledge Graph API in this repository [knowledge-graph-api](https://github.com/nchah/knowledge-graph-api).
 
 
 ## Sources
 
-Some sources may no longer be available following the deprecation of the Freebase API on June 30, 2015.
+Some sources may no longer be available following the deprecation of the Freebase API on June 30, 2015. 
+
+**Announcements**
+Many Freebase and Knowledge Graph related updates are posted on the once active [freebase-discuss](https://groups.google.com/forum/#!forum/freebase-discuss) Google Group and the [Google+](https://plus.google.com/u/0/109936836907132434202/posts) community.
+
+- Dec 16, 2014 (timeline for Freebase sunsetting announced) https://plus.google.com/u/0/109936836907132434202/posts/bu3z2wVqcQc
+- Mar 26, 2015 (details on Wikidata and new KG API projected) https://plus.google.com/u/0/109936836907132434202/posts/3aYFVNf92A1
+- Sep 28, 2015 (short update on KG API) https://plus.google.com/u/0/109936836907132434202/posts/3aYFVNf92A1
+- Dec 16, 2015 (KG Search API releasted) https://plus.google.com/u/0/109936836907132434202/posts/iY8NZGFF6DN
+- Jan 28, 2016 (KG Search Widget released) https://plus.google.com/u/0/109936836907132434202/posts/MCKpjUpx1H1
+- May 02, 2016 (Freebase.com shutdown) https://groups.google.com/forum/#!topic/freebase-discuss/WEnyO8f7xOQ
 
 **Freebase**
 - http://www.freebase.com/
