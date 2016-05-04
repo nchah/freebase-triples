@@ -102,6 +102,9 @@ Many Freebase and Knowledge Graph related updates are posted on the once active 
 - http://www.freebase.com/ (shutdown on May 02, 2016, now redirects to the data dumps)
 - http://wiki.freebase.com/wiki/Main_Page
 
+**MQL**
+- http://wiki.freebase.com/images/8/87/MQLReferenceGuide.pdf (extensive 220 page PDF)
+
 **Knowledge Graph**
 - https://www.google.com/intl/bn/insidesearch/features/search/knowledge.html (Google Inside Search explaining the Knowledge Graph)
 
