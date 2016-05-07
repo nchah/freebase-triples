@@ -118,3 +118,8 @@ Many Freebase and Knowledge Graph related updates are posted on the once active 
 - https://plus.google.com/109936836907132434202/posts/iY8NZGFF6DN (released on Dec 16, 2015)
 - https://developers.google.com/knowledge-graph/
 
+*Google Search*
+- https://developers.google.com/search/
+- https://developers.google.com/structured-data/
+- https://developers.google.com/structured-data/customize/overview
+
