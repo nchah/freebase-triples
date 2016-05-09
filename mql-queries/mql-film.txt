@@ -1,0 +1,20 @@
+# Retrieves film directors born in South Korea with no populated date of birth
+
+query_1 = [{
+  "name": None,
+  "mid": None,
+  "type": "/people/person",
+  "and:type": "/film/director",
+  "nationality": [{
+    "mid": "/m/06qd3"
+    }],
+  "date_of_birth": None,
+  "foreign:name": [{
+    "value": None,
+    "lang": "/lang/ko"
+    }],
+   "return": "count",
+   "limit": 1000,
+   "sort": "-date_of_birth",
+   }]
+
