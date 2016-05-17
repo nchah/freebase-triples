@@ -14,9 +14,19 @@ A screenshot of freebase.com on May 2, 2016 before it was shut down.
 
 ### Data Dumps
 
-A data dump of Freebase Triples is available on the [developers page](https://developers.google.com/freebase/#freebase-rdf-dumps). The file is 22 GB gzip compressed, 250 GB uncompressed.
+A data dump of Freebase Triples is available on the [developers page](https://developers.google.com/freebase/#freebase-rdf-dumps). The file is 22 GB gzip compressed and 250 GB uncompressed according to the website, although some recent downloads exceed this file size.
 
+Examining the compressed data with Z commands:
+```
+$ zmore freebase-rdf-latest.gz
 
+<http://rdf.freebase.com/ns/american_football.football_player.footballdb_id>    <http://rdf.freebase.com/ns/type.object.type>   <http://rdf.freebase.com/ns/type.property>      .
+<http://rdf.freebase.com/ns/american_football.football_player.footballdb_id>    <http://rdf.freebase.com/ns/type.object.name>   "footballdb ID"@en      .
+<http://rdf.freebase.com/ns/american_football.football_player.footballdb_id>    <http://rdf.freebase.com/ns/type.property.unique>       "true"  .
+<http://rdf.freebase.com/ns/american_football.football_player.footballdb_id>    <http://rdf.freebase.com/ns/type.property.expected_type>        <http://rdf.freebase.com/ns/type.enumeration>   .
+<http://rdf.freebase.com/ns/american_football.football_player.footballdb_id>    <http://www.w3.org/2000/01/rdf-schema#label>    "footballdb ID"@en      .
+<http://rdf.freebase.com/ns/american_football.football_player.footballdb_id>    <http://rdf.freebase.com/ns/type.property.schema>       <http://rdf.freebase.com/ns/american_football.football_player>  .
+```
 
 
 ## Sample MQL Scripts
