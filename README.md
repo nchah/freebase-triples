@@ -1,4 +1,4 @@
-# freebase-mql
+#freebase-mql
 
 A reflection and review of [Freebase.com](http://www.freebase.com) and the (now deprecated) Metaweb Query Language (MQL). This repo is a response to the increasing attention being given to Facebook's [GraphQL](https://code.facebook.com/posts/1691455094417024), which was released in September 2015. Those who have worked with MQL before would have immediately noticed the similiarities of GraphQL with this now deprecated language. 
 
@@ -11,6 +11,13 @@ Although the shutdown of freebase.com was set for as early as June 30, 2015 acco
 
 A screenshot of freebase.com on May 2, 2016 before it was shut down.
 ![freebase.com screenshot](https://github.com/nchah/freebase-mql/blob/master/images/screenshot-freebase-com.png)
+
+### Data Dumps
+
+A data dump of Freebase Triples is available on the [developers page](https://developers.google.com/freebase/#freebase-rdf-dumps). The file is 22 GB gzip compressed, 250 GB uncompressed.
+
+
+
 
 ## Sample MQL Scripts
 
