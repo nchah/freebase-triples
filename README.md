@@ -28,8 +28,14 @@ $ zmore freebase-rdf-latest.gz
 <http://rdf.freebase.com/ns/american_football.football_player.footballdb_id>    <http://rdf.freebase.com/ns/type.property.schema>       <http://rdf.freebase.com/ns/american_football.football_player>  .
 ```
 
+### License
 
-## Sample MQL Scripts
+Freebase data is licensed under  .
+
+
+## Metaweb Query Language (MQL)
+
+### Sample MQL Scripts
 
 Some samples of MQL scripts that I wrote are enclosed as txt files in the mql-queries folder. At the time, I queried these MQL scripts against the Freebase API using Python. Due to Python requirements, "None" may need to be replaced with "null" in the MQL queries. 
 
