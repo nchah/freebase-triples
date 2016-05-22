@@ -30,7 +30,7 @@ $ zmore freebase-rdf-latest.gz
 
 ### License
 
-Freebase data is licensed under  .
+Freebase data is licensed under the [CC-BY](http://creativecommons.org/licenses/by/2.5/) license. The Freebase API also has additional [Terms and Conditions](https://developers.google.com/freebase/terms#license). 
 
 
 ## Metaweb Query Language (MQL)
