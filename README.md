@@ -14,9 +14,10 @@ A screenshot of freebase.com on May 2, 2016 before it was shut down.
 
 ### Data Dumps
 
-A data dump of Freebase Triples is available on the [developers page](https://developers.google.com/freebase/#freebase-rdf-dumps). The file is 22 GB gzip compressed and 250 GB uncompressed according to the website, although some recent downloads exceed this file size.
+A data dump of Freebase Triples is available on the [developers page](https://developers.google.com/freebase/#freebase-rdf-dumps). The freebase.com URL also redirects to this page following its shutdown. The file is listed as being 22 GB gzip compressed and 250 GB uncompressed according to the website, although some recent downloads exceed this file size (a recent download as of May 2016 amounted to >30 GB). 
 
 Examining the compressed data with Z commands:
+
 ```
 $ zmore freebase-rdf-latest.gz
 
