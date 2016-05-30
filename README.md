@@ -112,6 +112,14 @@ In comparison, the [GraphQL documentation](https://facebook.github.io/react/blog
 	}
 ```
 
+### More MQL
+
+```
+
+```
+
+
+
 The syntax has some differences but there are notable similarities in the general nested structure and query format. The query request essentially lays out the data structure that should be returned in the response. 
 
 
