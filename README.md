@@ -112,15 +112,65 @@ In comparison, the [GraphQL documentation](https://facebook.github.io/react/blog
 	}
 ```
 
+The syntax has some differences but there are notable similarities in the general nested structure and query format. The query request essentially lays out the data structure that should be returned in the response. 
+
+
 ### More MQL
 
+These are some further MQL In most cases the "return" parameter is commented out with "#" (this is due to the MQL being originally written in Python scripts). The "limit" parameter is also set to a reasonable amount and would have been adjusted accordingly. 
+
+Get all food dish topics (with /food/dish type)
+```
+{
+    "name": None,
+    "mid": None,
+    "type": "/food/dish",
+    "count": None,
+    #"return": "count",
+    "limit": 20,
+    "sort": "name",
+}
 ```
 
+Get food dishes and their ingredients
+```
+{
+    "name": None,
+    "mid": None,
+    "type": "/food/dish",
+    "ingredients": [{
+        "mid": None,
+        "name": None,
+        }],
+    "count": None,
+    #"return": "count",
+    "limit": 100,
+    "sort": "name",
+}
 ```
 
-
-
-The syntax has some differences but there are notable similarities in the general nested structure and query format. The query request essentially lays out the data structure that should be returned in the response. 
+Get cuisine topics' dishes and their ingredients
+```
+{
+    "name": None,
+    "mid": None,
+    "type": "/dining/cuisine",
+    "dishes": [{
+        "type": "/food/dish",
+        "ingredients": [{
+            "mid": None,
+            "name": None,
+            }],
+        "name": None,
+        "mid": None,
+        "count": None,
+        }],
+    "count": None,
+    #"return": "count",
+    "limit": 100,
+    "sort": "name",
+}
+```
 
 
 
