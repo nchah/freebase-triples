@@ -181,11 +181,16 @@ Following the deprecation of the Freebase APIs, the new Knowledge Graph Search A
 I have some further code to explore the Knowledge Graph API in this repository [knowledge-graph-api](https://github.com/nchah/knowledge-graph-api).
 
 
+## Wikidata Migration
+
+The migration of Freebase data to Wikidata can be tracked [here](https://www.wikidata.org/wiki/Wikidata:WikiProject_Freebase). 
+
+
 ## Sources
 
 Some sources may no longer be available following the deprecation of the Freebase API on June 30, 2015. 
 
-**Announcements**
+### Announcements
 
 Many Freebase and Knowledge Graph related updates are posted on the once active [freebase-discuss](https://groups.google.com/forum/#!forum/freebase-discuss) Google Group and the [Google+](https://plus.google.com/u/0/109936836907132434202/posts) community.
 
@@ -197,27 +202,27 @@ Many Freebase and Knowledge Graph related updates are posted on the once active 
 - Jan 28, 2016 (KG Search Widget released) https://plus.google.com/u/0/109936836907132434202/posts/MCKpjUpx1H1
 - May 02, 2016 (Freebase.com shutdown) https://groups.google.com/forum/#!topic/freebase-discuss/WEnyO8f7xOQ
 
-**Freebase**
+### Freebase
 - http://www.freebase.com/ (shutdown on May 02, 2016, now redirects to the data dumps)
 - http://wiki.freebase.com/wiki/Main_Page
 
-**MQL**
+### MQL
 - http://wiki.freebase.com/images/8/87/MQLReferenceGuide.pdf (extensive 220 page PDF)
 
-**Knowledge Graph**
+### Knowledge Graph
 - https://www.google.com/intl/bn/insidesearch/features/search/knowledge.html (Google Inside Search explaining the Knowledge Graph)
 
-**Google Developers Resources**
+### Google Developers Resources
 
-*Freebase API*
+**Freebase API**
 - https://developers.google.com/freebase/
 - https://developers.google.com/freebase/mql/
 
-*Knowledge Graph Search API*
+**Knowledge Graph Search API**
 - https://plus.google.com/109936836907132434202/posts/iY8NZGFF6DN (released on Dec 16, 2015)
 - https://developers.google.com/knowledge-graph/
 
-*Google Search*
+**Google Search**
 - https://developers.google.com/search/
 - https://developers.google.com/structured-data/
 - https://developers.google.com/structured-data/customize/overview
