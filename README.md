@@ -178,12 +178,14 @@ Get cuisine topics' dishes and their ingredients
 
 Following the deprecation of the Freebase APIs, the new Knowledge Graph Search API (KG API) was released by Google on December 16, 2015 ([Google+ post](https://plus.google.com/u/0/109936836907132434202/posts/iY8NZGFF6DN)). As of April 2016, the new KG API does not support queries written in MQL as it did on Freebase. 
 
-I have some further code to explore the Knowledge Graph API in this repository [knowledge-graph-api](https://github.com/nchah/knowledge-graph-api).
+I have further code to explore the Knowledge Graph API in this repository [knowledge-graph-api](https://github.com/nchah/knowledge-graph-api).
 
 
 ## Wikidata Migration
 
 The migration of Freebase data to Wikidata can be tracked [here](https://www.wikidata.org/wiki/Wikidata:WikiProject_Freebase). 
+
+I am tracking the project and any contributions in this repository [wikidata](https://github.com/nchah/wikidata).
 
 
 ## Sources
@@ -203,26 +205,32 @@ Many Freebase and Knowledge Graph related updates are posted on the once active 
 - May 02, 2016 (Freebase.com shutdown) https://groups.google.com/forum/#!topic/freebase-discuss/WEnyO8f7xOQ
 
 ### Freebase
+
 - http://www.freebase.com/ (shutdown on May 02, 2016, now redirects to the data dumps)
 - http://wiki.freebase.com/wiki/Main_Page
 
 ### MQL
+
 - http://wiki.freebase.com/images/8/87/MQLReferenceGuide.pdf (extensive 220 page PDF)
 
 ### Knowledge Graph
+
 - https://www.google.com/intl/bn/insidesearch/features/search/knowledge.html (Google Inside Search explaining the Knowledge Graph)
 
 ### Google Developers Resources
 
 **Freebase API**
+
 - https://developers.google.com/freebase/
 - https://developers.google.com/freebase/mql/
 
 **Knowledge Graph Search API**
+
 - https://plus.google.com/109936836907132434202/posts/iY8NZGFF6DN (released on Dec 16, 2015)
 - https://developers.google.com/knowledge-graph/
 
 **Google Search**
+
 - https://developers.google.com/search/
 - https://developers.google.com/structured-data/
 - https://developers.google.com/structured-data/customize/overview
