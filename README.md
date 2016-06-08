@@ -1,6 +1,6 @@
 #freebase-triples
 
-
+A repository to document the effort to clean and analyze the Freebase data dumps.
 
 ## Freebase
 
@@ -11,12 +11,12 @@ Although the shutdown of freebase.com was set for as early as June 30, 2015 acco
 A screenshot of freebase.com on May 2, 2016 before it was shut down.
 ![freebase.com screenshot](https://github.com/nchah/freebase-mql/blob/master/images/screenshot-freebase-com.png)
 
-### Data Dumps
+## Freebase Data Dumps
 
 A data dump of 1.9 billion Freebase Triples in [N-Triples RDF](https://www.w3.org/TR/rdf-testcases/#ntriples) format is available on the [developers page](https://developers.google.com/freebase/#freebase-rdf-dumps) under the [CC-BY](http://creativecommons.org/licenses/by/2.5/) license. The [freebase.com](http://freebase.com) URL also redirects to this page following its shutdown. 
 The file is listed as being 22 GB gzip compressed and 250 GB uncompressed according to the website, although recent downloads exceed this file size (a May 2016 download amounted to >30 GB compressed and >400 GB uncompressed). 
 
-Examining the compressed data with Z commands:
+Examining the compressed data with Z commands on the terminal:
 
 ```
 # Scan through the data with zmore or zless
@@ -46,7 +46,15 @@ $ zgrep '/ns/film.film>' -m 10 freebase-rdf-latest.gz
 
 ```
 
-### License
+## Changes
+
+Changes made to the raw triples data dump to ease processing.
+
+- TODO:
+    - Convert N Triples format to N3.
+
+
+## License
 
 Freebase data is licensed under the [CC-BY](http://creativecommons.org/licenses/by/2.5/) license. The Freebase API also has additional [Terms and Conditions](https://developers.google.com/freebase/terms#license). 
 
