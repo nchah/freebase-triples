@@ -51,7 +51,8 @@ $ zgrep '/ns/film.film>' -m 10 freebase-rdf-latest.gz
 Changes made to the raw triples data dump to ease processing.
 
 - TODO:
-    - Convert N Triples format to N3.
+    - Data Cleaning
+        - Convert N-Triples [(Wikipedia)](https://en.wikipedia.org/wiki/N-Triples) format to N3 [(Wikipedia)](https://en.wikipedia.org/wiki/Notation3) or other format. Working with the full URIs conforms to the standard, but can be wordy.
 
 
 ## Analysis
