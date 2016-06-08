@@ -54,6 +54,13 @@ Changes made to the raw triples data dump to ease processing.
     - Convert N Triples format to N3.
 
 
+## Analysis
+
+### Cayley
+
+The Cayley graph can be used to analyze the cleaned data. Cayley is an open-source graph database maintained by a Google employee. GitHub repository is available at [google/cayley](https://github.com/google/cayley).
+
+
 ## License
 
 Freebase data is licensed under the [CC-BY](http://creativecommons.org/licenses/by/2.5/) license. The Freebase API also has additional [Terms and Conditions](https://developers.google.com/freebase/terms#license). 
