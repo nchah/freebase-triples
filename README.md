@@ -48,11 +48,18 @@ $ zgrep '/ns/film.film>' -m 10 freebase-rdf-latest.gz
 
 ## Changes
 
-Changes made to the raw triples data dump to ease processing.
+This section tracks the changes made to the raw triples data dump to ease processing.
+
+The data dumps encode Freebase data in a few ways that are different from the usual usage on Freebase,com. 
+
+- Notes
+    - "/" is replaced by "." for topic mids and domains/types/properties.
+    - URLs to freebase.com or w3.org are used, not just the mids. All freebase.com addresses no longer work following the site shutdown.
 
 - TODO:
     - Data Cleaning
-        - Convert N-Triples [(Wikipedia)](https://en.wikipedia.org/wiki/N-Triples) format to N3 [(Wikipedia)](https://en.wikipedia.org/wiki/Notation3) or other format. Working with the full URIs conforms to the standard, but can be wordy.
+        - Convert N-Triples [(Wikipedia)](https://en.wikipedia.org/wiki/N-Triples) format to N3 [(Wikipedia)](https://en.wikipedia.org/wiki/Notation3) or other format. Working with the full URIs conforms to the standard, but can be unwieldy to use.
+        - Convert "." back to "/" to return a more Freebase-like format
 
 
 ## Analysis
