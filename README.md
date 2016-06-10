@@ -60,9 +60,11 @@ The data dumps encode Freebase data in a few ways that are different from the us
     - Data Cleaning
         - Convert N-Triples [(Wikipedia)](https://en.wikipedia.org/wiki/N-Triples) format to N3 [(Wikipedia)](https://en.wikipedia.org/wiki/Notation3) or other format. Working with the full URIs conforms to the standard, but can be unwieldy to use.
             - Running on a head sample of 10k triples shows the following diffs in file size. The file size reduction where ~43% of the original is preserved looks promising.
+            ```
             Original:   fb-triples-10k.txt - 1368687 bytes
             c1:         fb-triples-10k-c1.txt - 589935 bytes (43.1%)
             c2:         fb-triples-10k-c2.txt - 589111 bytes (43.0%)
+            ```
         - Convert "." back to "/" to return a more Freebase-like format
 
 
