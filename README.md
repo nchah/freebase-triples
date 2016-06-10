@@ -59,6 +59,10 @@ The data dumps encode Freebase data in a few ways that are different from the us
 - TODO:
     - Data Cleaning
         - Convert N-Triples [(Wikipedia)](https://en.wikipedia.org/wiki/N-Triples) format to N3 [(Wikipedia)](https://en.wikipedia.org/wiki/Notation3) or other format. Working with the full URIs conforms to the standard, but can be unwieldy to use.
+            - Running on a head sample of 10k triples shows the following diffs in file size. The file size reduction where ~43% of the original is preserved looks promising.
+            Original:   fb-triples-10k.txt - 1368687 bytes
+            c1:         fb-triples-10k-c1.txt - 589935 bytes (43.1%)
+            c2:         fb-triples-10k-c2.txt - 589111 bytes (43.0%)
         - Convert "." back to "/" to return a more Freebase-like format
 
 
@@ -76,7 +80,7 @@ Freebase data is licensed under the [CC-BY](http://creativecommons.org/licenses/
 
 ## Sources
 
-Some sources may no longer be available following the deprecation of the Freebase API on June 30, 2015. 
+Some sources may no longer be available following the deprecation of the Freebase API on June 30, 2015.
 
 ### Announcements
 
@@ -94,10 +98,6 @@ Many Freebase and Knowledge Graph related updates are posted on the once active 
 
 - http://www.freebase.com/ (shutdown on May 02, 2016, now redirects to the data dumps)
 - http://wiki.freebase.com/wiki/Main_Page
-
-### MQL
-
-- http://wiki.freebase.com/images/8/87/MQLReferenceGuide.pdf (extensive 220 page PDF)
 
 ### Knowledge Graph
 
