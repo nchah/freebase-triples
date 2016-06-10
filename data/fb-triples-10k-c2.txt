@@ -4,7 +4,7 @@
 </american_football.football_player.footballdb_id>	</type.property.expected_type>	</type.enumeration>	.
 </american_football.football_player.footballdb_id>	<rdf-schema#label>	"footballdb ID"@en	.
 </american_football.football_player.footballdb_id>	</type.property.schema>	</american_football.football_player>	.
-</american_football.football_player.footballdb_id>	<22-rdf-syntax-ns#type>	<owl#FunctionalProperty>	.
+</american_football.football_player.footballdb_id>	<rdf-syntax-ns#type>	<owl#FunctionalProperty>	.
 </american_football.football_player.footballdb_id>	<rdf-schema#domain>	</american_football.football_player>	.
 </american_football.football_player.footballdb_id>	<rdf-schema#range>	</type.enumeration>	.
 </astronomy.astronomical_observatory.discoveries>	</type.object.name>	"Discoveries"@en	.
@@ -13,7 +13,7 @@
 </astronomy.astronomical_observatory.discoveries>	</type.object.type>	</type.property>	.
 </astronomy.astronomical_observatory.discoveries>	</type.property.unique>	"false"	.
 </astronomy.astronomical_observatory.discoveries>	<rdf-schema#label>	"Discoveries"@en	.
-</astronomy.astronomical_observatory.discoveries>	<22-rdf-syntax-ns#type>	<rdf-schema#Property>	.
+</astronomy.astronomical_observatory.discoveries>	<rdf-syntax-ns#type>	<rdf-schema#Property>	.
 </astronomy.astronomical_observatory.discoveries>	<rdf-schema#domain>	</astronomy.astronomical_observatory>	.
 </astronomy.astronomical_observatory.discoveries>	<rdf-schema#range>	</astronomy.astronomical_discovery>	.
 </automotive.body_style.fuel_tank_capacity>	<rdf-schema#label>	"Fuel Tank Capacity"@en	.
@@ -22,7 +22,7 @@
 </automotive.body_style.fuel_tank_capacity>	</type.property.expected_type>	</type.float>	.
 </automotive.body_style.fuel_tank_capacity>	</type.property.unique>	"true"	.
 </automotive.body_style.fuel_tank_capacity>	</type.object.type>	</type.property>	.
-</automotive.body_style.fuel_tank_capacity>	<22-rdf-syntax-ns#type>	<owl#FunctionalProperty>	.
+</automotive.body_style.fuel_tank_capacity>	<rdf-syntax-ns#type>	<owl#FunctionalProperty>	.
 </automotive.body_style.fuel_tank_capacity>	<rdf-schema#domain>	</automotive.body_style>	.
 </automotive.body_style.fuel_tank_capacity>	<rdf-schema#range>	</type.float>	.
 </automotive.engine.engine_type>	<rdf-schema#label>	"Engine Type"@en	.
@@ -31,7 +31,7 @@
 </automotive.engine.engine_type>	</type.property.reverse_property>	</automotive.engine_type.used_in>	.
 </automotive.engine.engine_type>	</type.object.type>	</type.property>	.
 </automotive.engine.engine_type>	</type.property.expected_type>	</automotive.engine_type>	.
-</automotive.engine.engine_type>	<22-rdf-syntax-ns#type>	<rdf-schema#Property>	.
+</automotive.engine.engine_type>	<rdf-syntax-ns#type>	<rdf-schema#Property>	.
 </automotive.engine.engine_type>	<rdf-schema#domain>	</automotive.engine>	.
 </automotive.engine.engine_type>	<rdf-schema#range>	</automotive.engine_type>	.
 </automotive.engine.engine_type>	<owl#inverseOf>	</automotive.engine_type.used_in>	.
@@ -41,7 +41,7 @@
 </automotive.trim_level.max_passengers>	</type.object.name>	"Maximum Number of Passengers"@en	.
 </automotive.trim_level.max_passengers>	</type.property.unique>	"true"	.
 </automotive.trim_level.max_passengers>	</type.property.schema>	</automotive.trim_level>	.
-</automotive.trim_level.max_passengers>	<22-rdf-syntax-ns#type>	<owl#FunctionalProperty>	.
+</automotive.trim_level.max_passengers>	<rdf-syntax-ns#type>	<owl#FunctionalProperty>	.
 </automotive.trim_level.max_passengers>	<rdf-schema#domain>	</automotive.trim_level>	.
 </automotive.trim_level.max_passengers>	<rdf-schema#range>	</type.int>	.
 </aviation.aircraft.first_flight>	</type.property.unique>	"true"	.
@@ -50,7 +50,7 @@
 </aviation.aircraft.first_flight>	<rdf-schema#label>	"First flight"@en	.
 </aviation.aircraft.first_flight>	</type.property.schema>	</aviation.aircraft>	.
 </aviation.aircraft.first_flight>	</type.object.name>	"First flight"@en	.
-</aviation.aircraft.first_flight>	<22-rdf-syntax-ns#type>	<owl#FunctionalProperty>	.
+</aviation.aircraft.first_flight>	<rdf-syntax-ns#type>	<owl#FunctionalProperty>	.
 </aviation.aircraft.first_flight>	<rdf-schema#domain>	</aviation.aircraft>	.
 </aviation.aircraft.first_flight>	<rdf-schema#range>	</type.datetime>	.
 </award.award_winner>	</type.type.instance>	</m.0x2spfl>	.
