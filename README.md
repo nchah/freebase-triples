@@ -65,6 +65,11 @@ The data dumps encode Freebase data in a few ways that are different from the us
             c1:         fb-triples-10k-c1.txt - 589935 bytes (43.1%)
             c2:         fb-triples-10k-c2.txt - 589111 bytes (43.0%)
             ```
+            - Adding pv to display a progress bar.
+            ```
+            $ bash parse-triples-pv.sh
+            xxB 0:00:00 [xx.xMiB/s] [>                                                            ]  0% ETA 0:00:00
+            ```
         - Convert "." back to "/" to return a more Freebase-like format
 
 
