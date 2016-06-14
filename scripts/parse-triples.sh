@@ -19,9 +19,8 @@
 FB_URI='http:\/\/rdf.freebase.com\/ns'
 W3_URI='http:\/\/www.w3.org\/[0-9]*\/[0-9]*\/[0-9]*-*'
 
-# TODO: make into a single operation
-sed "s/$FB_URI//g" ../data/fb-triples-10k.txt | pv -pterb -s 589935 >../data/fb-triples-10k-c1.txt
-sed "s/$W3_URI//g" ../data/fb-triples-10k-c1.txt | pv -pterb -s 589111 >../data/fb-triples-10k-c2.txt
+# single sed operation
+sed "s/$FB_URI//g;s/$W3_URI//g" ../data/fb-triples-10k.txt | pv -pterb -s 589111 >../data/fb-triples-10k-v2-c1.txt
 
 
 
