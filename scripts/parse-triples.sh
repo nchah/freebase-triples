@@ -16,11 +16,12 @@
 ## Substring replacement 
 # Run on the command line: $ bash parse-triples.sh
 
-FB_URI='http:\/\/rdf.freebase.com\/ns'
+FB_URI='http:\/\/rdf.freebase.com'
+FB_NS_URI='http:\/\/rdf.freebase.com\/ns'
 W3_URI='http:\/\/www.w3.org\/[0-9]*\/[0-9]*\/[0-9]*-*'
 
 # single sed operation
-sed "s/$FB_URI//g;s/$W3_URI//g" ../data/fb-triples-10k.txt | pv -pterb -s 589111 >../data/fb-triples-10k-v2-c1.txt
+sed "s/$FB_NS_URI//g;s/$W3_URI//g;s/$FB_URI//g" ../data/fb-triples-10k.txt | pv -pterb -s 589111 >../data/fb-triples-10k-v2-c1.txt
 
 
 
