@@ -50,7 +50,7 @@ $ zgrep '/ns/film.film>' -m 10 freebase-rdf-latest.gz
 
 This section tracks the changes made to the raw triples data dump to ease processing.
 
-The data dumps encode Freebase data in a few ways that are different from the usual usage on Freebase,com. 
+The data dumps encode Freebase data in a few ways that are different from the usual usage on Freebase.com. 
 
 - Notes
     - "/" is replaced by "." for topic mids and domains/types/properties.
@@ -58,7 +58,7 @@ The data dumps encode Freebase data in a few ways that are different from the us
     - A mix of freebase.com and w3.org schemas are used, especially as predicates in the triples.
 
 
-- TODO:
+- Tasks:
     - Simplifying Data
         - Convert N-Triples [(Wikipedia)](https://en.wikipedia.org/wiki/N-Triples) format to N3 [(Wikipedia)](https://en.wikipedia.org/wiki/Notation3) or other format. Working with the full URIs conforms to the standard, but can be unwieldy to use.
             - Running on a head sample of 10k triples shows the following diffs in file size. The file size reduction where ~43% of the original is preserved looks promising.
@@ -72,7 +72,14 @@ The data dumps encode Freebase data in a few ways that are different from the us
             $ bash parse-triples-pv.sh
             xxB 0:00:00 [xx.xMiB/s] [>                                                            ]  0% ETA 0:00:00
             ```
-        - Convert "." back to "/" to return a more Freebase-like format
+        - Convert "." back to "/" in the domain, type, and property schemas to return a more Freebase-like format.
+    - Indexing/Sorting Data
+        - Creating a dataset for quick topic lookups - extract triples with predicate == /type.object.name, /common.topic.description
+        - i18n Support - Text values are associated with an ISO language code (e.g. "String value"@en )
+    - Interpreting Data
+        - Cayley - Try the Cayley graph database
+        - Gephi - Try Gephi open-source software
+
 
 
 ## Analysis
