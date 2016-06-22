@@ -54,10 +54,12 @@ The data dumps encode Freebase data in a few ways that are different from the us
 
 - Notes
     - "/" is replaced by "." for topic mids and domains/types/properties.
-    - URLs to freebase.com or w3.org are used, not just the mids. All freebase.com addresses no longer work following the site shutdown.
+    - URLs to freebase.com or w3.org are used, not just the Freebase mids. All freebase.com addresses no longer work following the site shutdown but remain in the data dump as unique identifiers.
+    - A mix of freebase.com and w3.org schemas are used, especially as predicates in the triples.
+
 
 - TODO:
-    - Data Cleaning
+    - Simplifying Data
         - Convert N-Triples [(Wikipedia)](https://en.wikipedia.org/wiki/N-Triples) format to N3 [(Wikipedia)](https://en.wikipedia.org/wiki/Notation3) or other format. Working with the full URIs conforms to the standard, but can be unwieldy to use.
             - Running on a head sample of 10k triples shows the following diffs in file size. The file size reduction where ~43% of the original is preserved looks promising.
             ```
@@ -75,9 +77,21 @@ The data dumps encode Freebase data in a few ways that are different from the us
 
 ## Analysis
 
+Once the data is cleaned and ready, this section outlines some of the software to manipluate, visualize, and analyze it.
+
 ### Cayley
 
-The Cayley graph can be used to analyze the cleaned data. Cayley is an open-source graph database maintained by a Google employee. GitHub repository is available at [google/cayley](https://github.com/google/cayley).
+The Cayley graph database and platform can be used to analyze the cleaned triples data. Cayley is an open-source graph database that draws on Freebase and the Knowledge Graph. It is maintained by a Google employee, with the GitHub repository at [google/cayley](https://github.com/google/cayley).
+
+
+
+
+
+.
+
+.
+
+.
 
 
 ## License
