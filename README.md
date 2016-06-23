@@ -56,6 +56,7 @@ The data dumps encode Freebase data in a few ways that are different from the us
     - "/" is replaced by "." for topic mids and domains/types/properties.
     - URLs to freebase.com or w3.org are used, not just the Freebase mids. All freebase.com addresses no longer work following the site shutdown but remain in the data dump as unique identifiers.
     - A mix of freebase.com and w3.org schemas are used, especially as predicates in the triples.
+    - There are over 1.9 billion triples and thus the same amount of lines in the entire data dump.
 
 
 - Tasks:
@@ -72,10 +73,13 @@ The data dumps encode Freebase data in a few ways that are different from the us
             $ bash parse-triples-pv.sh
             xxB 0:00:00 [xx.xMiB/s] [>                                                            ]  0% ETA 0:00:00
             ```
-        - Convert "." back to "/" in the domain, type, and property schemas to return a more Freebase-like format.
+        - Convert "." back to "/" in the domain, type, and property schemas to return a more Freebase-like format (e.g. /award/award_winner for types).
+        - ...
     - Indexing/Sorting Data
-        - Creating a dataset for quick topic lookups - extract triples with predicate == /type.object.name, /common.topic.description
+        - Dataset for quick topic lookups - extract triples with predicate == /type.object.name, /common.topic.description and possibly /type.object.type 
+        - Dataset for schema - extract triples with predicate == /type.property.schema; predicate == /type.object.type and object == /type.property; (many others...)
         - i18n Support - Text values are associated with an ISO language code (e.g. "String value"@en )
+        - ...
     - Interpreting Data
         - Cayley - Try the Cayley graph database
         - Gephi - Try Gephi open-source software
