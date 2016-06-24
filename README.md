@@ -19,7 +19,7 @@ The file is listed as being 22 GB gzip compressed and 250 GB uncompressed accord
 Examining the compressed data with Z commands on the terminal:
 
 ```
-# Scan through the data with zmore or zless
+$ # Scan through the data with zmore or zless
 $ zmore freebase-rdf-latest.gz
 
 <http://rdf.freebase.com/ns/american_football.football_player.footballdb_id>    <http://rdf.freebase.com/ns/type.object.type>   <http://rdf.freebase.com/ns/type.property>      .
@@ -30,7 +30,7 @@ $ zmore freebase-rdf-latest.gz
 <http://rdf.freebase.com/ns/american_football.football_player.footballdb_id>    <http://rdf.freebase.com/ns/type.property.schema>       <http://rdf.freebase.com/ns/american_football.football_player>  .
 
 
-# You can also grep it
+$ # You can also grep it
 $ zgrep '/ns/film.film>' -m 10 freebase-rdf-latest.gz
 
 <http://rdf.freebase.com/ns/film.film_song_relationship.film>   <http://rdf.freebase.com/ns/type.property.expected_type>    <http://rdf.freebase.com/ns/film.film>  .
@@ -46,6 +46,25 @@ $ zgrep '/ns/film.film>' -m 10 freebase-rdf-latest.gz
 
 ```
 
+Each triple is encoded in the aforementioned N-Triples format. The subject, predicate, and object values on each line are "< >" enclosed and tab separated. Each line terminates with a "." and is newline separated. 
+
+Viewing this with `vim`, using `:set list`:
+
+```
+</american_football.football_player.footballdb_id>^I</type.object.name>^I"footballdb ID"@en^I.$                                       
+</astronomy.astronomical_observatory.discoveries>^I</type.object.name>^I"Discoveries"@en^I.$
+</automotive.body_style.fuel_tank_capacity>^I</type.object.name>^I"Fuel Tank Capacity"@en^I.$
+</automotive.engine.engine_type>^I</type.object.name>^I"Engine Type"@en^I.$
+</automotive.trim_level.max_passengers>^I</type.object.name>^I"Maximum Number of Passengers"@en^I.$
+
+```
+
+
+## Scripts
+
+The scripts in this repo are mostly written in Bash and Python. Bash/Shell scripts handle the parsing for the massive data files. Python, with its many libraries, is a simple way to use the triples data after some initial processing.
+
+
 ## Changes
 
 This section tracks the changes made to the raw triples data dump to ease processing.
@@ -57,6 +76,7 @@ The data dumps encode Freebase data in a few ways that are different from the us
     - URLs to freebase.com or w3.org are used, not just the Freebase mids. All freebase.com addresses no longer work following the site shutdown but remain in the data dump as unique identifiers.
     - A mix of freebase.com and w3.org schemas are used, especially as predicates in the triples.
     - There are over 1.9 billion triples and thus the same amount of lines in the entire data dump.
+    - The triples are already sorted alphabetically in some columns. 
 
 
 - Tasks:
@@ -83,7 +103,6 @@ The data dumps encode Freebase data in a few ways that are different from the us
     - Interpreting Data
         - Cayley - Try the Cayley graph database
         - Gephi - Try Gephi open-source software
-
 
 
 ## Analysis
