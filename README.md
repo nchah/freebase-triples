@@ -85,9 +85,9 @@ The data dumps encode Freebase data in a few ways that are different from the us
             - Running on a head sample of 10k triples shows the following diffs in file size. The file size reduction where ~43% of the original is preserved looks promising.
             ```
             # Test Files:
-            Original:   fb-triples-10k.txt - 1368687 bytes
-            c1:         fb-triples-10k-c1.txt - 589935 bytes (43.1%)
-            c2:         fb-triples-10k-c2.txt - 589111 bytes (43.0%)
+            Original:   fb-triples-10k-head.nt - 1368687 bytes
+            c1:         fb-triples-10k-head-c1.nt - 589935 bytes (43.1%)
+            c2:         fb-triples-10k-head-c2.nt - 589111 bytes (43.0%)
             ```
             - Adding pv to display a progress bar.
             ```
@@ -104,6 +104,7 @@ The data dumps encode Freebase data in a few ways that are different from the us
         - Removing "< >" format which encloses each value.
         - ...
     - Indexing/Sorting Data
+        - Using `awk` to parse data.
         - Dataset for quick topic lookups - extract triples with predicate == /type.object.name, /common.topic.description and possibly /type.object.type 
         - Dataset for schema - extract triples with predicate == /type.property.schema; predicate == /type.object.type and object == /type.property; (many others...)
         - i18n Support - Text values are associated with an ISO language code (e.g. "String value"@en )
