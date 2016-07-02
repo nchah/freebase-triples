@@ -22,7 +22,8 @@ W3_URI='http:\/\/www.w3.org\/[0-9]*\/[0-9]*\/[0-9]*-*'
 
 # single sed substitute operation
 # TODO: work with z commands and gz files
-sed "s/$FB_NS_URI//g;s/$W3_URI//g;s/$FB_URI//g" freebase-rdf-latest | pv -pterb -s 425229008315 >freebase-rdf-latest-c1.txt
+sed "s/$FB_NS_URI//g;s/$W3_URI//g;s/$FB_URI//g" freebase-rdf-latest | pv -pterb -s 425229008315 >freebase-rdf-latest-c1.nt
+
 
 
 
