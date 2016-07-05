@@ -13,7 +13,7 @@
 # zgrep 'term' freebase-rdf-latest.gz > freebase-triples.txt
 
 
-## Substring replacement
+## s1-c1 Substring replacement
 # Run on the command line: $ bash parse-triples.sh freebase-rdf-latest
 
 #FB_URI='http:\/\/rdf.freebase.com'
