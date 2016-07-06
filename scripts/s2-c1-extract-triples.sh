@@ -15,7 +15,15 @@
 
 ## s0-c0 Setting File Names
 INPUT_FILE=$1
-OUTPUT_FILE=${INPUT_FILE:0:${#INPUT_FILE}-11}"-s02-c01.nt"
+
+OUTPUT_FILE_NAME_EN=${INPUT_FILE:0:${#INPUT_FILE}-11}"-name-en-s02-c01.nt"
+OUTPUT_FILE_NAME_ALL=${INPUT_FILE:0:${#INPUT_FILE}-11}"-name-all-s02-c01.nt"
+OUTPUT_FILE_DESC_EN=${INPUT_FILE:0:${#INPUT_FILE}-11}"-desc-en-s02-c01.nt"
+OUTPUT_FILE_DESC_ALL=${INPUT_FILE:0:${#INPUT_FILE}-11}"-desc-all-s02-c01.nt"
+OUTPUT_FILE_TYPE=${INPUT_FILE:0:${#INPUT_FILE}-11}"-type-s02-c01.nt"
+OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"
+OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"
+
 
 
 ## s1-c1 Substring replacement: URLs
@@ -36,19 +44,23 @@ OUTPUT_FILE=${INPUT_FILE:0:${#INPUT_FILE}-11}"-s02-c01.nt"
 #sed "s/<//g;s/>//g" $INPUT_FILE | pv -pterb >$OUTPUT_FILE
 
 
-## s2-c1 Extract Triples
+## s2-c1 Extract Triples: Name, Description, 
+# Specifying triples with specific predicates
 
-# Specifying triples with a specific predicate
 # Triples with "name" predicate
-zgrep '/type.object.name' -m 1000 freebase-rdf-latest.gz > freebase-triples-names.txt
+grep '/type.object.name' $INPUT_FILE | pv -pterb >$OUTPUT_FILE_NAME_ALL
 
 # Restricting to certain i18n languages
-zgrep '/type.object.name.*@en' -m 1000 freebase-rdf-latest.gz > freebase-triples-names-en.txt
+grep '/type.object.name.*@en' $INPUT_FILE | pv -pterb >$OUTPUT_FILE_NAME_EN
 
 # Triples with "description" predicate
-zgrep '/common.topic.description' -m 1000 freebase-rdf-latest.gz > freebase-triples-desc.txt
+grep '/common.topic.description' $INPUT_FILE | pv -pterb >$OUTPUT_FILE_DESC_ALL
 
+# Restricting to certain i18n languages
+grep '/common.topic.description.*@en' $INPUT_FILE | pv -pterb >$OUTPUT_FILE_DESC_EN
 
+# Triples with the "type" predicate
+grep '/type.object.type' $INPUT_FILE | pv -pterb >$OUTPUT_FILE_TYPE
 
 
 
