@@ -94,14 +94,14 @@ The data dumps encode Freebase data in a few ways that are different from the us
             $ bash parse-triples-pv.sh
             xxB 0:00:00 [xx.xMiB/s] [>                                                            ]  0% ETA 0:00:00
             ```
-            - Running on the entire data dump (>5 hrs). ~53% of the original is kept after the first pass:
+            - Running on the entire data dump (>5 hrs locally). ~53% of the original is kept after the first pass:
             ```
             # Entire File:
             Original:   freebase-rdf-latest - 425229008315 bytes
             c1:         freebase-rdf-latest-c1 - 229008851191 bytes (53.8%)
             ```
-        - Convert "." back to "/" in the domain, type, and property schemas to return a more Freebase-like format (e.g. /award/award_winner for types).
-        - Removing "< >" format which encloses each value.
+        - Optional: Convert "." back to "/" in the domain, type, and property schemas to return a more Freebase-like format (e.g. /award/award_winner for types).
+        - Optional: Removing "< >" format which encloses each value.
         - ...
     - Indexing/Sorting Data
         - Using `awk` to parse data.
