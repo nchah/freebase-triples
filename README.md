@@ -112,8 +112,9 @@ The data dumps encode Freebase data in a few ways that are different from the us
         - i18n Support - Text values are associated with an ISO language code (e.g. "String value"@en )
         - ...
     - Interpreting Data
-        - Cayley - Try the Cayley graph database
-        - Gephi - Try Gephi open-source software
+        - [Cayley](https://github.com/cayleygraph/cayley) - Try the Cayley graph database
+        - [Gephi](https://en.wikipedia.org/wiki/Gephi) - Try Gephi open-source software
+        - [Neo4j](https://en.wikipedia.org/wiki/Neo4j) - Try the Neo4j graph database
 
 
 ## Analysis
@@ -122,7 +123,7 @@ Once the data is cleaned and ready, this section outlines some of the software t
 
 ### Cayley
 
-The Cayley graph database and platform can be used to analyze the cleaned triples data. Cayley is an open-source graph database that draws on Freebase and the Knowledge Graph. It is maintained by a Google employee, with the GitHub repository at [google/cayley](https://github.com/google/cayley).
+The Cayley graph database and platform can be used to analyze the cleaned triples data. Cayley is an open-source graph database that draws on Freebase and the Knowledge Graph. It is maintained by a Google employee, with the GitHub repository at [cayleygraph/cayley](https://github.com/cayleygraph/cayley).
 
 A Gremlin query using the Cayley Visualize function in the browser.
 
