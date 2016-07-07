@@ -9,7 +9,7 @@ The [Freebase](https://en.wikipedia.org/wiki/Freebase) Wikipedia article provide
 Although the shutdown of freebase.com was set for as early as June 30, 2015 according to this [Google+ post](https://plus.google.com/u/0/109936836907132434202/posts/bu3z2wVqcQc), the actual website could be accessed for quite a long time. On May 2, 2016, freebase.com was finally closed off as announced in this [Google Group post](https://groups.google.com/forum/#!topic/freebase-discuss/WEnyO8f7xOQ). The link now redirects to the static Freebase data dumps.
 
 A screenshot of freebase.com on May 2, 2016 before it was shut down.
-![freebase.com screenshot](https://github.com/nchah/freebase-mql/blob/master/images/screenshot-freebase-com.png)
+![freebase.com screenshot](https://github.com/nchah/freebase-triples/blob/master/images/screenshot-freebase-com.png)
 
 ## Freebase Data Dumps
 
@@ -137,7 +137,7 @@ $ ./cayley http --dbpath=data/testdata.nq
 
 ```
 
-![Cayley visualization screenshot](https://github.com/nchah/freebase-mql/blob/master/images/screenshot-cayley-visualization.png)
+![Cayley visualization screenshot](https://github.com/nchah/freebase-triples/blob/master/images/screenshot-cayley-visualization.png)
 
 
 .
