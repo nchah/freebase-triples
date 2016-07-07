@@ -124,8 +124,20 @@ Once the data is cleaned and ready, this section outlines some of the software t
 
 The Cayley graph database and platform can be used to analyze the cleaned triples data. Cayley is an open-source graph database that draws on Freebase and the Knowledge Graph. It is maintained by a Google employee, with the GitHub repository at [google/cayley](https://github.com/google/cayley).
 
+A Gremlin query using the Cayley Visualize function in the browser.
 
+```
+$ # On the command line:
+$ ./cayley http --dbpath=data/testdata.nq
 
+> // Running Cayley in the browser locally
+> // Visualizing instances of /award/award_winner
+> // Set GetLimit() as getting All() creates a large cluster of thousands of nodes
+> g.V("/award.award_winner").Tag("source").Out("/type.type.instance").Tag("target").GetLimit(10)
+
+```
+
+![Cayley visualization screenshot](https://github.com/nchah/freebase-mql/blob/master/images/screenshot-cayley-visualization.png)
 
 
 .
