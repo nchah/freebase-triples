@@ -62,12 +62,12 @@ Viewing this with `vim`, using `:set list`:
 
 ## Scripts
 
-The scripts in this repo are mostly written in Bash and Python. Bash/Shell scripts handle the parsing for the massive data files. Python, with its many libraries, is a simple way to use the triples data after some initial processing.
+The scripts in this repo are mostly written in Bash and Python. Bash/Shell scripts handle the initial parsing for the massive data files. Python, with its many libraries, is a simple way to use the triples data after some initial processing.
 
 
-## Changes
+## ETL Changes
 
-This section tracks the changes made to the raw triples data dump to ease processing.
+This section tracks the changes made to the raw triples data dump to ease processing of the data. [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load) refers to the extraction, transformation, and loading of large datasets. 
 
 The data dumps encode Freebase data in a few ways that are different from the usual usage on Freebase.com. 
 
@@ -80,7 +80,7 @@ The data dumps encode Freebase data in a few ways that are different from the us
 
 
 - Tasks:
-    - Simplifying Data
+    1. Simplifying Data
         - Convert N-Triples [(Wikipedia)](https://en.wikipedia.org/wiki/N-Triples) format to N3 [(Wikipedia)](https://en.wikipedia.org/wiki/Notation3) or other format. Working with the full URIs conforms to the standard, but can be unwieldy to use. Removing "http://rdf.freebase.com/*", "http://www.w3.org/*" with Regular Expressions.
             - Running on a head sample of 10k triples shows the following diffs in file size. The file size reduction where ~43% of the original is preserved looks promising.
             ```
@@ -103,7 +103,7 @@ The data dumps encode Freebase data in a few ways that are different from the us
         - Optional: Convert "." back to "/" in the domain, type, and property schemas to return a more Freebase-like format (e.g. /award/award_winner for types).
         - Optional: Removing "< >" format which encloses each value.
         - ...
-    - Indexing/Sorting Data
+    2. Indexing/Sorting Data
         - Using `awk` to parse data.
         - Dataset for quick topic lookups - extract triples with predicate == /type.object.name, /common.topic.description and possibly /type.object.type. Scripts should create separate data sets for each.
             - Distinguish textual type values (name, description) by ISO language codes
@@ -111,7 +111,7 @@ The data dumps encode Freebase data in a few ways that are different from the us
         - Dataset for schema - extract triples with predicate == /type.property.schema; predicate == /type.object.type and object == /type.property; (many others...)
         - i18n Support - Text values are associated with an ISO language code (e.g. "String value"@en )
         - ...
-    - Interpreting Data
+    3. Interpreting Data
         - [Cayley](https://github.com/cayleygraph/cayley) - Try the Cayley graph database
         - [Gephi](https://en.wikipedia.org/wiki/Gephi) - Try Gephi open-source software
         - [Neo4j](https://en.wikipedia.org/wiki/Neo4j) - Try the Neo4j graph database
@@ -141,11 +141,11 @@ $ ./cayley http --dbpath=data/testdata.nq
 ![Cayley visualization screenshot](https://github.com/nchah/freebase-triples/blob/master/images/screenshot-cayley-visualization.png)
 
 
-.
+...
 
-.
+...
 
-.
+...
 
 
 ## License
