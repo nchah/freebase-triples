@@ -104,12 +104,12 @@ The data dumps encode Freebase data in a few ways that are different from the us
         - Optional: Removing "< >" format which encloses each value.
         - ...
     2. Indexing/Sorting Data
-        - Using `awk` to parse data.
-        - Dataset for quick topic lookups - extract triples with predicate == /type.object.name, /common.topic.description and possibly /type.object.type. Scripts should create separate data sets for each.
+        - Create dataset(s) for quick topic lookups - extract triples with predicate == /type.object.name, /common.topic.description and possibly /type.object.type. Scripts should create separate data sets for each.
             - Distinguish textual type values (name, description) by ISO language codes
             - Process further for Freebase user-created /base domain, types, and properties. Easily distinguishable as these take the form /user/...
-        - Dataset for schema - extract triples with predicate == /type.property.schema; predicate == /type.object.type and object == /type.property; (many others...)
+        - Create dataset(s) for schema - extract triples with predicate == /type.property.schema; predicate == /type.object.type and object == /type.property; (many others...)
         - i18n Support - Text values are associated with an ISO language code (e.g. "String value"@en )
+        - Using `awk` to parse data. 
         - ...
     3. Interpreting Data
         - [Cayley](https://github.com/cayleygraph/cayley) - Try the Cayley graph database
