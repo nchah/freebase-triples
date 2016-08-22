@@ -14,7 +14,7 @@ A screenshot of freebase.com on May 2, 2016 before it was shut down.
 ## Freebase Data Dumps
 
 A data dump of 1.9 billion Freebase Triples in [N-Triples RDF](https://www.w3.org/TR/rdf-testcases/#ntriples) format is available on the [developers page](https://developers.google.com/freebase/#freebase-rdf-dumps) under the [CC-BY](http://creativecommons.org/licenses/by/2.5/) license. The [freebase.com](http://freebase.com) URL also redirects to this page following its shutdown. 
-The file is listed as being 22 GB gzip compressed and 250 GB uncompressed according to the website, although recent downloads exceed this file size (a May 2016 download amounted to >30 GB compressed and >400 GB uncompressed). 
+The Developers page lists the file as 22 GB gzip compressed and 250 GB uncompressed, although a recent download exceeds this file size (a May 2016 download amounted to >30 GB compressed and >400 GB uncompressed). 
 
 Examining the compressed data with Z commands on the terminal:
 
@@ -48,7 +48,7 @@ $ zgrep '/ns/film.film>' -m 10 freebase-rdf-latest.gz
 
 Each triple is encoded in the aforementioned N-Triples format. The subject, predicate, and object values on each line are "< >" enclosed and tab separated. Each line terminates with a "." and is newline separated. 
 
-Viewing this with `vim`, using `:set list`:
+Viewing this with `vim`, using `:set list` :
 
 ```
 </american_football.football_player.footballdb_id>^I</type.object.name>^I"footballdb ID"@en^I.$                                       
@@ -62,26 +62,26 @@ Viewing this with `vim`, using `:set list`:
 
 ## Scripts
 
-The scripts in this repo are mostly written in Bash and Python. Bash/Shell scripts handle the initial parsing for the massive data files. Python, with its many libraries, is a simple way to use the triples data after some initial processing.
+The scripts in this repo are mostly written in Bash and Python. Bash/Shell scripts handled the initial parsing stages for the massive data dumps. Python, with access to its many libraries, was a simple way to use the triples data after the initial processing.
 
 
 ## ETL Changes
 
-This section tracks the changes made to the raw triples data dump to ease processing of the data. [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load) refers to the extraction, transformation, and loading of large datasets. 
+[ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load) refers to the extraction, transformation, and loading of large datasets in the data science field. Similarly, this section tracks the changes made to the raw triples data dump to ease processing.
 
 The data dumps encode Freebase data in a few ways that are different from the usual usage on Freebase.com. 
 
-- Notes
+- Notes:
     - "/" is replaced by "." for topic mids and domains/types/properties.
     - URLs to freebase.com or w3.org are used, not just the Freebase mids. All freebase.com addresses no longer work following the site shutdown but remain in the data dump as unique identifiers.
     - A mix of freebase.com and w3.org schemas are used, especially as predicates in the triples.
     - There are over 1.9 billion triples and thus the same amount of lines in the entire data dump.
-    - The triples are already sorted alphabetically in some columns. 
+    - The triples are already sorted alphabetically in some columns, but this is applied either inconsistently or according to a pattern that needs to be discovered.
 
 
 - Tasks:
     1. Simplifying Data
-        - Convert N-Triples [(Wikipedia)](https://en.wikipedia.org/wiki/N-Triples) format to N3 [(Wikipedia)](https://en.wikipedia.org/wiki/Notation3) or other format. Working with the full URIs conforms to the standard, but can be unwieldy to use. Removing "http://rdf.freebase.com/*", "http://www.w3.org/*" with Regular Expressions.
+        - **[DONE]** Convert N-Triples [(Wikipedia)](https://en.wikipedia.org/wiki/N-Triples) format to N3 [(Wikipedia)](https://en.wikipedia.org/wiki/Notation3) or other format?? Working with the full URIs conforms to the standard, but can be unwieldy to use. Removing "http://rdf.freebase.com/*", "http://www.w3.org/*" with Regular Expressions for now.
             - Running on a head sample of 10k triples shows the following diffs in file size. The file size reduction where ~43% of the original is preserved looks promising.
             ```
             # Test Files:
@@ -100,11 +100,11 @@ The data dumps encode Freebase data in a few ways that are different from the us
             Original:   freebase-rdf-latest - 425229008315 bytes
             c1:         freebase-rdf-latest-c1 - 229008851191 bytes (53.8%)
             ```
-        - Optional: Convert "." back to "/" in the domain, type, and property schemas to return a more Freebase-like format (e.g. /award/award_winner for types).
+        - Optional: Convert "." back to "/" in the domain, type, and property schemas to return a more Freebase-like format (e.g. format as "/award/award_winner" for types).
         - Optional: Removing "< >" format which encloses each value.
         - ...
     2. Indexing/Sorting Data
-        - Create dataset(s) for quick topic lookups - extract triples with predicate == /type.object.name, /common.topic.description and possibly /type.object.type. Scripts should create separate data sets for each.
+        - Create dataset(s) for quick topic lookups: extract triples with predicate == /type.object.name, /common.topic.description and possibly /type.object.type. Scripts should create separate data sets for each.
             - Distinguish textual type values (name, description) by ISO language codes
             - Process further for Freebase user-created /base domain, types, and properties. Easily distinguishable as these take the form /user/...
         - Create dataset(s) for schema - extract triples with predicate == /type.property.schema; predicate == /type.object.type and object == /type.property; (many others...)
@@ -157,11 +157,11 @@ Freebase data is licensed under the [CC-BY](http://creativecommons.org/licenses/
 
 Some sources may no longer be available following the deprecation of the Freebase API on June 30, 2015.
 
-### Announcements
+### Announcements Timeline
 
 Many Freebase and Knowledge Graph related updates are posted on the once active [freebase-discuss](https://groups.google.com/forum/#!forum/freebase-discuss) Google Group and the [Google+](https://plus.google.com/u/0/109936836907132434202/posts) community.
 
-- Jul 16, 2010 (joining Google) https://groups.google.com/d/msg/freebase-discuss/NkCF1DayKzA/QQufQ9gDwBsJ
+- Jul 16, 2010 (Freebase joining Google) https://groups.google.com/d/msg/freebase-discuss/NkCF1DayKzA/QQufQ9gDwBsJ
 - Dec 16, 2014 (timeline for Freebase sunsetting announced) https://plus.google.com/u/0/109936836907132434202/posts/bu3z2wVqcQc and https://groups.google.com/d/msg/freebase-discuss/s_BPoL92edc/Y585r7_2E1YJ
 - Mar 26, 2015 (details on Wikidata and new KG API projected) https://plus.google.com/u/0/109936836907132434202/posts/3aYFVNf92A1
 - Sep 28, 2015 (short update on KG API) https://plus.google.com/u/0/109936836907132434202/posts/3aYFVNf92A1
