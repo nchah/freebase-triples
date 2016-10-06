@@ -4,9 +4,11 @@ A repository to document the effort to clean and analyze the Freebase data dumps
 
 ## Freebase
 
-The [Freebase](https://en.wikipedia.org/wiki/Freebase) Wikipedia article provides a good overview of the knowledge base's nearly decade-long lifetime from its beginnings at Metaweb Technologies, Inc. in 2007, its acquisition by Google in 2010, and its eventual shutdown and move to Wikidata towards 2015-2016. Freebase accepted queries to its vast stores of data through the Metaweb Query Language (MQL).
+The [Freebase](https://en.wikipedia.org/wiki/Freebase) Wikipedia article provides a good overview of the knowledge base's nearly decade-long lifetime from its beginnings at Metaweb Technologies, Inc. in 2007, its acquisition by Google in 2010, and its eventual shutdown and move to Wikidata towards 2015-2016. 
+Freebase data could be accessed through the Freebase API and the online Query Editor with queries written in the Metaweb Query Language (MQL).
 
-Although the shutdown of freebase.com was set for as early as June 30, 2015 according to this [Google+ post](https://plus.google.com/u/0/109936836907132434202/posts/bu3z2wVqcQc), the actual website could be accessed for quite a long time. On May 2, 2016, freebase.com was finally closed off as announced in this [Google Group post](https://groups.google.com/forum/#!topic/freebase-discuss/WEnyO8f7xOQ). The link now redirects to the static Freebase data dumps.
+Although the shutdown of freebase.com was set for as early as June 30, 2015 according to this initial [Google+ post](https://plus.google.com/u/0/109936836907132434202/posts/bu3z2wVqcQc), the actual website was still accessible for quite a long time. 
+On May 2, 2016, freebase.com was finally closed off as announced in this [Google Group post](https://groups.google.com/forum/#!topic/freebase-discuss/WEnyO8f7xOQ). The freebase.com link now redirects to the Google Developers page for the remaining Freebase triples data dumps.
 
 A screenshot of freebase.com on May 2, 2016 before it was shut down.
 ![freebase.com screenshot](https://github.com/nchah/freebase-triples/blob/master/images/screenshot-freebase-com.png)
@@ -28,9 +30,10 @@ $ zmore freebase-rdf-latest.gz
 <http://rdf.freebase.com/ns/american_football.football_player.footballdb_id>    <http://rdf.freebase.com/ns/type.property.expected_type>        <http://rdf.freebase.com/ns/type.enumeration>   .
 <http://rdf.freebase.com/ns/american_football.football_player.footballdb_id>    <http://www.w3.org/2000/01/rdf-schema#label>    "footballdb ID"@en      .
 <http://rdf.freebase.com/ns/american_football.football_player.footballdb_id>    <http://rdf.freebase.com/ns/type.property.schema>       <http://rdf.freebase.com/ns/american_football.football_player>  .
+```
 
-
-$ # You can also grep it
+You can also grep it:
+```
 $ zgrep '/ns/film.film>' -m 10 freebase-rdf-latest.gz
 
 <http://rdf.freebase.com/ns/film.film_song_relationship.film>   <http://rdf.freebase.com/ns/type.property.expected_type>    <http://rdf.freebase.com/ns/film.film>  .
@@ -46,9 +49,9 @@ $ zgrep '/ns/film.film>' -m 10 freebase-rdf-latest.gz
 
 ```
 
-Each triple is encoded in the aforementioned N-Triples format. The subject, predicate, and object values on each line are "< >" enclosed and tab separated. Each line terminates with a "." and is newline separated. 
+Each triple is encoded in the aforementioned N-Triples format. The subject, predicate, and object values on each line are "< >" enclosed and tab separated. Each line terminates with a "." and is terminated with a newline. 
 
-Viewing this with `vim`, using `:set list` :
+Viewing this with `vim`, using `:set list` to show these hidden characters:
 
 ```
 </american_football.football_player.footballdb_id>^I</type.object.name>^I"footballdb ID"@en^I.$                                       
