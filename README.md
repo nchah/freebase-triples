@@ -2,7 +2,9 @@
 
 A repository to document the effort to clean and analyze the Freebase data dumps.
 
-## Freebase
+## Background
+
+### Freebase
 
 The [Freebase](https://en.wikipedia.org/wiki/Freebase) Wikipedia article provides a good overview of the knowledge base's nearly decade-long lifetime from its beginnings at Metaweb Technologies, Inc. in 2007, its acquisition by Google in 2010, and its eventual shutdown and move to Wikidata towards 2015-2016. 
 Freebase data could be accessed through the Freebase API and the online Query Editor with queries written in the Metaweb Query Language (MQL).
@@ -13,7 +15,7 @@ On May 2, 2016, freebase.com was finally closed off as announced in this [Google
 A screenshot of freebase.com on May 2, 2016 before it was shut down.
 ![freebase.com screenshot](https://github.com/nchah/freebase-triples/blob/master/images/screenshot-freebase-com.png)
 
-## Freebase Data Dumps
+### Freebase Data Dumps
 
 A data dump of 1.9 billion Freebase Triples in [N-Triples RDF](https://www.w3.org/TR/rdf-testcases/#ntriples) format is available on the [developers page](https://developers.google.com/freebase/#freebase-rdf-dumps) under the [CC-BY](http://creativecommons.org/licenses/by/2.5/) license. The [freebase.com](http://freebase.com) URL also redirects to this page following its shutdown. 
 The Developers page lists the file as 22 GB gzip compressed and 250 GB uncompressed, although a recent download exceeds this file size (a May 2016 download amounted to >30 GB compressed and >400 GB uncompressed). 
@@ -63,9 +65,45 @@ Viewing this with `vim`, using `:set list` to show these hidden characters:
 ```
 
 
-## Scripts
+## This Repository
 
-The scripts in this repo are mostly written in Bash and Python. Bash/Shell scripts handled the initial parsing stages for the massive data dumps. Python, with access to its many libraries, was a simple way to use the triples data after the initial processing.
+### Directory
+
+An overview of the directory structure.
+```
+$ tree
+.
+├── README.md
+├── data
+│   ├── fb-rdf-10k-head-s01-c01.nt
+│   ├── fb-rdf-10k-head-s01-c02.nt
+│   ├── fb-rdf-10k-head-s01-c03.nt
+│   ├── fb-rdf-10k-head.nt
+│   └── fb-rdf-10k-... additional files
+├── documents
+│   └── mql-reference-guide.pdf
+├── images
+│   ├── Freebase_Logo_optimised.svg
+│   ├── screenshot-cayley-visualization.png
+│   └── screenshot-freebase-com.png
+└── scripts
+    ├── s1-c1-parse-triples.sh
+    ├── s1-c2-parse-triples.sh
+    ├── s1-c3-parse-triples.sh
+    ├── s1-parse-triples-full.sh
+    └── s2-c1-extract-triples.sh
+```
+
+### Scripts
+
+The scripts in this repo are mostly written in Bash and Python. Bash/Shell scripts handled the initial parsing stages for the massive data dumps. Python, with its many libraries, is a simple way to use the triples data after the initial processing.
+
+- `Bash` commands used: `sed`, `pv`, `grep`, `zless`, `zmore`, `zgrep`
+- `Python` libraries: TBA
+
+### Data
+
+The original files are extremely large and cannot be stored on GitHub. Only a small sample of the output files are included here. For consistency, output data is named following the script used to process it (sX-cX for stage and change versions respectively).
 
 
 ## ETL Changes
