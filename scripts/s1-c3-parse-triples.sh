@@ -3,7 +3,7 @@
 
 ## s0-c0 Setting File Names
 INPUT_FILE=$1
-OUTPUT_FILE=${INPUT_FILE:0:${#INPUT_FILE}-11}"-s01-c02.nt"
+OUTPUT_FILE=${INPUT_FILE:0:${#INPUT_FILE}-11}"-s01-c03.nt"
 
 
 ## s1-c1 Substring replacement: URLs
@@ -21,8 +21,10 @@ OUTPUT_FILE=${INPUT_FILE:0:${#INPUT_FILE}-11}"-s01-c02.nt"
 # Run on the command line: $ bash parse-triples.sh freebase-rdf-latest
 
 # single sed substitute operation
-sed "s/<//g;s/>//g" $INPUT_FILE | pv -pterb >$OUTPUT_FILE
+#sed "s/<//g;s/>//g" $INPUT_FILE | pv -pterb >$OUTPUT_FILE
 
+## s1-c3 Substring replacement: Schema IDs /.. to ///
+sed "s/\./\//g" $INPUT_FILE | pv -pterb >$OUTPUT_FILE # TODO: better regex needed
 
 
 
