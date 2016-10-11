@@ -14,5 +14,5 @@ FB_NS_URI='http:\/\/rdf.freebase.com\/ns'
 W3_URI='http:\/\/www.w3.org\/[0-9]*\/[0-9]*\/[0-9]*-*'
 
 # single sed substitute operation
-sed "s/$FB_NS_URI//g;s/$W3_URI//g;s/$FB_URI//g" $INPUT_FILE | pv -pterb >$OUTPUT_FILE
+sed "s/$FB_NS_URI//g;s/$W3_URI//g;s/$FB_URI//g" $INPUT_FILE | pv -pterbl >$OUTPUT_FILE
 

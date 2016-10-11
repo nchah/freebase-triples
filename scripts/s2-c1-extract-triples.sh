@@ -35,19 +35,19 @@ OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"
 # Specifying triples with specific predicates
 
 # Triples with "name" predicate
-grep '/type.object.name' $INPUT_FILE | pv -pterb >$OUTPUT_FILE_NAME_ALL
+grep '/type.object.name' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_NAME_ALL
 
 # Restricting to certain i18n languages
-grep '/type.object.name.*@en' $INPUT_FILE | pv -pterb >$OUTPUT_FILE_NAME_EN
+grep '/type.object.name.*@en' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_NAME_EN
 
 # Triples with "description" predicate
-grep '/common.topic.description' $INPUT_FILE | pv -pterb >$OUTPUT_FILE_DESC_ALL
+grep '/common.topic.description' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_DESC_ALL
 
 # Restricting to certain i18n languages
-grep '/common.topic.description.*@en' $INPUT_FILE | pv -pterb >$OUTPUT_FILE_DESC_EN
+grep '/common.topic.description.*@en' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_DESC_EN
 
 # Triples with the "type" predicate
-grep '/type.object.type' $INPUT_FILE | pv -pterb >$OUTPUT_FILE_TYPE
+grep '/type.object.type' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_TYPE
 
 
 

@@ -14,14 +14,14 @@ OUTPUT_FILE=${INPUT_FILE:0:${#INPUT_FILE}-11}"-s01-c02.nt"
 #W3_URI='http:\/\/www.w3.org\/[0-9]*\/[0-9]*\/[0-9]*-*'
 
 # single sed substitute operation
-#sed "s/$FB_NS_URI//g;s/$W3_URI//g;s/$FB_URI//g" $1 | pv -pterb >"$1-c1.nt"
+#sed "s/$FB_NS_URI//g;s/$W3_URI//g;s/$FB_URI//g" $1 | pv -pterbl >"$1-c1.nt"
 
 
 ## s1-c2 Substring replacement: <,> Signs
 # Run on the command line: $ bash parse-triples.sh freebase-rdf-latest
 
 # single sed substitute operation
-sed "s/<//g;s/>//g" $INPUT_FILE | pv -pterb >$OUTPUT_FILE
+sed "s/<//g;s/>//g" $INPUT_FILE | pv -pterbl >$OUTPUT_FILE
 
 
 
