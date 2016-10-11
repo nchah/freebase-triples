@@ -56,7 +56,7 @@ Each triple is encoded in the aforementioned N-Triples format. The subject, pred
 Viewing this with `vim`, using `:set list` to show these hidden characters:
 
 ```
-</american_football.football_player.footballdb_id>^I</type.object.name>^I"footballdb ID"@en^I.$                                       
+</american_football.football_player.footballdb_id>^I</type.object.name>^I"footballdb ID"@en^I.$
 </astronomy.astronomical_observatory.discoveries>^I</type.object.name>^I"Discoveries"@en^I.$
 </automotive.body_style.fuel_tank_capacity>^I</type.object.name>^I"Fuel Tank Capacity"@en^I.$
 </automotive.engine.engine_type>^I</type.object.name>^I"Engine Type"@en^I.$
@@ -113,16 +113,17 @@ The original files are extremely large and cannot be stored on GitHub. Only a sm
 The data dumps encode Freebase data in a few ways that are different from the usual usage on Freebase.com. 
 
 - Notes:
-    - "/" is replaced by "." for topic mids and domains/types/properties.
+    - "/" is replaced by "." for topic mids and domains/types/properties (e.g. /m.abcdef or /film.film instead of /m/abcdef or /film/film).
     - URLs to freebase.com or w3.org are used, not just the Freebase mids. All freebase.com addresses no longer work following the site shutdown but remain in the data dump as unique identifiers.
     - A mix of freebase.com and w3.org schemas are used, especially as predicates in the triples.
     - There are over 1.9 billion triples and thus the same amount of lines in the entire data dump.
     - The triples are already sorted alphabetically in some columns, but this is applied either inconsistently or according to a pattern that needs to be discovered.
+    - Unique identifiers are enclosed in "<,>". Strings are written in the format: "string"@language_namespace. 
 
 
 - Tasks:
     1. Simplifying Data
-        - **[DONE]** Convert N-Triples [(Wikipedia)](https://en.wikipedia.org/wiki/N-Triples) format to N3 [(Wikipedia)](https://en.wikipedia.org/wiki/Notation3) or other format?? Working with the full URIs conforms to the standard, but can be unwieldy to use. Removing "http://rdf.freebase.com/*", "http://www.w3.org/*" with Regular Expressions for now.
+        - [s1-c1] - Convert N-Triples [(Wikipedia)](https://en.wikipedia.org/wiki/N-Triples) format to N3 [(Wikipedia)](https://en.wikipedia.org/wiki/Notation3) or other format?? Working with the full URIs conforms to the standard, but can be unwieldy to use for this project. Removing "http://rdf.freebase.com/*", "http://www.w3.org/*" with Regular Expressions for now.
             - Running on a head sample of 10k triples shows the following diffs in file size. The file size reduction where ~43% of the original is preserved looks promising.
             ```
             # Test Files:
@@ -141,8 +142,9 @@ The data dumps encode Freebase data in a few ways that are different from the us
             Original:   freebase-rdf-latest - 425229008315 bytes
             c1:         freebase-rdf-latest-c1 - 229008851191 bytes (53.8%)
             ```
-        - Optional: Convert "." back to "/" in the domain, type, and property schemas to return a more Freebase-like format (e.g. format as "/award/award_winner" for types).
-        - Optional: Removing "< >" format which encloses each value.
+        - [s1-c2] - Removing "< >" format which encloses each value.
+        - [s1-c3] - Convert "." back to "/" in the domain, type, and property schemas to return a more Freebase-like format (e.g. format as "/award/award_winner" for types).
+            - More efficient RegEx needed before running on main dataset.
         - ...
     2. Indexing/Sorting Data
         - Create dataset(s) for quick topic lookups: extract triples with predicate == /type.object.name, /common.topic.description and possibly /type.object.type. Scripts should create separate data sets for each.
