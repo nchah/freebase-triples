@@ -105,6 +105,10 @@ The scripts in this repo are mostly written in Bash and Python. Bash/Shell scrip
 
 The original files are extremely large and cannot be stored on GitHub. Only a small sample of the output files are included here. For consistency, output data is named following the script used to process it (sX-cX for stage and change versions respectively).
 
+### Computing Resources
+
+Unless specified differently, the scripts that were locally indicates a MacBook Pro (Early 2015, 2.7 GHz Intel Core i5) was used.
+
 
 ## ETL Changes
 
@@ -120,44 +124,53 @@ The data dumps encode Freebase data in a few ways that are different from the us
     - The triples are already sorted alphabetically in some columns, but this is applied either inconsistently or according to a pattern that needs to be discovered.
     - Unique identifiers are enclosed in "<,>". Strings are written in the format: "string"@language_namespace. 
 
+### Tasks 
 
-- Tasks:
-    1. Simplifying Data
-        - [s1-c1] - Convert N-Triples [(Wikipedia)](https://en.wikipedia.org/wiki/N-Triples) format to N3 [(Wikipedia)](https://en.wikipedia.org/wiki/Notation3) or other format?? Working with the full URIs conforms to the standard, but can be unwieldy to use for this project. Removing "http://rdf.freebase.com/*", "http://www.w3.org/*" with Regular Expressions for now.
-            - Running on a head sample of 10k triples shows the following diffs in file size. The file size reduction where ~43% of the original is preserved looks promising.
-            ```
-            # Test Files:
-            Original:   fb-triples-10k-head.nt - 1368687 bytes
-            c1:         fb-triples-10k-head-c1.nt - 589935 bytes (43.1%)
-            c2:         fb-triples-10k-head-c2.nt - 589111 bytes (43.0%)
-            ```
-            - Adding pv to display a progress bar.
-            ```
-            $ bash parse-triples-pv.sh
-            xxB 0:00:00 [xx.xMiB/s] [>                                                            ]  0% ETA 0:00:00
-            ```
-            - Running on the entire data dump (>5 hrs locally). ~53% of the original is kept after the first pass:
-            ```
-            # Entire File:
-            Original:   freebase-rdf-latest - 425229008315 bytes
-            c1:         freebase-rdf-latest-c1 - 229008851191 bytes (53.8%)
-            ```
-        - [s1-c2] - Removing "< >" format which encloses each value.
-        - [s1-c3] - Convert "." back to "/" in the domain, type, and property schemas to return a more Freebase-like format (e.g. format as "/award/award_winner" for types).
-            - More efficient RegEx needed before running on main dataset.
-        - ...
-    2. Indexing/Sorting Data
-        - Create dataset(s) for quick topic lookups: extract triples with predicate == /type.object.name, /common.topic.description and possibly /type.object.type. Scripts should create separate data sets for each.
-            - Distinguish textual type values (name, description) by ISO language codes
-            - Process further for Freebase user-created /base domain, types, and properties. Easily distinguishable as these take the form /user/...
-        - Create dataset(s) for schema - extract triples with predicate == /type.property.schema; predicate == /type.object.type and object == /type.property; (many others...)
-        - i18n Support - Text values are associated with an ISO language code (e.g. "String value"@en )
-        - Using `awk` to parse data. 
-        - ...
-    3. Interpreting Data
-        - [Cayley](https://github.com/cayleygraph/cayley) - Try the Cayley graph database
-        - [Gephi](https://en.wikipedia.org/wiki/Gephi) - Try Gephi open-source software
-        - [Neo4j](https://en.wikipedia.org/wiki/Neo4j) - Try the Neo4j graph database
+
+1. Simplifying Data
+    - [s1-c1] - Convert N-Triples [(Wikipedia)](https://en.wikipedia.org/wiki/N-Triples) format to N3 [(Wikipedia)](https://en.wikipedia.org/wiki/Notation3) or other format?? Working with the full URIs conforms to the standard, but can be unwieldy to use for this project. Removing "http://rdf.freebase.com/*", "http://www.w3.org/*" with Regular Expressions for now.
+        - Running on a head sample of 10k triples shows the following diffs in file size. The file size reduction where ~43% of the original is preserved looks promising.
+        ```
+        # Test Files:
+        Original:   fb-triples-10k-head.nt - 1368687 bytes
+        s1-c1:      fb-triples-10k-head-s1-c1.nt - 589935 Bytes (43.1%)
+        s1-c2:      fb-triples-10k-head-s1-c2.nt - 589111 Bytes (43.0%)
+        ```
+        - Adding pv to display a progress bar.
+        ```
+        $ bash parse-triples-pv.sh
+        xxB 0:00:00 [xx.xMiB/s] [>                                                            ]  0% ETA 0:00:00
+        ```
+        - Running on the entire data dump (>5 hrs locally). ~53% of the original is kept after the first pass:
+        ```
+        # Entire File:
+        Original:   freebase-rdf-latest         - 425229008315 Bytes (425.2 GB)
+        s1-c1:      freebase-rdf-latest-s1-c1   - 229008851191 Bytes (229.0 GB) (53.8%)
+        ```
+    - [s1-c2] - Removing "< >" format which encloses each value.
+    - [s1-c3] - Convert "." back to "/" in the domain, type, and property schemas to return a more Freebase-like format (e.g. format as "/award/award_winner" for types).
+        - More efficient RegEx needed before running on main dataset.
+    - ...
+2. Indexing/Sorting Data
+    - s2-c1 - Create dataset(s) for quick topic lookups: extract triples with predicate == /type.object.name, /common.topic.description and possibly /type.object.type. Scripts should create separate data sets for each.
+        - s2-c1-name - Processed: /type.object.name: (~1.5 hrs locally, 72.7M lines/triples extracted).
+        ```
+        freebase-rdf-latest-name-s02-c01        - 4444617332 Bytes (4.4 GB)
+        ```
+        - s2-c1-desc - Processed: /common.topic.description (~1.5 hrs locally, 20.5M lines/triples extracted).
+        ```
+        freebase-rdf-latest-desc-s02-c01        - 8611772501 Bytes (8.6 GB)
+        ```
+        - Distinguish textual type values (name, description) by ISO language codes
+        - Process further for Freebase user-created /base domain, types, and properties. Easily distinguishable as these take the form /user/...
+    - Create dataset(s) for schema - extract triples with predicate == /type.property.schema; predicate == /type.object.type and object == /type.property; (many others...)
+    - i18n Support - Text values are associated with an ISO language code (e.g. "String value"@en )
+    - Using `awk` to parse data. 
+    - ...
+3. Interpreting Data
+    - [Cayley](https://github.com/cayleygraph/cayley) - Try the Cayley graph database
+    - [Gephi](https://en.wikipedia.org/wiki/Gephi) - Try Gephi open-source software
+    - [Neo4j](https://en.wikipedia.org/wiki/Neo4j) - Try the Neo4j graph database
 
 
 ## Analysis
