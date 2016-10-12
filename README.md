@@ -152,12 +152,12 @@ The data dumps encode Freebase data in a few ways that are different from the us
         - More efficient RegEx needed before running on main dataset.
     - ...
 2. Indexing/Sorting Data
-    - s2-c1 - Create dataset(s) for quick topic lookups: extract triples with predicate == /type.object.name, /common.topic.description and possibly /type.object.type. Scripts should create separate data sets for each.
-        - s2-c1-name - Processed: /type.object.name: (~1.5 hrs locally, 72.7M lines/triples extracted).
+    - [s2-c1] - Create dataset(s) for quick topic lookups: extract triples with predicate == /type.object.name, /common.topic.description and possibly /type.object.type. Scripts should create separate data sets for each.
+        - [s2-c1-name] - Processed: /type.object.name: (~1.5 hrs locally, 72.7M lines/triples extracted).
         ```
         freebase-rdf-latest-name-s02-c01        - 4444617332 Bytes (4.4 GB)
         ```
-        - s2-c1-desc - Processed: /common.topic.description (~1.5 hrs locally, 20.5M lines/triples extracted).
+        - [s2-c1-desc] - Processed: /common.topic.description (~1.5 hrs locally, 20.5M lines/triples extracted).
         ```
         freebase-rdf-latest-desc-s02-c01        - 8611772501 Bytes (8.6 GB)
         ```
