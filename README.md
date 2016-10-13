@@ -107,7 +107,7 @@ The original files are extremely large and cannot be stored on GitHub. Only a sm
 
 ### Computing Resources
 
-Unless specified differently, the scripts that were locally indicates a MacBook Pro (Early 2015, 2.7 GHz Intel Core i5) was used.
+Unless specified differently, the scripts that were run "locally" indicates a MacBook Pro (Early 2015, 2.7 GHz Intel Core i5) was used.
 
 
 ## ETL Changes
