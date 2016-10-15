@@ -98,8 +98,11 @@ $ tree
 
 The scripts in this repo are mostly written in Bash and Python. Bash/Shell scripts handled the initial parsing stages for the massive data dumps. Python, with its many libraries, is a simple way to use the triples data after the initial processing.
 
-- `Bash` commands used: `sed`, `pv`, `grep`, `zless`, `zmore`, `zgrep`
+- `Bash` commands used: `sed`, `gsed*` `pv`, `grep`, `zless`, `zmore`, `zgrep`
 - `Python` libraries: TBA
+
+*`gsed` is GNU sed. Mac/OS X's `sed` does not handle '\t' as tab characters so gsed is preferred in some instances.
+
 
 ### Data
 

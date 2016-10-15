@@ -35,12 +35,12 @@ Original: freebase-rdf-latest.gz
     # *[All Data - External Drive]*
     ├── freebase-rdf-latest-s01-c01
     ├── freebase-rdf-latest-s01-c02
-    └── freebase-rdf-latest-s01-c03
+    └\─ freebase-rdf-latest-s01-c03 [Skipped]
         └── freebase-rdf-latest-desc-all-s02-c01
-            ├── freebase-rdf-latest-desc-all-s02-c01
+            ├── freebase-rdf-latest-desc-en-s02-c01
             └── freebase-rdf-latest-desc-[ISO lang...]-s02-c01
         └── freebase-rdf-latest-name-all-s02-c01
-            ├── freebase-rdf-latest-name-all-s02-c01
+            ├── freebase-rdf-latest-name-en-s02-c01
             └── freebase-rdf-latest-desc-[ISO lang...]-s02-c01
         └── freebase-rdf-latest-type-all-s02-c01
             └── freebase-rdf-latest-type-[type...]-s02-c01
