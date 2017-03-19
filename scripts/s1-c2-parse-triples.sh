@@ -1,6 +1,10 @@
 #!/bin/bash
 # A Bash script to parse, process, clean the Freebase data dumps.
 
+########## ########## ########## ########## ##########
+## Stages and Changes
+########## ########## ########## ########## ##########
+
 ## s0-c0 Setting File Names
 INPUT_FILE=$1
 OUTPUT_FILE=${INPUT_FILE:0:${#INPUT_FILE}-11}"-s01-c02.nt"

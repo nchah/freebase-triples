@@ -9,8 +9,8 @@ OUTPUT_FILE_NAME_ALL=${INPUT_FILE:0:${#INPUT_FILE}-11}"-name-all-s02-c01.nt"
 OUTPUT_FILE_DESC_EN=${INPUT_FILE:0:${#INPUT_FILE}-11}"-desc-en-s02-c01.nt"
 OUTPUT_FILE_DESC_ALL=${INPUT_FILE:0:${#INPUT_FILE}-11}"-desc-all-s02-c01.nt"
 OUTPUT_FILE_TYPE=${INPUT_FILE:0:${#INPUT_FILE}-11}"-type-s02-c01.nt"
-OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"
-OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"
+OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"  # template
+OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"  # template
 
 
 ## s1-c1 Substring replacement: URLs
@@ -29,6 +29,7 @@ OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"
 
 # single sed substitute operation
 #sed "s/<//g;s/>//g" $INPUT_FILE | pv -pterb >$OUTPUT_FILE
+#gsed "s/^<//g; s/\t</\t/g; s/>\t/\t/g" freebase-rdf-latest-s01-c01.nt | pv -pterbl >freebase-rdf-latest-s01-c02.nt
 
 
 ## s2-c1 Extract Triples: Name, Description, 
