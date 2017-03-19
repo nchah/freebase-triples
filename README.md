@@ -1,6 +1,29 @@
 #freebase-triples
 
-A repository to document the effort to clean and analyze the Freebase data dumps.
+A repository to document a project to clean and analyze the Freebase data dumps.
+
+## Table of Contents
+
+* [freebase-triples](#freebase-triples)
+      * [Background](#background)
+         * [Freebase](#freebase)
+         * [Freebase Data Dumps](#freebase-data-dumps)
+      * [This Repository](#this-repository)
+         * [Directory](#directory)
+         * [Scripts](#scripts)
+         * [Data](#data)
+         * [Computing Resources](#computing-resources)
+      * [ETL Changes](#etl-changes)
+         * [Tasks](#tasks)
+      * [Analysis](#analysis)
+         * [Cayley](#cayley)
+      * [License](#license)
+      * [Sources](#sources)
+         * [Announcements Timeline](#announcements-timeline)
+         * [Freebase](#freebase-1)
+         * [Knowledge Graph](#knowledge-graph)
+         * [Google Developers Resources](#google-developers-resources)
+
 
 ## Background
 
@@ -182,7 +205,7 @@ The data dumps encode Freebase data in a few ways that are different from the us
     - i18n Support - Text values are associated with an ISO language code (e.g. "String value"@en )
     - Using `awk` to parse data. 
     - ...
-3. Interpreting Data
+3. Interpreting/Visualizing Data
     - [Cayley](https://github.com/cayleygraph/cayley) - Try the Cayley graph database
     - [Gephi](https://en.wikipedia.org/wiki/Gephi) - Try Gephi open-source software
     - [Neo4j](https://en.wikipedia.org/wiki/Neo4j) - Try the Neo4j graph database
@@ -194,7 +217,9 @@ Once the data is cleaned and ready, this section outlines some of the software t
 
 ### Cayley
 
-The Cayley graph database and platform can be used to analyze the cleaned triples data. Cayley is an open-source graph database that draws on Freebase and the Knowledge Graph. It is maintained by a Google employee, with the GitHub repository at [cayleygraph/cayley](https://github.com/cayleygraph/cayley).
+The Cayley graph database and platform can be used to analyze the cleaned triples data. 
+Cayley is an open-source graph database that draws on Freebase and the Knowledge Graph. 
+It is maintained by a Google employee, with the GitHub repository at [cayleygraph/cayley](https://github.com/cayleygraph/cayley).
 
 A Gremlin query using the Cayley Visualize function in the browser.
 
@@ -221,7 +246,8 @@ $ ./cayley http --dbpath=data/testdata.nq
 
 ## License
 
-Freebase data is licensed under the [CC-BY](http://creativecommons.org/licenses/by/2.5/) license. The Freebase API also has additional [Terms and Conditions](https://developers.google.com/freebase/terms#license). 
+Freebase data is licensed under the [CC-BY](http://creativecommons.org/licenses/by/2.5/) license. 
+The Freebase API also has additional [Terms and Conditions](https://developers.google.com/freebase/terms#license). 
 
 
 ## Sources
