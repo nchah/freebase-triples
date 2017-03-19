@@ -19,7 +19,7 @@
 ## Stages and Changes
 ########## ########## ########## ########## ##########
 
-## s0-c0 Setting File Names
+## s1-c0 Setting File Names
 INPUT_FILE=$1
 OUTPUT_FILE_S01_C01=${INPUT_FILE:0:${#INPUT_FILE}-11}"-s01-c01.nt"
 OUTPUT_FILE_S01_C02=${INPUT_FILE:0:${#INPUT_FILE}-11}"-s01-c02.nt"
