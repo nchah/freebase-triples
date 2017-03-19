@@ -38,6 +38,7 @@ $ zmore freebase-rdf-latest.gz
 ```
 
 You can also grep it:
+
 ```
 $ zgrep '/ns/film.film>' -m 10 freebase-rdf-latest.gz
 
@@ -51,10 +52,11 @@ $ zgrep '/ns/film.film>' -m 10 freebase-rdf-latest.gz
 <http://rdf.freebase.com/ns/g.119pgc86w>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>   <http://rdf.freebase.com/ns/film.film>  .
 <http://rdf.freebase.com/ns/g.119pgkfwp>    <http://rdf.freebase.com/ns/type.object.type>   <http://rdf.freebase.com/ns/film.film>  .
 <http://rdf.freebase.com/ns/g.119pgkfwp>    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>   <http://rdf.freebase.com/ns/film.film>  .
-
 ```
 
-Each triple is encoded in the aforementioned N-Triples format. The subject, predicate, and object values on each line are "< >" enclosed and tab separated. Each line terminates with a "." and is terminated with a newline. 
+Each triple is encoded in the aforementioned N-Triples format. 
+The subject, predicate, and object values on each line are "< >" enclosed and tab separated. 
+Each line terminates with a "." and a newline. 
 
 Viewing this with `vim`, using `:set list` to show these hidden characters:
 
@@ -64,7 +66,6 @@ Viewing this with `vim`, using `:set list` to show these hidden characters:
 </automotive.body_style.fuel_tank_capacity>^I</type.object.name>^I"Fuel Tank Capacity"@en^I.$
 </automotive.engine.engine_type>^I</type.object.name>^I"Engine Type"@en^I.$
 </automotive.trim_level.max_passengers>^I</type.object.name>^I"Maximum Number of Passengers"@en^I.$
-
 ```
 
 
@@ -82,7 +83,8 @@ $ tree
 │   ├── fb-rdf-10k-head-s01-c02.nt
 │   ├── fb-rdf-10k-head-s01-c03.nt
 │   ├── fb-rdf-10k-head.nt
-│   └── fb-rdf-10k-... additional files
+│   ├── fb-rdf-10k-...
+│   └── ... additional files
 ├── documents
 │   └── mql-reference-guide.pdf
 ├── images
@@ -99,7 +101,9 @@ $ tree
 
 ### Scripts
 
-The scripts in this repo are mostly written in Bash and Python. Bash/Shell scripts handled the initial parsing stages for the massive data dumps. Python, with its many libraries, is a simple way to use the triples data after the initial processing.
+The scripts in this repo are mostly written in Bash and Python. 
+Bash/Shell scripts handled the initial parsing stages for the massive data dumps. 
+Python, with its many libraries, is a simple way to use the triples data after the initial processing.
 
 - `Bash` commands used: `sed`, `gsed*` `pv`, `grep`, `zless`, `zmore`, `zgrep`
 - `Python` libraries: TBA
@@ -114,7 +118,7 @@ To bring background jobs back into the foreground, use `fg #number`.
 
 The original files are extremely large and cannot be stored on GitHub. 
 Only a small sample of the output files are included here. 
-For consistency, output data is named following the script used to process it (sX-cX for stage and change versions respectively).
+For consistency, output data is named according t the script used to process it (sX-cX for stage and change versions respectively).
 
 ### Computing Resources
 
@@ -123,7 +127,8 @@ Unless specified differently, the scripts that were run "locally" indicates a Ma
 
 ## ETL Changes
 
-[ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load) refers to the extraction, transformation, and loading of large datasets in the data science field. Similarly, this section tracks the changes made to the raw triples data dump to ease processing.
+[ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load) refers to the extraction, transformation, and loading of large datasets in the data science field. 
+Similarly, this section tracks the changes made to the raw triples data dump to ease processing.
 
 The data dumps encode Freebase data in a few ways that are different from the usual usage on Freebase.com. 
 
@@ -137,13 +142,12 @@ The data dumps encode Freebase data in a few ways that are different from the us
 
 ### Tasks 
 
-
 1. Simplifying Data
-    - [s1-c1] - Convert N-Triples [(Wikipedia)](https://en.wikipedia.org/wiki/N-Triples) format to N3 [(Wikipedia)](https://en.wikipedia.org/wiki/Notation3) or other format?? Working with the full URIs conforms to the standard, but can be unwieldy to use for this project. Removing "http://rdf.freebase.com/*", "http://www.w3.org/*" with Regular Expressions for now.
+    - `[s1-c1]` - Convert N-Triples [(Wikipedia)](https://en.wikipedia.org/wiki/N-Triples) format to N3 [(Wikipedia)](https://en.wikipedia.org/wiki/Notation3) or other format?? Working with the full URIs conforms to the standard, but can be unwieldy to use for this project. Removing "http://rdf.freebase.com/*", "http://www.w3.org/*" with Regular Expressions for now.
         - Running on a head sample of 10k triples shows the following diffs in file size. The file size reduction where ~43% of the original is preserved looks promising.
         ```
         # Test Files:
-        Original:   fb-triples-10k-head.nt - 1368687 bytes
+        Original:   fb-triples-10k-head.nt - 1368687 Bytes
         s1-c1:      fb-triples-10k-head-s1-c1.nt - 589935 Bytes (43.1%)
         s1-c2:      fb-triples-10k-head-s1-c2.nt - 589111 Bytes (43.0%)
         ```
@@ -158,17 +162,17 @@ The data dumps encode Freebase data in a few ways that are different from the us
         Original:   freebase-rdf-latest         - 425229008315 Bytes (425.2 GB)
         s1-c1:      freebase-rdf-latest-s1-c1   - 229008851191 Bytes (229.0 GB) (53.8%)
         ```
-    - [s1-c2] - Removing "< >" format which encloses each value.
-    - [s1-c3] - Convert "." back to "/" in the domain, type, and property schemas to return a more Freebase-like format (e.g. format as "/award/award_winner" for types).
+    - `[s1-c2]` - Removing "< >" format which encloses each value.
+    - `[s1-c3]` - Convert "." back to "/" in the domain, type, and property schemas to return a more Freebase-like format (e.g. format as "/award/award_winner" for types).
         - More efficient RegEx needed before running on main dataset.
     - ...
 2. Indexing/Sorting Data
-    - [s2-c1] - Create dataset(s) for quick topic lookups: extract triples with predicate == /type.object.name, /common.topic.description and possibly /type.object.type. Scripts should create separate data sets for each.
-        - [s2-c1-name] - Processed: /type.object.name: (~1.5 hrs locally, 72.7M lines/triples extracted).
+    - `[s2-c1]` - Create dataset(s) for quick topic lookups: extract triples with predicate == /type.object.name, /common.topic.description and possibly /type.object.type. Scripts should create separate data sets for each.
+        - `[s2-c1-name]` - Processed: /type.object.name: (~1.5 hrs locally, 72.7M lines/triples extracted).
         ```
         freebase-rdf-latest-name-s02-c01        - 4444617332 Bytes (4.4 GB)
         ```
-        - [s2-c1-desc] - Processed: /common.topic.description (~1.5 hrs locally, 20.5M lines/triples extracted).
+        - `[s2-c1-desc]` - Processed: /common.topic.description (~1.5 hrs locally, 20.5M lines/triples extracted).
         ```
         freebase-rdf-latest-desc-s02-c01        - 8611772501 Bytes (8.6 GB)
         ```
