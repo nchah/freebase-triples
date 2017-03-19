@@ -7,17 +7,20 @@ A repository to document the effort to clean and analyze the Freebase data dumps
 ### Freebase
 
 The [Freebase](https://en.wikipedia.org/wiki/Freebase) Wikipedia article provides a good overview of the knowledge base's nearly decade-long lifetime from its beginnings at Metaweb Technologies, Inc. in 2007, its acquisition by Google in 2010, and its eventual shutdown and move to Wikidata towards 2015-2016. 
-Freebase data could be accessed through the Freebase API and the online Query Editor with queries written in the Metaweb Query Language (MQL).
+Freebase data could be accessed through the Freebase API and the online Query Editor.
+At the time, queries were written in the Metaweb Query Language (MQL).
 
 Although the shutdown of freebase.com was set for as early as June 30, 2015 according to this initial [Google+ post](https://plus.google.com/u/0/109936836907132434202/posts/bu3z2wVqcQc), the actual website was still accessible for quite a long time. 
-On May 2, 2016, freebase.com was finally closed off as announced in this [Google Group post](https://groups.google.com/forum/#!topic/freebase-discuss/WEnyO8f7xOQ). The freebase.com link now redirects to the Google Developers page for the remaining Freebase triples data dumps.
+On May 2, 2016, freebase.com was finally closed off as announced in this [Google Group post](https://groups.google.com/forum/#!topic/freebase-discuss/WEnyO8f7xOQ).
+The freebase.com link now redirects to the Google Developers page for the remaining Freebase triples data dumps.
 
 A screenshot of freebase.com on May 2, 2016 before it was shut down.
 ![freebase.com screenshot](https://github.com/nchah/freebase-triples/blob/master/images/screenshot-freebase-com.png)
 
 ### Freebase Data Dumps
 
-A data dump of 1.9 billion Freebase Triples in [N-Triples RDF](https://www.w3.org/TR/rdf-testcases/#ntriples) format is available on the [developers page](https://developers.google.com/freebase/#freebase-rdf-dumps) under the [CC-BY](http://creativecommons.org/licenses/by/2.5/) license. The [freebase.com](http://freebase.com) URL also redirects to this page following its shutdown. 
+A data dump of 1.9 billion Freebase Triples in [N-Triples RDF](https://www.w3.org/TR/rdf-testcases/#ntriples) format is available on the [developers page](https://developers.google.com/freebase/#freebase-rdf-dumps) under the [CC-BY](http://creativecommons.org/licenses/by/2.5/) license.
+The [freebase.com](http://freebase.com) URL also redirects to this page following its shutdown. 
 The Developers page lists the file as 22 GB gzip compressed and 250 GB uncompressed, although a recent download exceeds this file size (a May 2016 download amounted to >30 GB compressed and >400 GB uncompressed). 
 
 Examining the compressed data with Z commands on the terminal:
@@ -103,10 +106,15 @@ The scripts in this repo are mostly written in Bash and Python. Bash/Shell scrip
 
 *`gsed` is GNU sed. Mac/OS X's `sed` does not handle '\t' as tab characters so gsed is preferred in some instances.
 
+Pausing a job on the command line can be done with `CTRL+Z`.
+All stopped and background jobs can be listed with the `jobs` command.
+To bring background jobs back into the foreground, use `fg #number`.
 
 ### Data
 
-The original files are extremely large and cannot be stored on GitHub. Only a small sample of the output files are included here. For consistency, output data is named following the script used to process it (sX-cX for stage and change versions respectively).
+The original files are extremely large and cannot be stored on GitHub. 
+Only a small sample of the output files are included here. 
+For consistency, output data is named following the script used to process it (sX-cX for stage and change versions respectively).
 
 ### Computing Resources
 
