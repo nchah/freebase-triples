@@ -211,9 +211,12 @@ The data dumps encode Freebase data in a few ways that are different from the us
         ```
         freebase-rdf-latest-type-s02-c01        - 17682310311 Bytes (17.7 GB)
         ```
-        - Distinguish textual type values (name, description) by ISO language codes
+        - Create topic profiles based on a combination of /name, /description, and /type triples.
+            - Determine how to resolve conflations
+        - Distinguish textual type values (name, description) by ISO language codes.
         - Process further for Freebase user-created /base domain, types, and properties. Easily distinguishable as these take the form /user/...
-    - Create dataset(s) for schema - extract triples with predicate == /type.property.schema; predicate == /type.object.type and object == /type.property; (many others...)
+    - `[s2-c2]` - Create dataset(s) for schema - extract triples with predicate == /type.property.schema; predicate == /type.object.type and object == /type.property; (many others...)
+        - ...
     - i18n Support - Text values are associated with an ISO language code (e.g. "String value"@en )
     - Using `awk` to parse data. 
     - ...
