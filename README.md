@@ -132,9 +132,18 @@ Python, with its many libraries, is a simple way to use the triples data after t
 
 *`gsed` is GNU sed. Mac/OS X's `sed` does not handle '\t' as tab characters so gsed is preferred in some instances.
 
+#### Command Line Usage
+
+**Operating Scripts**
+
 Pausing a job on the command line can be done with `CTRL+Z`.
 All stopped and background jobs can be listed with the `jobs` command.
-To bring background jobs back into the foreground, use `fg #number`.
+To bring background jobs back into the foreground, use `fg job_number`.
+
+**Counting File Size**
+
+Use `wc -l file_name` to determine the number of lines in a file.
+
 
 ### Data
 
@@ -190,13 +199,17 @@ The data dumps encode Freebase data in a few ways that are different from the us
     - ...
 2. Indexing/Sorting Data
     - `[s2-c1]` - Create dataset(s) for quick topic lookups: extract triples with predicate == /type.object.name, /common.topic.description and possibly /type.object.type. Scripts should create separate data sets for each.
-        - `[s2-c1-name]` - Processed: /type.object.name: (~1.5 hrs locally, 72.7M lines/triples extracted).
+        - `[s2-c1-name]` - Processed: /type.object.name: (~1.5 hrs locally, 72.7M lines/triples extracted)
         ```
         freebase-rdf-latest-name-s02-c01        - 4444617332 Bytes (4.4 GB)
         ```
-        - `[s2-c1-desc]` - Processed: /common.topic.description (~1.5 hrs locally, 20.5M lines/triples extracted).
+        - `[s2-c1-desc]` - Processed: /common.topic.description (~1.5 hrs locally, 20.5M lines/triples extracted)
         ```
         freebase-rdf-latest-desc-s02-c01        - 8611772501 Bytes (8.6 GB)
+        ```
+        - `[s2-c1-type]` - Processed: /type.object.type (~2.5 hrs locally, 293.7M lines/triples extracted)
+        ```
+        freebase-rdf-latest-type-s02-c01        - 17682310311 Bytes (17.7 GB)
         ```
         - Distinguish textual type values (name, description) by ISO language codes
         - Process further for Freebase user-created /base domain, types, and properties. Easily distinguishable as these take the form /user/...
