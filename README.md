@@ -211,6 +211,7 @@ The data dumps encode Freebase data in a few ways that are different from the us
         ```
         freebase-rdf-latest-type-s02-c01        - 17682310311 Bytes (17.7 GB)
         ```
+        - Explored GNU Parallel to run on all CPU cores.
         - Create topic profiles based on a combination of /name, /description, and /type triples.
             - Determine how to resolve conflations
         - Distinguish textual type values (name, description) by ISO language codes.

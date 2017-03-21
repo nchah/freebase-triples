@@ -50,6 +50,11 @@ grep '/common.topic.description.*@en' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_DES
 grep '/type.object.type' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_TYPE
 
 
+# Testing out GNU parallels
+
+parallel --j 4 --progress grep '@en' >freebase-rdf-latest-name-en-s02-c02 ::: freebase-rdf-latest-name-s02-c01
+
+parallel --j 4 --progress grep '@en' >freebase-rdf-latest-desc-en-s02-c02 ::: freebase-rdf-latest-desc-s02-c01
 
 
 
