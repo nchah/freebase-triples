@@ -37,24 +37,28 @@ OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"  # template
 # Triples with "name" predicate
 grep '/type.object.name' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_NAME_ALL
 
-# Restricting to certain i18n languages
-grep '/type.object.name.*@en' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_NAME_EN
+# Extracting certain i18n languages
+grep '@en' $INPUT_FILE_NAME_ALL | pv -pterbl >$OUTPUT_FILE_NAME_EN
 
 # Triples with "description" predicate
 grep '/common.topic.description' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_DESC_ALL
 
-# Restricting to certain i18n languages
-grep '/common.topic.description.*@en' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_DESC_EN
+# Extracting certain i18n languages
+grep '@en' $INPUT_FILE_DESC_ALL | pv -pterbl >$OUTPUT_FILE_DESC_EN
 
 # Triples with the "type" predicate
 grep '/type.object.type' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_TYPE
 
 
-# Testing out GNU parallels
+# Testing out GNU parallel
 
-parallel --j 4 --progress grep '@en' >freebase-rdf-latest-name-en-s02-c02 ::: freebase-rdf-latest-name-s02-c01
+#v1 implementation $ parallel --j 4 --progress grep '@en' >freebase-rdf-latest-name-en-s02-c02 ::: freebase-rdf-latest-name-s02-c01
 
-parallel --j 4 --progress grep '@en' >freebase-rdf-latest-desc-en-s02-c02 ::: freebase-rdf-latest-desc-s02-c01
+cat $INPUT_FILE | parallel --pipe --block 2M --progress grep '@en' >$OUTPUT_FILE
+
+cat freebase-rdf-latest-desc-s02-c01 | parallel --pipe --block 2M --progress grep '@en' >freebase-rdf-latest-desc-en-s02-c02
+
+
 
 
 
