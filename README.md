@@ -1,4 +1,4 @@
-#freebase-triples
+# freebase-triples
 
 A repository to document a project to clean and analyze the Freebase data dumps.
 
