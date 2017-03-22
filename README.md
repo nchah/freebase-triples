@@ -138,11 +138,11 @@ Python, with its many libraries, is a simple way to use the triples data after t
 
 Pausing a job on the command line can be done with `CTRL+Z`.
 All stopped and background jobs can be listed with the `jobs` command.
-To bring background jobs back into the foreground, use `fg job_number`.
+To bring background jobs back into the foreground, use `fg [job]`.
 
 **Counting File Size**
 
-Use `wc -l file_name` to determine the number of lines in a file.
+Use `wc -l [file]` to determine the number of lines in a file.
 
 
 ### Data
@@ -153,7 +153,7 @@ For consistency, output data is named according t the script used to process it 
 
 ### Computing Resources
 
-Unless specified differently, the scripts that were run "locally" indicates a MacBook Pro (Early 2015, 2.7 GHz Intel Core i5) was used.
+Unless specified differently, the scripts that were run "locally" indicates a MacBook Pro (Early 2015, 2.7 GHz Intel Core i5, 8 GB memory) was used.
 
 
 ## ETL Changes
@@ -211,10 +211,15 @@ The data dumps encode Freebase data in a few ways that are different from the us
         ```
         freebase-rdf-latest-type-s02-c01        - 17682310311 Bytes (17.7 GB)
         ```
-        - Explored GNU Parallel to run on all CPU cores.
-        - Create topic profiles based on a combination of /name, /description, and /type triples.
-            - Determine how to resolve conflations
+        - Optimized scripts with GNU Parallel to run scripts on all CPU cores.
         - Distinguish textual type values (name, description) by ISO language codes.
+        ```
+        # Isolating '@en' language:
+        freebase-rdf-latest-name-en-s02-c02     - (2.9 GB)
+        freebase-rdf-latest-desc-en-s02-c02     - (2.6 GB)
+        ```
+        - Create topic profiles based on a combination of /name, /description, and /type triples.
+            - Determine how to resolve conflations or incoherence
         - Process further for Freebase user-created /base domain, types, and properties. Easily distinguishable as these take the form /user/...
     - `[s2-c2]` - Create dataset(s) for schema - extract triples with predicate == /type.property.schema; predicate == /type.object.type and object == /type.property; (many others...)
         - ...

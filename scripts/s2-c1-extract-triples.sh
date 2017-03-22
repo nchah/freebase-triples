@@ -56,7 +56,7 @@ grep '/type.object.type' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_TYPE
 
 cat $INPUT_FILE | parallel --pipe --block 2M --progress grep '@en' >$OUTPUT_FILE
 
-cat freebase-rdf-latest-desc-s02-c01 | parallel --pipe --block 2M --progress grep '@en' >freebase-rdf-latest-desc-en-s02-c02
+cat freebase-rdf-latest-desc-s02-c01 | parallel --pipe --block 2M --progress grep '@en' >freebase-rdf-latest-desc-en-s02-c01
 
 
 
