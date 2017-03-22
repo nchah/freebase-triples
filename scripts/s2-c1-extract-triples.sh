@@ -56,12 +56,12 @@ grep -E '@en[[:space:]]' $INPUT_FILE_DESC_ALL | pv -pterbl >$OUTPUT_FILE_DESC_EN
 grep '/type.object.type' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_TYPE
 
 
-# Testing out GNU parallel
+# GNU parallel implementation
 
-#v1 implementation $ parallel --j 4 --progress grep '@en' >freebase-rdf-latest-name-en-s02-c02 ::: freebase-rdf-latest-name-s02-c01
-
+# For this script:
 cat $INPUT_FILE | parallel --pipe --block 2M --progress grep -E '@en[[:space:]]' >$OUTPUT_FILE
 
+# Extracting @en only
 cat freebase-rdf-latest-desc-s02-c01 | parallel --pipe --block 2M --progress grep -E '@en[[:space:]]' >freebase-rdf-latest-desc-en-s02-c01
 
 
