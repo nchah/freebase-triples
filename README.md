@@ -215,8 +215,11 @@ The data dumps encode Freebase data in a few ways that are different from the us
         - Distinguish textual type values (name, description) by ISO language codes.
         ```
         # Isolating '@en' language:
-        freebase-rdf-latest-name-en-s02-c02     - (2.9 GB)
-        freebase-rdf-latest-desc-en-s02-c02     - (2.6 GB)
+        freebase-rdf-latest-name-en-s02-c01     - (2.9 GB)
+        freebase-rdf-latest-desc-en-s02-c01     - (2.6 GB)
+        # In comparison, '@en-GB':
+        freebase-rdf-latest-name-en-GB-s02-c01  - (1.4 MB, or 20K lines)
+        freebase-rdf-latest-desc-en-GB-s02-c01  - (3 KB, or just 20 lines!)
         ```
         - Create topic profiles based on a combination of /name, /description, and /type triples.
             - Determine how to resolve conflations or incoherence
