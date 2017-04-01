@@ -201,22 +201,22 @@ The data dumps encode Freebase data in a few ways that are different from the us
     - `[s2-c1]` - Create dataset(s) for quick topic lookups: extract triples with predicate == /type.object.name, /common.topic.description and possibly /type.object.type. Scripts should create separate data sets for each.
         - `[s2-c1-name]` - Processed: /type.object.name: (~1.5 hrs locally, 72.7M lines/triples extracted)
         ```
-        freebase-rdf-latest-name-s02-c01        - 4444617332 Bytes (4.4 GB)
+        freebase-rdf-latest-name-s02-c01        - (4.4 GB)
         ```
         - `[s2-c1-desc]` - Processed: /common.topic.description (~1.5 hrs locally, 20.5M lines/triples extracted)
         ```
-        freebase-rdf-latest-desc-s02-c01        - 8611772501 Bytes (8.6 GB)
+        freebase-rdf-latest-desc-s02-c01        - (8.6 GB)
         ```
         - `[s2-c1-type]` - Processed: /type.object.type (~2.5 hrs locally, 293.7M lines/triples extracted)
         ```
-        freebase-rdf-latest-type-s02-c01        - 17682310311 Bytes (17.7 GB)
+        freebase-rdf-latest-type-s02-c01        - (17.7 GB)
         ```
         - Optimized scripts with GNU Parallel to run scripts on all CPU cores.
         - Distinguish textual type values (name, description) by ISO language codes.
         ```
         # Isolating '@en' language:
-        freebase-rdf-latest-name-en-s02-c01     - (2.9 GB)
-        freebase-rdf-latest-desc-en-s02-c01     - (2.6 GB)
+        freebase-rdf-latest-name-en-s02-c01     - (2.9 GB, 48,284,173 lines)
+        freebase-rdf-latest-desc-en-s02-c01     - (2.6 GB, 7,528,658 lines)
         # In comparison, '@en-GB':
         freebase-rdf-latest-name-en-GB-s02-c01  - (1.4 MB, or 20K lines)
         freebase-rdf-latest-desc-en-GB-s02-c01  - (3 KB, or just 20 lines!)
