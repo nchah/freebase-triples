@@ -17,7 +17,9 @@ $ sudo vim /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
 $ mysqladmin -u root -p shutdown
 
 $ sudo chown -RL root:mysql /usr/local/mysql
+
 $ sudo chown -RL mysql:mysql /usr/local/mysql/data
-$ sudo /usr/local/mysql/support-files/mysql.server star
+
+$ sudo /usr/local/mysql/support-files/mysql.server start
 
 
