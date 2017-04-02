@@ -1,3 +1,7 @@
+# Note
+
+Installation notes to allow MySQL to work off external drive.
+
 1. installed MySQL
 
 2. created a my.cnf configuration from the template
@@ -15,3 +19,5 @@ $ mysqladmin -u root -p shutdown
 $ sudo chown -RL root:mysql /usr/local/mysql
 $ sudo chown -RL mysql:mysql /usr/local/mysql/data
 $ sudo /usr/local/mysql/support-files/mysql.server star
+
+
