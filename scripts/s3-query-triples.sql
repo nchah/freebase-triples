@@ -100,5 +100,20 @@ where triples.obj like '%the%'
 limit 5;
 
 
+-- All type triples
+select distinct obj into OUTFILE '/Volumes/Seagate/types-unique2.txt' from triples_type where pred = "</type.object.type>";
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

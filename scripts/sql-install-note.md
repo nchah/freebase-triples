@@ -16,6 +16,8 @@ $ sudo vim /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
 
 $ mysqladmin -u root -p shutdown
 
+5. Change ownership of some files
+
 $ sudo chown -RL root:mysql /usr/local/mysql
 
 $ sudo chown -RL mysql:mysql /usr/local/mysql/data
