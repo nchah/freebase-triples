@@ -27,7 +27,7 @@ OUTPUT_FILE_NAME_ALL=${INPUT_FILE:0:${#INPUT_FILE}-11}"-name-all-s02-c01.nt"
 OUTPUT_FILE_DESC_EN=${INPUT_FILE:0:${#INPUT_FILE}-11}"-desc-en-s02-c01.nt"
 OUTPUT_FILE_DESC_ALL=${INPUT_FILE:0:${#INPUT_FILE}-11}"-desc-all-s02-c01.nt"
 OUTPUT_FILE_TYPE=${INPUT_FILE:0:${#INPUT_FILE}-11}"-type-s02-c01.nt"
-OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"  # template
+OUTPUT_FILE_AKAS=${INPUT_FILE:0:${#INPUT_FILE}-11}"-akas-s02-c01.nt"
 OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"  # template
 
 
@@ -55,8 +55,11 @@ grep -E '@en[[:space:]]' $INPUT_FILE_DESC_ALL | pv -pterbl >$OUTPUT_FILE_DESC_EN
 # Triples with the "type" predicate
 grep '/type.object.type' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_TYPE
 
+# Triples with the "alias" predicate
+grep '/common.topic.alias' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_AKAS
 
-# GNU parallel implementation
+
+# v2.0: GNU parallel implementation
 # Template:
 cat $INPUT_FILE | parallel --pipe --block 2M --progress grep -E '@en[[:space:]]' >$OUTPUT_FILE
 
@@ -68,6 +71,6 @@ cat freebase-rdf-latest-desc-s02-c01 | parallel --pipe --block 2M --progress gre
 
 # -t $'\t' to catch the Tab character
 # -k to get the column positions
-sort -u -t$'\t' -k 2,2
+sort -u -t$'\t' -k 2,2 "/path/to/file"
 
 
