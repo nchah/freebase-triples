@@ -1,5 +1,5 @@
 #!/usr/bin/sql
-# A SQL script to parse, process, clean the Freebase data dumps.
+# A SQL script to query the Freebase data dumps.
 
 /* * * * * * * * * * * * * * * * * * * *
  * SET UP
@@ -94,16 +94,18 @@ LINES terminated by '.\n';
 
 /* Query with LIKE */
 
--- Values that have "the" in any position
+-- Ex. Values that have "the" in any position
 select * from FB.triples
 where triples.obj like '%the%'
 limit 5;
 
+/* types */
 
 -- All type triples
-select distinct obj into OUTFILE '/Volumes/Seagate/types-unique2.txt' from triples_type where pred = "</type.object.type>";
+select distinct obj into OUTFILE '/Volumes/Seagate/unique-types-clean.txt' from triples_type where pred = "</type.object.type>";
 
-
+-- All type triples and their counts
+select distinct obj, count(*) into OUTFILE '/Volumes/Seagate/unique-types-clean-counts.txt' from triples_type where pred = "</type.object.type>" group by obj;
 
 
 
