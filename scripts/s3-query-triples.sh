@@ -37,7 +37,8 @@ OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"  # template
 cat freebase-rdf-latest-type-s02-c01 | parallel --pipe --block 2M --progress  grep -E "\</m.02mjmr\>" >test.txt
 
 
-
+# Sort frequency distribution of types in order of magnitude
+sort -t$'\t' -k 2,2 -g types-unique-clean-counts.txt >types-unique-clean-counts-byfreq.txt
 
 
 
