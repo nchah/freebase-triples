@@ -35,7 +35,7 @@ OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"  # template
 # Specifying triples with specific predicates
 
 # Triples with "name" predicate
-grep '/type.object.name' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_NAME_ALL
+grep '/type\.object\.name' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_NAME_ALL
 
 # Extracting certain i18n languages
 # Get @en and @en-XX, like @en-GB
@@ -44,7 +44,7 @@ grep '@en' $INPUT_FILE_NAME_ALL | pv -pterbl >$OUTPUT_FILE_NAME_EN
 grep -E '@en[[:space:]]' $INPUT_FILE_NAME_ALL | pv -pterbl >$OUTPUT_FILE_NAME_EN
 
 # Triples with "description" predicate
-grep '/common.topic.description' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_DESC_ALL
+grep '/common\.topic\.description' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_DESC_ALL
 
 # Extracting certain i18n languages
 # Get @en and @en-XX, like @en-GB
@@ -53,10 +53,10 @@ grep '@en' $INPUT_FILE_DESC_ALL | pv -pterbl >$OUTPUT_FILE_DESC_EN
 grep -E '@en[[:space:]]' $INPUT_FILE_DESC_ALL | pv -pterbl >$OUTPUT_FILE_DESC_EN
 
 # Triples with the "type" predicate
-grep '/type.object.type' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_TYPE
+grep '/type\.object\.type' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_TYPE
 
 # Triples with the "alias" predicate
-grep '/common.topic.alias' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_AKAS
+grep '/common\.topic\.alias' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_AKAS
 
 
 # v2.0: GNU parallel implementation
