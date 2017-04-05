@@ -129,11 +129,11 @@ select * into OUTFILE '/Volumes/Seagate/freebase-rdf-latest-type-s02-c01-v2'
 from triples_type where pred = "</type.object.type>";
 
 -- All distinct type triples
-select distinct obj into OUTFILE '/Volumes/Seagate/type-unique-clean.txt' 
+select distinct obj into OUTFILE '/Volumes/Seagate/type-unique.txt' 
 from triples_type where pred = "</type.object.type>";
 
 -- All type triples and their counts
-select distinct obj, count(*) into OUTFILE '/Volumes/Seagate/type-unique-clean-counts.txt' 
+select distinct obj, count(*) into OUTFILE '/Volumes/Seagate/type-unique-counts.txt' 
 from triples_type where pred = "</type.object.type>" group by obj;
 
 # BASH
