@@ -67,10 +67,7 @@ cat $INPUT_FILE | parallel --pipe --block 2M --progress grep -E '@en[[:space:]]'
 cat freebase-rdf-latest-desc-s02-c01 | parallel --pipe --block 2M --progress grep -E '@en[[:space:]]' >freebase-rdf-latest-desc-en-s02-c01
 
 
-## s2-c2 Extract unique triples
 
-# -t $'\t' to catch the Tab character
-# -k to get the column positions
-sort -u -t$'\t' -k 2,2 "/path/to/file"
+
 
 
