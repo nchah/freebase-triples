@@ -44,11 +44,11 @@ Original: freebase-rdf-latest.gz
 Data Slice | Size | Triples
 --- | --- | ---
 All | 213G | 3,130,753,066 - 100%
-*slices* | |  
+*slices* | - | -
 name |
 desc |
-type |
-akas |
+type | 16G | 293,697,215 - 9.38%
+akas | 305M | 4,611,150 - 0.147%
 
 
 

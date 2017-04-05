@@ -79,7 +79,7 @@ INTO TABLE FB.triples_desc_en
 FIELDS terminated by '\t'
 LINES terminated by '.\n';
 
-LOAD DATA LOCAL INFILE '/Volumes/Seagate/freebase-rdf-latest-type-s02-c01'
+LOAD DATA LOCAL INFILE '/Volumes/Seagate/freebase-rdf-latest-type-s02-c01-v2'
 INTO TABLE FB.triples_type
 FIELDS terminated by '\t'
 LINES terminated by '.\n';
