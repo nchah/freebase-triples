@@ -42,7 +42,19 @@ create table triples_desc_en (
     obj varchar(255)
 );
 
+create table triples_desc_en_GB (
+    sub varchar(255),
+    pred varchar(255),
+    obj varchar(255)
+);
+
 create table triples_type (
+    sub varchar(255),
+    pred varchar(255),
+    obj varchar(255)
+);
+
+create table triples_akas (
     sub varchar(255),
     pred varchar(255),
     obj varchar(255)
@@ -79,10 +91,21 @@ INTO TABLE FB.triples_desc_en
 FIELDS terminated by '\t'
 LINES terminated by '.\n';
 
+LOAD DATA LOCAL INFILE '/Volumes/Seagate/freebase-rdf-latest-desc-en-GB-s02-c01'
+INTO TABLE FB.triples_desc_en_GB
+FIELDS terminated by '\t'
+LINES terminated by '.\n';
+
 LOAD DATA LOCAL INFILE '/Volumes/Seagate/freebase-rdf-latest-type-s02-c01'
 INTO TABLE FB.triples_type
 FIELDS terminated by '\t'
 LINES terminated by '.\n';
+
+LOAD DATA LOCAL INFILE '/Volumes/Seagate/freebase-rdf-latest-akas-s02-c01'
+INTO TABLE FB.triples_akas
+FIELDS terminated by '\t'
+LINES terminated by '.\n';
+
 
 -- Delete rows without dropping table
 -- delete from FB.triples;
