@@ -4,11 +4,6 @@ Overview of the full pipeline.
 # Scripts
 
 ```
-├── s1-c1-parse-triples.sh
-├── s1-c2-parse-triples.sh
-├── s1-c3-parse-triples.sh
-├── s1-parse-triples-full.sh
-└── s2-c1-extract-triples.sh
 ```
 
 # Data
@@ -44,6 +39,21 @@ Original: freebase-rdf-latest.gz
             └── freebase-rdf-latest-desc-[ISO lang...]-s02-c01
         └── freebase-rdf-latest-type-s02-c01
             └── freebase-rdf-latest-type-[type...]-s02-c01
-
-
 ```
+
+Data Slice | Size | Triples
+--- | --- | ---
+All | 213G | 3,130,753,066 - 100%
+*slices* | |  
+name |
+desc |
+type |
+akas |
+
+
+
+
+
+
+
+
