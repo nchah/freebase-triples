@@ -38,7 +38,7 @@ cat freebase-rdf-latest-type-s02-c01 | parallel --pipe --block 2M --progress  gr
 
 
 # Sort frequency distribution of types in order of magnitude
-sort -t$'\t' -k 2,2 -g types-unique-clean-counts.txt >types-unique-clean-counts-byfreq.txt
+sort -t$'\t' -k 2,2 -g type-unique-clean-counts.txt >type-unique-clean-counts-byfreq.txt
 
 # Sum the column of type assertion counts
 cut -f2 types-unique-clean-counts-byfreq.txt | awk '{s+=$1} END {print s}'

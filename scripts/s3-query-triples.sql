@@ -79,7 +79,7 @@ INTO TABLE FB.triples_desc_en
 FIELDS terminated by '\t'
 LINES terminated by '.\n';
 
-LOAD DATA LOCAL INFILE '/Volumes/Seagate/freebase-rdf-latest-type-s02-c01-v2'
+LOAD DATA LOCAL INFILE '/Volumes/Seagate/freebase-rdf-latest-type-s02-c01'
 INTO TABLE FB.triples_type
 FIELDS terminated by '\t'
 LINES terminated by '.\n';
@@ -99,23 +99,51 @@ select * from FB.triples
 where triples.obj like '%the%'
 limit 5;
 
-/* types */
+/* type */
 
--- All type triples
-select distinct obj into OUTFILE '/Volumes/Seagate/unique-types-clean.txt' from triples_type where pred = "</type.object.type>";
+-- All type triples - further filtered
+select * into OUTFILE '/Volumes/Seagate/freebase-rdf-latest-type-s02-c01-v2' 
+from triples_type where pred = "</type.object.type>";
+
+-- All distinct type triples
+select distinct obj into OUTFILE '/Volumes/Seagate/type-unique-clean.txt' 
+from triples_type where pred = "</type.object.type>";
 
 -- All type triples and their counts
-select distinct obj, count(*) into OUTFILE '/Volumes/Seagate/unique-types-clean-counts.txt' from triples_type where pred = "</type.object.type>" group by obj;
+select distinct obj, count(*) into OUTFILE '/Volumes/Seagate/type-unique-clean-counts.txt' 
+from triples_type where pred = "</type.object.type>" group by obj;
+
+# BASH
+# Sort frequency distribution of types in order of magnitude
+sort -t$'\t' -k 2,2 -g type-unique-clean-counts.txt >type-unique-clean-counts-byfreq.txt
+
+# Sum the column of type assertion counts
+cut -f2 type-unique-clean-counts-byfreq.txt | awk '{s+=$1} END {print s}'
+# -> 266321867/3130753066.0 -> 0.08506639
+
+/* name */
+
+-- All name triples - further filtered
+select * into OUTFILE '/Volumes/Seagate/freebase-rdf-latest-name-s02-c01-v2' 
+from triples_name where pred = "</type.object.name>";
+
+-- All nametriples and their counts by mid
+select distinct sub, count(*) into OUTFILE '/Volumes/Seagate/name-unique-counts.txt' 
+from triples_name where pred = "</type.object.name>" group by sub;
 
 
+/* desc */
+
+-- All desc triples - further filtered
+select * into OUTFILE '/Volumes/Seagate/freebase-rdf-latest-desc-s02-c01-v2' 
+from triples_desc where pred = "</common.topic.description>";
 
 
+/* akas */
 
-
-
-
-
-
+-- All aka triples - further filtered
+select * into OUTFILE '/Volumes/Seagate/freebase-rdf-latest-akas-s02-c01-v2' 
+from triples_akas where pred = "</common.topic.alias>";
 
 
 
