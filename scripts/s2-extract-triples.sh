@@ -69,10 +69,11 @@ cat freebase-rdf-latest-desc-s02-c01 | parallel --pipe --block 2M --progress gre
 # v3.0: AWK implementation
 # Template:
 awk '$2 == "</type.object.name>"' $INPUT_FILE  >$OUTPUT_FILE
-
-# the \' is necessary for parallel
+# with parallel
+# the \' is necessary for parallel context
 cat $INPUT_FILE | parallel --pipe --block 2M --progress awk \''$2 == "</pred>"'\' >$OUTPUT_FILE
 
+cat $INPUT_FILE | parallel --pipe --block 2M --progress awk \''$2 == "</type.object.name>"'\' >$OUTPUT_FILE
 
 
 
