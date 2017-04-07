@@ -34,20 +34,9 @@ OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"  # template
 ## s3-c1 Query Triples:
 
 # Specific topic mid
-cat freebase-rdf-latest-type-s02-c01 | parallel --pipe --block 2M --progress  grep -E "\</m.02mjmr\>" >test.txt
+cat freebase-rdf-latest-type-s02-c01 | parallel --pipe --block 2M --progress 
+grep -E "\</m.02mjmr\>" >test.txt
 
-
-# Sort unique
-# -t $'\t' to catch the Tab character
-# -k to get the column positions
-sort -u -t$'\t' -k 2,2 "/path/to/file"
-
-# Sort frequency distribution of types in order of magnitude
-sort -t$'\t' -k 2,2 -g type-unique-clean-counts.txt >type-unique-clean-counts-byfreq.txt
-
-# Sum the column of type assertion counts
-cut -f2 types-unique-clean-counts-byfreq.txt | awk '{s+=$1} END {print s}'
-# -> 266321867/3130753066.0 -> 0.08506639
 
 
 
