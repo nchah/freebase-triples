@@ -66,6 +66,13 @@ cat $INPUT_FILE | parallel --pipe --block 2M --progress grep -E '@en[[:space:]]'
 # Extracting @en only
 cat freebase-rdf-latest-desc-s02-c01 | parallel --pipe --block 2M --progress grep -E '@en[[:space:]]' >freebase-rdf-latest-desc-en-s02-c01
 
+# v3.0: AWK implementation
+# Template:
+awk '$2 == "</type.object.name>"' $INPUT_FILE  >$OUTPUT_FILE
+
+# the \' is necessary for parallel
+cat $INPUT_FILE | parallel --pipe --block 2M --progress awk \''$2 == "</pred>"'\' >$OUTPUT_FILE
+
 
 
 
