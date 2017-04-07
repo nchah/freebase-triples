@@ -77,5 +77,10 @@ cat $INPUT_FILE | parallel --pipe --block 2M --progress awk \''$2 == "</type.obj
 
 
 
+## s2-c2 Extract Unique
+
+# Unique predicates
+# "tab" character as delimiter
+awk -F"\t" '!seen[$2]++' "file"
 
 
