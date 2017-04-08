@@ -109,7 +109,11 @@ awk \''$2 == "</pred>"'\' >$OUTPUT_FILE
 
 # Unique predicates
 # "tab" character as delimiter
-awk -F"\t" '!seen[$2]++' "file"
+cat $INPUT_FILE | parallel --pipe --block 2M --progress 
+awk -F"\t" \''!seen[$2]++ { print $2 }'\' >$OUTPUT_FILE
+# Not parallelizing is better for output script
+awk -F"\t" '!seen[$2]++ { print $2 }' freebase-rdf-latest-s01-c01 
+>freebase-rdf-latest-pred-uniq-s02-c02
 
 # Sort unique
 # -t $'\t' to catch the Tab character
@@ -122,6 +126,27 @@ sort -t$'\t' -k 2,2 -g type-unique-clean-counts.txt >type-unique-clean-counts-by
 # Sum the column of type assertion counts
 cut -f2 types-unique-clean-counts-byfreq.txt | awk '{s+=$1} END {print s}'
 # -> 266321867/3130753066.0 -> 0.08506639
+
+
+## s2-c3 Extract Schema
+
+# Domains
+awk '$3 == "</type.domain>"' $INPUT_FILE  >$OUTPUT_FILE
+# The types in a domain:
+awk '$2 == "</type.domain.types>"' $INPUT_FILE  >$OUTPUT_FILE
+
+# Types
+awk '$3 == "</type.type>"' $INPUT_FILE  >$OUTPUT_FILE
+# The properties in a type:
+awk '$2 == "</type.type.properties>"' $INPUT_FILE  >$OUTPUT_FILE
+
+# Properties
+awk '$3 == "</type.property>"' $INPUT_FILE  >$OUTPUT_FILE
+# The details in a property:
+awk '$3 == "</type.property.*>"' $INPUT_FILE  >$OUTPUT_FILE
+
+
+
 
 
 
