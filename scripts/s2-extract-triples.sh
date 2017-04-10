@@ -40,11 +40,11 @@ awk \''$2 == "</type.object.name>"'\' >$OUTPUT_FILE
 
 # i18n
 # Get @en and @en-XX, like @en-GB
-cat freebase-rdf-latest-name-s02-c01 | parallel --pipe --block 2M --progress 
-grep '@en' >freebase-rdf-latest-name-en-s02-c01
+cat fb-rdf-name-s02-c01 | parallel --pipe --block 2M --progress 
+grep '@en' >fb-rdf-name-en-s02-c01
 # Get @en only
-cat freebase-rdf-latest-desc-s02-c01 | parallel --pipe --block 2M --progress 
-grep -E '@en[[:space:]]' >freebase-rdf-latest-desc-en-s02-c01
+cat fb-rdf-desc-s02-c01 | parallel --pipe --block 2M --progress 
+grep -E '@en[[:space:]]' >fb-rdf-desc-en-s02-c01
 
 # DESC
 cat $INPUT_FILE | parallel --pipe --block 2M --progress 
@@ -52,11 +52,11 @@ awk \''$2 == "</common.topic.description>"'\' >$OUTPUT_FILE
 
 # i18n
 # Get @en and @en-XX, like @en-GB
-cat freebase-rdf-latest-desc-s02-c01 | parallel --pipe --block 2M --progress 
-grep '@en' >freebase-rdf-latest-desc-en-s02-c01
+cat fb-rdf-desc-s02-c01 | parallel --pipe --block 2M --progress 
+grep '@en' >fb-rdf-desc-en-s02-c01
 # Get @en only
-cat freebase-rdf-latest-desc-s02-c01 | parallel --pipe --block 2M --progress 
-grep -E '@en[[:space:]]' >freebase-rdf-latest-desc-en-s02-c01
+cat fb-rdf-desc-s02-c01 | parallel --pipe --block 2M --progress 
+grep -E '@en[[:space:]]' >fb-rdf-desc-en-s02-c01
 
 # TYPE
 cat $INPUT_FILE | parallel --pipe --block 2M --progress 
@@ -93,8 +93,8 @@ awk \''$2 == "</type.object.key>"'\' >$OUTPUT_FILE
 cat $INPUT_FILE | parallel --pipe --block 2M --progress 
 grep -E '@en[[:space:]]' >$OUTPUT_FILE
 # Extracting @en only
-cat freebase-rdf-latest-desc-s02-c01 | parallel --pipe --block 2M --progress 
-grep -E '@en[[:space:]]' >freebase-rdf-latest-desc-en-s02-c01
+cat fb-rdf-desc-s02-c01 | parallel --pipe --block 2M --progress 
+grep -E '@en[[:space:]]' >fb-rdf-desc-en-s02-c01
 
 # v3.0: AWK implementation
 # Template:
@@ -105,15 +105,15 @@ cat $INPUT_FILE | parallel --pipe --block 2M --progress
 awk \''$2 == "</pred>"'\' >$OUTPUT_FILE
 
 
-## s2-c2 Extract Unique
+## s2-c2 Extract Unique, Extract Schema
 
 # Unique predicates
 # "tab" character as delimiter
-cat $INPUT_FILE | parallel --pipe --block 2M --progress 
-awk -F"\t" \''!seen[$2]++ { print $2 }'\' >$OUTPUT_FILE
 # Not parallelizing is better for output script
-awk -F"\t" '!seen[$2]++ { print $2 }' freebase-rdf-latest-s01-c01 
->freebase-rdf-latest-pred-uniq-s02-c02
+awk -F"\t" '!seen[$2]++ { print $2 }' fb-rdf-s01-c01 
+>fb-scm-pred-uniq-s02-c02
+# Sort by alpha:
+sort -u fb-scm-pred-uniq-s02-c02 >fb-scm-pred-uniq-byalpha-s02-c02
 
 # Sort unique
 # -t $'\t' to catch the Tab character
@@ -121,10 +121,12 @@ awk -F"\t" '!seen[$2]++ { print $2 }' freebase-rdf-latest-s01-c01
 sort -u -t$'\t' -k 2,2 "/path/to/file"
 
 # Sort frequency distribution of types in order of magnitude
-sort -t$'\t' -k 2,2 -g type-unique-clean-counts.txt >type-unique-clean-counts-byfreq.txt
+# Default is that list is already sorted byalpha
+sort -t$'\t' -k 2,2 -g fb-scm-type-uniq-byalpha-counts-s02-c02
+>fb-scm-type-uniq-byfreq-counts-s02-c02
 
 # Sum the column of type assertion counts
-cut -f2 types-unique-clean-counts-byfreq.txt | awk '{s+=$1} END {print s}'
+cut -f2 fb-scm-type-uniq-byfreq-counts-s02-c02 | awk '{s+=$1} END {print s}'
 # -> 266321867/3130753066.0 -> 0.08506639
 
 
@@ -134,6 +136,14 @@ cut -f2 types-unique-clean-counts-byfreq.txt | awk '{s+=$1} END {print s}'
 awk '$3 == "</type.domain>"' $INPUT_FILE  >$OUTPUT_FILE
 # The types in a domain:
 awk '$2 == "</type.domain.types>"' $INPUT_FILE  >$OUTPUT_FILE
+# Or get domains from the uniq predicates:
+sort -u | awk -F. '$1 { print $1}' fb-scm-pred-uniq-byalpha-s02-c02
+>fb-scm-domn-uniq-byalpha-s02-c02
+# Clean up the base and key predicates
+sort -u fb-scm-pred-uniq-byalpha-s02-c02 >fb-scm-pred-uniq-byalpha-s02-c03
+# Further get rid of the '</key/* >' duplicates
+awk '$1 !~ "/key/*"' fb-scm-domn-uniq-byalpha-s02-c03 >fb-scm-domn-uniq-byalpha-s02-c04
+
 
 # Types
 awk '$3 == "</type.type>"' $INPUT_FILE  >$OUTPUT_FILE
@@ -144,6 +154,21 @@ awk '$2 == "</type.type.properties>"' $INPUT_FILE  >$OUTPUT_FILE
 awk '$3 == "</type.property>"' $INPUT_FILE  >$OUTPUT_FILE
 # The details in a property:
 awk '$3 == "</type.property.*>"' $INPUT_FILE  >$OUTPUT_FILE
+
+
+# Predicates
+# Counts of all domain-sliced predicates
+cat fb-rdf-s01-c01-test4 | parallel --pipe --block 2M --progress 
+awk -F"\t" \'' { q = "</type.*"; if($2 ~ q) { count++; }} END {print q"\t"count} '\' >>test
+
+
+
+
+
+
+
+
+
 
 
 
