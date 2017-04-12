@@ -130,6 +130,18 @@ cut -f2 fb-scm-type-uniq-byfreq-counts-s02-c02 | awk '{s+=$1} END {print s}'
 # -> 266321867/3130753066.0 -> 0.08506639
 
 
+# Unique MIDs
+# Not parallelizing is better for output script
+awk -F"\t" '!seen[$1]++ { print $1 }' fb-rdf-name-s01-c01
+>fb-scm-name-uniq-mids-s02-c02
+# Sort by alpha:
+# Data may already be in alphabetical order
+sort -u fb-scm-name-uniq-mids-s02-c02 >fb-scm-name-uniq-mids-byalpha-s02-c02
+# Count
+wc -l fb-scm-name-uniq-mids-s02-c02
+
+
+
 ## s2-c3 Extract Schema
 
 # Domains
