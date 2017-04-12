@@ -105,7 +105,7 @@ cat $INPUT_FILE | parallel --pipe --block 2M --progress
 awk \''$2 == "</pred>"'\' >$OUTPUT_FILE
 
 
-## s2-c2 Extract Unique, Extract Schema
+## s2-c2 Extract Unique Values and Their Counts
 
 # Unique predicates
 # "tab" character as delimiter
@@ -114,6 +114,8 @@ awk -F"\t" '!seen[$2]++ { print $2 }' fb-rdf-s01-c01
 >fb-scm-pred-uniq-s02-c02
 # Sort by alpha:
 sort -u fb-scm-pred-uniq-s02-c02 >fb-scm-pred-uniq-byalpha-s02-c02
+# Count
+wc -l fb-scm-pred-uniq-s02-c02
 
 # Sort unique
 # -t $'\t' to catch the Tab character
@@ -132,10 +134,10 @@ cut -f2 fb-scm-type-uniq-byfreq-counts-s02-c02 | awk '{s+=$1} END {print s}'
 
 # Unique MIDs
 # Not parallelizing is better for output script
-awk -F"\t" '!seen[$1]++ { print $1 }' fb-rdf-name-s01-c01
+awk -F"\t" '!seen[$1]++ { print $1 }' fb-rdf-name-s01-c01 
 >fb-scm-name-uniq-mids-s02-c02
 # Sort by alpha:
-# Data may already be in alphabetical order
+# Note: data may already be in alphabetical order
 sort -u fb-scm-name-uniq-mids-s02-c02 >fb-scm-name-uniq-mids-byalpha-s02-c02
 # Count
 wc -l fb-scm-name-uniq-mids-s02-c02
