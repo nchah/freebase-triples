@@ -22,11 +22,6 @@
 ## s3-c0 Setting File Names
 INPUT_FILE=$1
 
-OUTPUT_FILE_NAME_EN=${INPUT_FILE:0:${#INPUT_FILE}-11}"-name-en-s02-c01.nt"
-OUTPUT_FILE_NAME_ALL=${INPUT_FILE:0:${#INPUT_FILE}-11}"-name-all-s02-c01.nt"
-OUTPUT_FILE_DESC_EN=${INPUT_FILE:0:${#INPUT_FILE}-11}"-desc-en-s02-c01.nt"
-OUTPUT_FILE_DESC_ALL=${INPUT_FILE:0:${#INPUT_FILE}-11}"-desc-all-s02-c01.nt"
-OUTPUT_FILE_TYPE=${INPUT_FILE:0:${#INPUT_FILE}-11}"-type-s02-c01.nt"
 OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"  # template
 OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"  # template
 
@@ -39,7 +34,38 @@ grep -E "\</m.02mjmr\>" >test.txt
 
 
 
+## s3-c2 Analytics
 
+# All Slices
+# Returns a long list of number of triples
+wc -l fb-rdf-pred-*
+
+
+# Slice Level Analytics
+# Example slice: fb-rdf-pred-bicycles
+
+# Number of  triples
+wc -l fb-rdf-pred-bicycles
+# -> 313
+
+# Unique SPO counts
+# Sub
+awk -F"\t" '!seen[$1]++ { print $1 }' fb-rdf-pred-bicycles | wc -l
+# -> 166
+
+# Pred
+awk -F"\t" '!seen[$2]++ { print $2 }' fb-rdf-pred-bicycles | wc -l
+# -> 5  # this should be quite low as it ~= the domain properties
+
+# Obj
+awk -F"\t" '!seen[$3]++ { print $3 }' fb-rdf-pred-bicycles | wc -l
+# -> 170
+
+
+# Browse Data
+
+# Scroll up and down!
+less fb-rdf-pred-bicycles
 
 
 
