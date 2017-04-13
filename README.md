@@ -127,7 +127,7 @@ The scripts in this repo are mostly written in Bash and Python.
 Bash/Shell scripts handled the initial parsing stages for the massive data dumps. 
 Python, with its many libraries, is a simple way to use the triples data after the initial processing.
 
-- `Bash` commands used: `awk`, `cat`, `cut`, `grep`, `gsed`*, `less, more, parallel`, `pv`, `sed`. `sort`. `wc`, `zless`, `zmore`, `zgrep`
+- `Bash` commands used: `awk`, `cat`, `cut`, `grep`, `gsed`*, `less`, `more`, `parallel`, `pv`, `sed`, `sort`, `wc`, `zless`, `zmore`, `zgrep`
 - `Python` libraries: TBA
 
 *`gsed` is GNU sed. Mac/OS X's `sed` does not handle '\t' as tab characters so gsed is preferred in some instances.
@@ -139,10 +139,6 @@ Python, with its many libraries, is a simple way to use the triples data after t
 Pausing a job on the command line can be done with `CTRL+Z`.
 All stopped and background jobs can be listed with the `jobs` command.
 To bring background jobs back into the foreground, use `fg [job]`.
-
-**Counting File Size**
-
-Use `wc -l [file]` to determine the number of lines in a file.
 
 
 ### Data

@@ -32,13 +32,11 @@ OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"  # template
 less fb-rdf-pred-bicycles
 
 
-
 ## s3-c1 Query Triples:
 
 # Specific topic mid
 cat freebase-rdf-latest-type-s02-c01 | parallel --pipe --block 2M --progress 
 grep -E "\</m.02mjmr\>" >test.txt
-
 
 
 ## s3-c2 Analytics
@@ -74,6 +72,26 @@ cat fb-rdf-pred-bicycles | parallel --pipe --block 2M --progress awk -F"\t" \''!
 # Obj
 cat fb-rdf-pred-bicycles | parallel --pipe --block 2M --progress awk -F"\t" \''!seen[$3]++ { print $3 }'\' | wc -l
 # -> 170
+
+
+# Get topic distribution:
+awk '{a[$1]+=!seen[$2]} END{for(i in a) print i,a[i]}' fb-rdf-pred-bicycles
+# -> 
+# </m.05rg8g> 10
+# </m.0j_2nx_> 1
+# </m.0b9s_4w> 1
+# </m.010bt0by> 2
+# </m.0ncy70h> 1
+# ...
+
+# Redundant triples through the "reverse property":
+grep '</m.027gdty>' slices/fb-rdf-pred-bicycles
+# -> # Both directions are encoded
+# </m.03qpf8g>    </bicycles.bicycle_model.manufacturer>  </m.027gdty>    .
+# </m.027gdty>    </bicycles.bicycle_manufacturer.bicycle_models> </m.03qpf8g>    .
+
+
+
 
 
 
