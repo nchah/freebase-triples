@@ -101,15 +101,22 @@ declare -a q=(
 	"</wine.*"
 	"</zoo.*")
 
-for i in "${q[@]}" 
-do {
-	cat fb-rdf-s01-c01 | parallel --pipe --block 2M --progress \
-	awk -F"\t" \'' $2 ~ "'"$i"'" '\' >>$OUTFILE${i:2:${#i}-4}
-	echo -e "\n\n * * * DONE: " "'"$i"'" '\n\n';
-	sleep 3
-}
-done
 
-# awk '{a[$1]+=$2}END{for(i in a) print i,a[i]}' fb-scm-domn-uniq-byalpha-counts-s02-c02
-# </american_football.* 483372
-# </amusement_parks.* 441
+# v1 Implementation
+# for i in "${q[@]}" 
+# do {
+#	cat fb-rdf-s01-c01 | parallel --pipe --block 2M --progress \
+#	awk -F"\t" \'' $2 ~ "'"$i"'" '\' >>$OUTFILE${i:2:${#i}-4}
+#	echo -e "\n\n * * * DONE: " "'"$i"'" '\n\n';
+#	sleep 3
+#}
+# done
+
+# v2 Implementation
+cat fb-rdf-s01-c01 | parallel --pipe --block 2M --progress \
+awk -F"\t" -v arr="$(echo ${q[@]})" \''BEGIN{split(arr,a," ");} { for (k in a) if($2 ~ a[k]) print     $0 >>("fb-rdf-pred-" substr(a[k], 3, length(a[k]) - 4 )) } '\'
+
+
+
+
+
