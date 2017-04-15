@@ -113,7 +113,10 @@ declare -a q=(
 # done
 
 # v2 Implementation
-awk -F"\t" -v arr="$(echo ${q[@]})" 'BEGIN{split(arr,a," ");} { for (k in a) if($2 ~ a[k]) print $0 >>("fb-rdf-pred-"substr(a[k], 3, length(a[k]) - 4)); close(("fb-rdf-pred-"substr(a[k], 3, length(a[k]) - 4))) } ' fb-rdf-s01-c01-test2
+awk -F"\t" -v arr="$(echo ${q[@]})" 'BEGIN{split(arr,a," ");} 
+{ for (k in a) if($2 ~ a[k]) fname=("fb-rdf-pred-"substr(a[k], 3, length(a[k]) - 4)); 
+print $0 >>fname; close(fname); if(FNR % 10000 == 0) { printf ("Processed %d lines \n", FNR)} } ' \
+fb-rdf-s01-c01-test2
 
 # cat fb-rdf-s01-c01 | parallel --pipe --block 2M --progress \
 # awk -F"\t" -v arr="$(echo ${q[@]})" \''BEGIN{split(arr,a," ");} { for (k in a) if($2 ~ a[k]) print     $0 >>("fb-rdf-pred-" substr(a[k], 3, length(a[k]) - 4 )) } '\'
