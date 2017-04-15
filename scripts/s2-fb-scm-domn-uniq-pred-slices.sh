@@ -113,8 +113,10 @@ declare -a q=(
 # done
 
 # v2 Implementation
-cat fb-rdf-s01-c01 | parallel --pipe --block 2M --progress \
-awk -F"\t" -v arr="$(echo ${q[@]})" \''BEGIN{split(arr,a," ");} { for (k in a) if($2 ~ a[k]) print     $0 >>("fb-rdf-pred-" substr(a[k], 3, length(a[k]) - 4 )) } '\'
+awk -F"\t" -v arr="$(echo ${q[@]})" 'BEGIN{split(arr,a," ");} { for (k in a) if($2 ~ a[k]) print $0 >>("fb-rdf-pred-"substr(a[k], 3, length(a[k]) - 4)); close(("fb-rdf-pred-"substr(a[k], 3, length(a[k]) - 4))) } ' fb-rdf-s01-c01-test2
+
+# cat fb-rdf-s01-c01 | parallel --pipe --block 2M --progress \
+# awk -F"\t" -v arr="$(echo ${q[@]})" \''BEGIN{split(arr,a," ");} { for (k in a) if($2 ~ a[k]) print     $0 >>("fb-rdf-pred-" substr(a[k], 3, length(a[k]) - 4 )) } '\'
 
 
 
