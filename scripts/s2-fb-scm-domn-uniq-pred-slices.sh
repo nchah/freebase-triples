@@ -114,9 +114,9 @@ gawk -F"\t" -v arr="$(echo ${q[@]})" 'BEGIN{split(arr,a," ");}
 { for (k in a) if($2 ~ a[k]) fname=("fb-rdf-pred-"substr(a[k], 3, length(a[k]) - 4)); 
 print $0 >>fname; 
 close(fname); 
-if(FNR % 10000 == 0) { 
-printf ("Processed %d lines - - ", FNR); 
-printf strftime("t = %Y-%m-%d %H:%M:%S \n"); } 
+if(FNR % 1000 == 0) { 
+printf strftime("%Y-%m-%d %H:%M:%S = "); 
+printf ("Processed %d lines \n", FNR); } 
 } ' \
 fb-rdf-s01-c01-test2
 
