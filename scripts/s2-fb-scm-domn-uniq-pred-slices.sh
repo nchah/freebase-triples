@@ -2,23 +2,23 @@
 
 OUTFILE="fb-rdf-pred-"
 
-# common, kg, type
+# Excluded: common, kg, type
 
 declare -a q=(
-	# "</american_football.*"
-	# "</amusement_parks.*"
-	# "</architecture.*"
-	# "</astronomy.*"
-	# "</automotive.*"
-	# "</aviation.*"
-	# "</award.*"
-	# "</base.*"
-	# "</baseball.*"
-	# "</basketball.*"
-	# "</bicycles.*"
-	# "</biology.*"
-	# "</boats.*"
-	# "</book.*"
+	"</american_football.*"
+	"</amusement_parks.*"
+	"</architecture.*"
+	"</astronomy.*"
+	"</automotive.*"
+	"</aviation.*"
+	"</award.*"
+	"</base.*"
+	"</baseball.*"
+	"</basketball.*"
+	"</bicycles.*"
+	"</biology.*"
+	"</boats.*"
+	"</book.*"
 	"</boxing.*"
 	"</broadcast.*"
 	"</business.*"
