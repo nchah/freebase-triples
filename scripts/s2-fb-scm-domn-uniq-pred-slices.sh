@@ -102,7 +102,33 @@ declare -a q=(
 	"</zoo.*")
 
 
-# v1 Implementation
+### v2 Implementation
+
+awk -F"\t" -v arr="$(echo ${q[@]})" 'BEGIN{split(arr,a," ");} 
+{ for (k in a) if($2 ~ a[k]) fname=("fb-rdf-pred-"substr(a[k], 3, length(a[k]) - 4)); 
+print $0 >>fname; close(fname); if(FNR % 10000 == 0) { printf ("Processed %d lines \n", FNR)} } ' \
+fb-rdf-s01-c01-test2
+
+# gawk version to call sfrtime:
+gawk -F"\t" -v arr="$(echo ${q[@]})" 'BEGIN{split(arr,a," ");} 
+{ for (k in a) if($2 ~ a[k]) fname=("fb-rdf-pred-"substr(a[k], 3, length(a[k]) - 4)); 
+print $0 >>fname; 
+close(fname); 
+if(FNR % 10000 == 0) { 
+printf ("Processed %d lines - - ", FNR); 
+printf strftime("t = %Y-%m-%d %H:%M:%S \n"); } 
+} ' \
+fb-rdf-s01-c01-test2
+
+
+# todo: parallel version
+# cat fb-rdf-s01-c01 | parallel --pipe --block 2M --progress \
+# awk -F"\t" -v arr="$(echo ${q[@]})" \''BEGIN{split(arr,a," ");} { for (k in a) if($2 ~ a[k]) print     $0 >>("fb-rdf-pred-" substr(a[k], 3, length(a[k]) - 4 )) } '\'
+
+
+
+### v1 Implementation
+
 # for i in "${q[@]}" 
 # do {
 #	cat fb-rdf-s01-c01 | parallel --pipe --block 2M --progress \
@@ -111,17 +137,3 @@ declare -a q=(
 #	sleep 3
 #}
 # done
-
-# v2 Implementation
-awk -F"\t" -v arr="$(echo ${q[@]})" 'BEGIN{split(arr,a," ");} 
-{ for (k in a) if($2 ~ a[k]) fname=("fb-rdf-pred-"substr(a[k], 3, length(a[k]) - 4)); 
-print $0 >>fname; close(fname); if(FNR % 10000 == 0) { printf ("Processed %d lines \n", FNR)} } ' \
-fb-rdf-s01-c01-test2
-
-# cat fb-rdf-s01-c01 | parallel --pipe --block 2M --progress \
-# awk -F"\t" -v arr="$(echo ${q[@]})" \''BEGIN{split(arr,a," ");} { for (k in a) if($2 ~ a[k]) print     $0 >>("fb-rdf-pred-" substr(a[k], 3, length(a[k]) - 4 )) } '\'
-
-
-
-
-
