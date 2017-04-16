@@ -1,19 +1,6 @@
 #!/bin/bash
 # A Bash script to parse, process, clean the Freebase data dumps.
 
-########## ########## ########## ########## ##########
-## Z Commands Overview
-########## ########## ########## ########## ##########
-
-# Scan through the compressed data
-# zmore freebase-rdf-latest.gz
-
-# Grep for specific terms, limit set at 5
-# zgrep 'term' -m 5 freebase-rdf-latest.gz
-
-# Pipe the data to another file
-# zgrep 'term' freebase-rdf-latest.gz > freebase-triples.txt
-
 
 ########## ########## ########## ########## ##########
 ## Stages and Changes
@@ -36,21 +23,48 @@ OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"  # template
 
 # NAME
 cat $INPUT_FILE | parallel --pipe --block 2M --progress 
-awk \''$2 == "</type.object.name>"'\' >$OUTPUT_FILE
-
-# i18n
-# Get @en and @en-XX, like @en-GB
-cat fb-rdf-name-s02-c01 | parallel --pipe --block 2M --progress 
-grep '@en' >fb-rdf-name-en-s02-c01
-# Get @en only
-cat fb-rdf-desc-s02-c01 | parallel --pipe --block 2M --progress 
-grep -E '@en[[:space:]]' >fb-rdf-desc-en-s02-c01
+awk \''{ fname = "fb-rdf-name-s02-c01"; fname_rest = "fb-rdf-rest-01";
+if($2 == "</type.object.name>") 
+{ print $0 >> fname; close(fname); } 
+else { print $0 >> fname_rest; close(fname_rest); } }'\'
 
 # DESC
 cat $INPUT_FILE | parallel --pipe --block 2M --progress 
-awk \''$2 == "</common.topic.description>"'\' >$OUTPUT_FILE
+awk \''{ fname = "fb-rdf-desc-s02-c01"; fname_rest = "fb-rdf-rest-02";
+if($2 == "</common.topic.description")
+{ print $0 >> fname; close(fname); } 
+else { print $0 >> fname_rest; close(fname_rest); } }'\'
 
-# i18n
+# TYPE
+cat $INPUT_FILE | parallel --pipe --block 2M --progress 
+awk \''{ fname = "fb-rdf-type-s02-c01"; fname_rest = "fb-rdf-rest-03";
+if($2 == "</type.object.type>")
+{ print $0 >> fname; close(fname); } 
+else { print $0 >> fname_rest; close(fname_rest); } }'\'
+
+# AKAS
+cat $INPUT_FILE | parallel --pipe --block 2M --progress 
+awk \''{fname = "fb-rdf-akas-s02-c01"; fname_rest = "fb-rdf-rest-04";
+if($2 == "</common.topic.alias>")
+{ print $0 >> fname; close(fname); } 
+else { print $0 >> fname_rest; close(fname_rest); } }'\'
+
+# KEYS
+cat $INPUT_FILE | parallel --pipe --block 2M --progress 
+awk \''{ fname = "fb-rdf-keys-s02-c01"; fname_rest = "fb-rdf-rest-05";
+if($2 == "</type.object.key>")
+{ print $0 >> fname; close(fname); } 
+else { print $0 >> fname_rest; close(fname_rest); } }'\'
+
+# template
+cat $INPUT_FILE | parallel --pipe --block 2M --progress 
+awk \''{ if($2 == "</type.object.key>")
+fname = "fb-rdf-keys-s02-c01"; fname_rest = "fb-rdf-rest-05";
+{ print $0 >> fname; close(fname); } 
+else { print $0 >> fname_rest; close(fname_rest); } }'\'
+
+
+# LANG NS: i18n
 # Get @en and @en-XX, like @en-GB
 cat fb-rdf-desc-s02-c01 | parallel --pipe --block 2M --progress 
 grep '@en' >fb-rdf-desc-en-s02-c01
@@ -58,57 +72,11 @@ grep '@en' >fb-rdf-desc-en-s02-c01
 cat fb-rdf-desc-s02-c01 | parallel --pipe --block 2M --progress 
 grep -E '@en[[:space:]]' >fb-rdf-desc-en-s02-c01
 
-# TYPE
-cat $INPUT_FILE | parallel --pipe --block 2M --progress 
-awk \''$2 == "</type.object.type>"'\' >$OUTPUT_FILE
-
-# AKAS
-cat $INPUT_FILE | parallel --pipe --block 2M --progress 
-awk \''$2 == "</common.topic.alias>"'\' >$OUTPUT_FILE
-
-# KEYS
-cat $INPUT_FILE | parallel --pipe --block 2M --progress 
-awk \''$2 == "</type.object.key>"'\' >$OUTPUT_FILE
-
-
-## Updates:
-
-# v1.0: grep Implementation
-# NAME
-# v1.0: grep '/type\.object\.name' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_NAME_ALL
-# i18n
-# Get @en and @en-XX, like @en-GB
-# v1.0: grep '@en' $INPUT_FILE_NAME_ALL | pv -pterbl >$OUTPUT_FILE_NAME_EN
-# Get @en only
-# v1.0: grep -E '@en[[:space:]]' $INPUT_FILE_NAME_ALL | pv -pterbl >$OUTPUT_FILE_NAME_EN
-# DESC
-# v1.0: grep '/common\.topic\.description' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_DESC_ALL
-# TYPE
-# v1.0: grep '/type\.object\.type' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_TYPE
-# AKAS
-# v1.0: grep '/common\.topic\.alias' $INPUT_FILE | pv -pterbl >$OUTPUT_FILE_AKAS
-
-# v2.0: GNU parallel implementation
-# Template:
-cat $INPUT_FILE | parallel --pipe --block 2M --progress 
-grep -E '@en[[:space:]]' >$OUTPUT_FILE
-# Extracting @en only
-cat fb-rdf-desc-s02-c01 | parallel --pipe --block 2M --progress 
-grep -E '@en[[:space:]]' >fb-rdf-desc-en-s02-c01
-
-# v3.0: AWK implementation
-# Template:
-awk '$2 == "</type.object.name>"' $INPUT_FILE  >$OUTPUT_FILE
-# with parallel
-# the \' is necessary for parallel context
-cat $INPUT_FILE | parallel --pipe --block 2M --progress 
-awk \''$2 == "</pred>"'\' >$OUTPUT_FILE
 
 
 ## s2-c2 Extract Unique Values and Their Counts
 
 # Unique predicates
-# "tab" character as delimiter
 # Not parallelizing is better for output script
 awk -F"\t" '!seen[$2]++ { print $2 }' fb-rdf-s01-c01 
 >fb-scm-pred-uniq-s02-c02
@@ -147,9 +115,19 @@ wc -l fb-scm-name-uniq-mids-s02-c02
 ## s2-c3 Extract Schema
 
 # Domains
-awk '$3 == "</type.domain>"' $INPUT_FILE  >$OUTPUT_FILE
+cat $INPUT_FILE | parallel --pipe --block 2M --progress 
+awk \''{ fname = "fb-scm-domn-s02-c03"; fname_rest = "fb-rdf-rest-05";
+if($3 == "</type.domain>") 
+{ print $0 >> fname; close(fname); } 
+else { print $0 >> fname_rest; close(fname_rest); } }'\'
+
 # The types in a domain:
-awk '$2 == "</type.domain.types>"' $INPUT_FILE  >$OUTPUT_FILE
+cat $INPUT_FILE | parallel --pipe --block 2M --progress 
+awk \''{ fname = "fb-scm-domn-type-s02-c03"; fname_rest = "fb-rdf-rest-06";
+if($2 == "</type.domain.types>") 
+{ print $0 >> fname; close(fname); } 
+else { print $0 >> fname_rest; close(fname_rest); } }'\'
+
 # Or get domains from the uniq predicates:
 sort -u | awk -F. '$1 { print $1}' fb-scm-pred-uniq-byalpha-s02-c02
 >fb-scm-domn-uniq-byalpha-s02-c02
@@ -160,23 +138,38 @@ awk '$1 !~ "/key/*"' fb-scm-domn-uniq-byalpha-s02-c03 >fb-scm-domn-uniq-byalpha-
 
 
 # Types
-awk '$3 == "</type.type>"' $INPUT_FILE  >$OUTPUT_FILE
+cat $INPUT_FILE | parallel --pipe --block 2M --progress 
+awk \''{ fname = "fb-scm-type-s02-c03"; fname_rest = "fb-rdf-rest-07";
+if($3 == "</type.type>") 
+{ print $0 >> fname; close(fname); } 
+else { print $0 >> fname_rest; close(fname_rest); } }'\'
+
 # The properties in a type:
-awk '$2 == "</type.type.properties>"' $INPUT_FILE  >$OUTPUT_FILE
+cat $INPUT_FILE | parallel --pipe --block 2M --progress 
+awk \''{ fname = "fb-scm-type-s02-c03"; fname_rest = "fb-rdf-rest-08";
+if($2 == "</type.type.properties>") 
+{ print $0 >> fname; close(fname); } 
+else { print $0 >> fname_rest; close(fname_rest); } }'\'
 
 # Properties
-awk '$3 == "</type.property>"' $INPUT_FILE  >$OUTPUT_FILE
+cat $INPUT_FILE | parallel --pipe --block 2M --progress 
+awk \''{ fname = "fb-scm-prop-s02-c03"; fname_rest = "fb-rdf-rest-09";
+if($3 == "</type.property>") 
+{ print $0 >> fname; close(fname); } 
+else { print $0 >> fname_rest; close(fname_rest); } }'\'
+
 # The details in a property:
-awk '$3 == "</type.property.*>"' $INPUT_FILE  >$OUTPUT_FILE
+cat $INPUT_FILE | parallel --pipe --block 2M --progress 
+awk \''{ fname = "fb-scm-prop-dets-s02-c03"; fname_rest = "fb-rdf-rest-10";
+if($2 ~ "</type.property.*") 
+{ print $0 >> fname; close(fname); } 
+else { print $0 >> fname_rest; close(fname_rest); } }'\'
 
 
 # Predicates
 # Counts of all domain-sliced predicates
 cat fb-rdf-s01-c01-test4 | parallel --pipe --block 2M --progress 
 awk -F"\t" \'' { q = "</type.*"; if($2 ~ q) { count++; }} END {print q"\t"count} '\' >>test
-
-
-
 
 
 
