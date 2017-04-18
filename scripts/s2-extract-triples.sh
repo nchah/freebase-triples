@@ -33,6 +33,9 @@ else { print $0 >> fname_rest; }
 printf strftime("%Y-%m-%d %H:%M:%S = "); 
 printf ("desc: Processed %d lines \n", FNR);} } }' fb-rdf-rest-01
 
+rm fb-rdf-rest-01
+printf "rm'ed fb-rdf-rest-01 \n"
+
 # TYPE
 gawk '{ fname = "fb-rdf-type-s02-c01"; fname_rest = "fb-rdf-rest-03";
 if($2 == "</type.object.type>")
@@ -41,6 +44,9 @@ else { print $0 >> fname_rest; }
 { if(FNR % 200000000 == 0) { 
 printf strftime("%Y-%m-%d %H:%M:%S = "); 
 printf ("type: Processed %d lines \n", FNR);} } }' fb-rdf-rest-02
+
+rm fb-rdf-rest-02
+printf "rm'ed fb-rdf-rest-02 \n"
 
 # AKAS
 gawk '{ fname = "fb-rdf-akas-s02-c01"; fname_rest = "fb-rdf-rest-04";
@@ -51,6 +57,9 @@ else { print $0 >> fname_rest; }
 printf strftime("%Y-%m-%d %H:%M:%S = "); 
 printf ("akas: Processed %d lines \n", FNR);} } }' fb-rdf-rest-03
 
+rm fb-rdf-rest-03
+printf "rm'ed fb-rdf-rest-03 \n"
+
 # KEYS
 gawk '{ fname = "fb-rdf-keys-s02-c01"; fname_rest = "fb-rdf-rest-05";
 if($2 == "</type.object.key>")
@@ -59,6 +68,10 @@ else { print $0 >> fname_rest; }
 { if(FNR % 200000000 == 0) { 
 printf strftime("%Y-%m-%d %H:%M:%S = "); 
 printf ("keys: Processed %d lines \n", FNR);} } }' fb-rdf-rest-04
+
+rm fb-rdf-rest-04
+printf "rm'ed fb-rdf-rest-04 \n"
+
 
 # LANG NS: i18n
 # Get @en and @en-XX, like @en-GB
@@ -80,6 +93,9 @@ else { print $0 >> fname_rest; }
 printf strftime("%Y-%m-%d %H:%M:%S = "); 
 printf ("comm-topic: Processed %d lines \n", FNR);} } }' fb-rdf-rest-05
 
+rm fb-rdf-rest-05
+printf "rm'ed fb-rdf-rest-05 \n"
+
 # BASE Type Ontologies
 gawk '{ fname = "fb-rdf-base-type-ontl-s02-c01"; fname_rest = "fb-rdf-rest-07";
 if($3 ~ "</base.type_ontology.*")
@@ -89,6 +105,8 @@ else { print $0 >> fname_rest; }
 printf strftime("%Y-%m-%d %H:%M:%S = "); 
 printf ("base-type-ontl: Processed %d lines \n", FNR);} } }' fb-rdf-rest-06
 
+rm fb-rdf-rest-06
+printf "rm'ed fb-rdf-rest-06 \n"
 
 
 ## s2-c2 Extract Unique Values and Their Counts
@@ -131,66 +149,82 @@ wc -l fb-scm-name-uniq-mids-s02-c02
 
 ## s2-c3 Extract Schema
 
-# Domains
-cat fb-rdf-rest-07 | parallel --pipe --block 2M --progress 
-awk \''{ fname = "fb-rdf-scm-domn-s02-c03"; fname_rest = "fb-rdf-rest-05";
+# Domains 
+gawk \''{ fname = "fb-rdf-scm-domn-s02-c03"; fname_rest = "fb-rdf-rest-08";
 if($3 == "</type.domain>") 
 { print $0 >> fname; } 
-else { print $0 >> fname_rest; } }'\'
+else { print $0 >> fname_rest; } 
+{ if(FNR % 200000000 == 0) { 
+printf strftime("%Y-%m-%d %H:%M:%S = "); 
+printf ("base-type-ontl: Processed %d lines \n", FNR);} } }'\' fb-rdf-rest-07 
+
+rm fb-rdf-rest-07
+printf "rm'ed fb-rdf-rest-07 \n"
 
 # The types in a domain:
-cat $INPUT_FILE | parallel --pipe --block 2M --progress 
-awk \''{ fname = "fb-rdf-scm-domn-type-s02-c03"; fname_rest = "fb-rdf-rest-06";
-if($2 == "</type.domain.types>") 
-{ print $0 >> fname; } 
-else { print $0 >> fname_rest; } }'\'
+# gawk ... if($2 == "</type.domain.types>") 
 
 # Or get domains from the uniq predicates:
-sort -u | awk -F. '$1 { print $1}' fb-scm-pred-uniq-byalpha-s02-c02
->fb-scm-domn-uniq-byalpha-s02-c02
+# sort -u | awk -F. '$1 { print $1}' fb-scm-pred-uniq-byalpha-s02-c02 >fb-scm-domn-uniq-byalpha-s02-c02
 # Clean up the base and key predicates
-sort -u fb-scm-pred-uniq-byalpha-s02-c02 >fb-scm-pred-uniq-byalpha-s02-c03
+# sort -u fb-scm-pred-uniq-byalpha-s02-c02 >fb-scm-pred-uniq-byalpha-s02-c03
 # Further get rid of the '</key/* >' duplicates
-awk '$1 !~ "/key/*"' fb-scm-domn-uniq-byalpha-s02-c03 >fb-scm-domn-uniq-byalpha-s02-c04
+# awk '$1 !~ "/key/*"' fb-scm-domn-uniq-byalpha-s02-c03 >fb-scm-domn-uniq-byalpha-s02-c04
 
 
 # Types
 # Done above, or as follows:
-cat $INPUT_FILE | parallel --pipe --block 2M --progress 
-awk \''{ fname = "fb-rdf-scm-type-s02-c03"; fname_rest = "fb-rdf-rest-07";
+gawk \''{ fname = "fb-rdf-scm-type-s02-c03"; fname_rest = "fb-rdf-rest-09";
 if($3 == "</type.type>") 
 { print $0 >> fname; } 
-else { print $0 >> fname_rest; } }'\'
+else { print $0 >> fname_rest; } 
+{ if(FNR % 200000000 == 0) { 
+printf strftime("%Y-%m-%d %H:%M:%S = "); 
+printf ("base-type-ontl: Processed %d lines \n", FNR);} } }'\' fb-rdf-rest-08
+
+rm fb-rdf-rest-08
+printf "rm'ed fb-rdf-rest-08 \n"
 
 # The properties in a type:
-cat $INPUT_FILE | parallel --pipe --block 2M --progress 
-awk \''{ fname = "fb-scm-type-s02-c03"; fname_rest = "fb-rdf-rest-08";
-if($2 == "</type.type.properties>") 
-{ print $0 >> fname; } 
-else { print $0 >> fname_rest; } }'\'
+# gawk ... if($2 == "</type.type.properties>") 
 
 # THe instances of a type:
-cat $INPUT_FILE | parallel --pipe --block 2M --progress 
-awk \''{ fname = "fb-scm-type-s02-c03"; fname_rest = "fb-rdf-rest-08";
+gawk \''{ fname = "fb-rdf-scm-type-inst-s02-c03"; fname_rest = "fb-rdf-rest-10";
 if($2 == "</type.type.instance>") 
 { print $0 >> fname; } 
-else { print $0 >> fname_rest; } }'\'
+else { print $0 >> fname_rest; } 
+{ if(FNR % 200000000 == 0) { 
+printf strftime("%Y-%m-%d %H:%M:%S = "); 
+printf ("base-type-ontl: Processed %d lines \n", FNR);} } }'\' fb-rdf-rest-09
+
+rm fb-rdf-rest-09
+printf "rm'ed fb-rdf-rest-09 \n"
 
 
 # Properties
 # Done above, or as follows:
-cat $INPUT_FILE | parallel --pipe --block 2M --progress 
-awk \''{ fname = "fb-scm-prop-s02-c03"; fname_rest = "fb-rdf-rest-09";
+gawk \''{ fname = "fb-scm-prop-s02-c03"; fname_rest = "fb-rdf-rest-11";
 if($3 == "</type.property>") 
 { print $0 >> fname; } 
-else { print $0 >> fname_rest; } }'\'
+else { print $0 >> fname_rest; } 
+{ if(FNR % 200000000 == 0) { 
+printf strftime("%Y-%m-%d %H:%M:%S = "); 
+printf ("base-type-ontl: Processed %d lines \n", FNR);} } }'\' fb-rdf-rest-10
 
-# The details in a property:
-cat $INPUT_FILE | parallel --pipe --block 2M --progress 
-awk \''{ fname = "fb-scm-prop-dets-s02-c03"; fname_rest = "fb-rdf-rest-10";
+rm fb-rdf-rest-10
+printf "rm'ed fb-rdf-rest-10 \n"
+
+# The details of a property:
+gawk \''{ fname = "fb-scm-prop-dets-s02-c03"; fname_rest = "fb-rdf-rest-12";
 if($2 ~ "</type.property.*") 
 { print $0 >> fname; } 
-else { print $0 >> fname_rest; } }'\'
+else { print $0 >> fname_rest; }
+{ if(FNR % 200000000 == 0) { 
+printf strftime("%Y-%m-%d %H:%M:%S = "); 
+printf ("base-type-ontl: Processed %d lines \n", FNR);} } }'\' fb-rdf-rest-11
+
+rm fb-rdf-rest-11
+printf "rm'ed fb-rdf-rest-11 \n"
 
 
 # Predicates
