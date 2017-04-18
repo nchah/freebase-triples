@@ -150,13 +150,13 @@ wc -l fb-scm-name-uniq-mids-s02-c02
 ## s2-c3 Extract Schema
 
 # Domains 
-gawk \''{ fname = "fb-rdf-scm-domn-s02-c03"; fname_rest = "fb-rdf-rest-08";
+gawk '{ fname = "fb-rdf-scm-domn-s02-c03"; fname_rest = "fb-rdf-rest-08";
 if($3 == "</type.domain>") 
 { print $0 >> fname; } 
 else { print $0 >> fname_rest; } 
 { if(FNR % 200000000 == 0) { 
 printf strftime("%Y-%m-%d %H:%M:%S = "); 
-printf ("base-type-ontl: Processed %d lines \n", FNR);} } }'\' fb-rdf-rest-07 
+printf ("scm-domm: Processed %d lines \n", FNR);} } }' fb-rdf-rest-07 
 
 rm fb-rdf-rest-07
 printf "rm'ed fb-rdf-rest-07 \n"
@@ -174,13 +174,13 @@ printf "rm'ed fb-rdf-rest-07 \n"
 
 # Types
 # Done above, or as follows:
-gawk \''{ fname = "fb-rdf-scm-type-s02-c03"; fname_rest = "fb-rdf-rest-09";
+gawk '{ fname = "fb-rdf-scm-type-s02-c03"; fname_rest = "fb-rdf-rest-09";
 if($3 == "</type.type>") 
 { print $0 >> fname; } 
 else { print $0 >> fname_rest; } 
 { if(FNR % 200000000 == 0) { 
 printf strftime("%Y-%m-%d %H:%M:%S = "); 
-printf ("base-type-ontl: Processed %d lines \n", FNR);} } }'\' fb-rdf-rest-08
+printf ("scm-type: Processed %d lines \n", FNR);} } }' fb-rdf-rest-08
 
 rm fb-rdf-rest-08
 printf "rm'ed fb-rdf-rest-08 \n"
@@ -189,13 +189,13 @@ printf "rm'ed fb-rdf-rest-08 \n"
 # gawk ... if($2 == "</type.type.properties>") 
 
 # THe instances of a type:
-gawk \''{ fname = "fb-rdf-scm-type-inst-s02-c03"; fname_rest = "fb-rdf-rest-10";
+gawk '{ fname = "fb-rdf-scm-type-inst-s02-c03"; fname_rest = "fb-rdf-rest-10";
 if($2 == "</type.type.instance>") 
 { print $0 >> fname; } 
 else { print $0 >> fname_rest; } 
 { if(FNR % 200000000 == 0) { 
 printf strftime("%Y-%m-%d %H:%M:%S = "); 
-printf ("base-type-ontl: Processed %d lines \n", FNR);} } }'\' fb-rdf-rest-09
+printf ("scm-type-instances: Processed %d lines \n", FNR);} } }' fb-rdf-rest-09
 
 rm fb-rdf-rest-09
 printf "rm'ed fb-rdf-rest-09 \n"
@@ -203,25 +203,25 @@ printf "rm'ed fb-rdf-rest-09 \n"
 
 # Properties
 # Done above, or as follows:
-gawk \''{ fname = "fb-rdf-scm-prop-s02-c03"; fname_rest = "fb-rdf-rest-11";
+gawk '{ fname = "fb-rdf-scm-prop-s02-c03"; fname_rest = "fb-rdf-rest-11";
 if($3 == "</type.property>") 
 { print $0 >> fname; } 
 else { print $0 >> fname_rest; } 
 { if(FNR % 200000000 == 0) { 
 printf strftime("%Y-%m-%d %H:%M:%S = "); 
-printf ("base-type-ontl: Processed %d lines \n", FNR);} } }'\' fb-rdf-rest-10
+printf ("scm-prop: Processed %d lines \n", FNR);} } }' fb-rdf-rest-10
 
 rm fb-rdf-rest-10
 printf "rm'ed fb-rdf-rest-10 \n"
 
 # The details of a property:
-gawk \''{ fname = "fb-rdf-scm-prop-dets-s02-c03"; fname_rest = "fb-rdf-rest-12";
+gawk '{ fname = "fb-rdf-scm-prop-dets-s02-c03"; fname_rest = "fb-rdf-rest-12";
 if($2 ~ "</type.property.*") 
 { print $0 >> fname; } 
 else { print $0 >> fname_rest; }
 { if(FNR % 200000000 == 0) { 
 printf strftime("%Y-%m-%d %H:%M:%S = "); 
-printf ("base-type-ontl: Processed %d lines \n", FNR);} } }'\' fb-rdf-rest-11
+printf ("scm-prop-details: Processed %d lines \n", FNR);} } }' fb-rdf-rest-11
 
 rm fb-rdf-rest-11
 printf "rm'ed fb-rdf-rest-11 \n"
