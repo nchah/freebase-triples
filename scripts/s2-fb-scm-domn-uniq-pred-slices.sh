@@ -127,6 +127,24 @@ fb-rdf-s01-c01-test2
 
 
 
+### v1.1 Implementation
+
+# for i in "${q[@]}" 
+# do {
+# 	cat fb-rdf-s01-c01 | parallel --pipe --block 2M --progress \
+# 	awk -F"\t" \'' { q = "'"$i"'"; if($2 ~ q) { count++; }} END {print "'"$i"'" "\t"count} '\' >>$OUTFILE
+# 	echo -e "\n\n * * * DONE: " "'"$i"'" '\n\n';
+# 	sleep 3
+# }
+# done
+
+# awk '{a[$1]+=$2}END{for(i in a) print i,a[i]}' fb-scm-domn-uniq-byalpha-counts-s02-c02
+# </architecture.* 162967
+# </american_football.* 483372
+# </amusement_parks.* 22880
+
+
+
 ### v1 Implementation
 
 # for i in "${q[@]}" 
@@ -137,3 +155,36 @@ fb-rdf-s01-c01-test2
 #	sleep 3
 #}
 # done
+
+
+### Test implementation
+
+# awk 'BEGIN {
+# FS = "\t"
+# start = 1;
+# end = 10;
+# {
+# 	while (getline < "fb-scm-domn-uniq-byalpha-numbered-s02-c03") {
+# 		split($0,temp,",");
+# 		queryArr[temp[1]]=temp[2];
+# 	} 
+# 	close("fb-scm-domn-uniq-byalpha-numb-s02-c03");
+# }
+# {
+# 	for (i=start; i<end; i++) {
+# 		counter=0;
+
+# 		while (getline < "fb-rdf-s01-c01") {
+# 			if ($2 ~ queryArr[i]".*") {
+# 				counter++;
+# 		}
+# 		query=queryArr[i];
+# 		countArr[i]=counter;
+# 		}
+# 		close("fb-rdf-s01-c01");
+# 	}
+# 	for (i=start; i<end; i++) {
+# 		print queryArr[i] "\t" countArr[i] >>"fb-scm-domn-uniq-byalpha-counts-s02-c03";
+# 	}
+# }
+# }'
