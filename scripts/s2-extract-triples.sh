@@ -203,7 +203,7 @@ printf "rm'ed fb-rdf-rest-09 \n"
 
 # Properties
 # Done above, or as follows:
-gawk \''{ fname = "fb-scm-prop-s02-c03"; fname_rest = "fb-rdf-rest-11";
+gawk \''{ fname = "fb-rdf-scm-prop-s02-c03"; fname_rest = "fb-rdf-rest-11";
 if($3 == "</type.property>") 
 { print $0 >> fname; } 
 else { print $0 >> fname_rest; } 
@@ -215,7 +215,7 @@ rm fb-rdf-rest-10
 printf "rm'ed fb-rdf-rest-10 \n"
 
 # The details of a property:
-gawk \''{ fname = "fb-scm-prop-dets-s02-c03"; fname_rest = "fb-rdf-rest-12";
+gawk \''{ fname = "fb-rdf-scm-prop-dets-s02-c03"; fname_rest = "fb-rdf-rest-12";
 if($2 ~ "</type.property.*") 
 { print $0 >> fname; } 
 else { print $0 >> fname_rest; }
