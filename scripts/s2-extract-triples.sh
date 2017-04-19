@@ -146,6 +146,11 @@ sort -u fb-scm-name-uniq-mids-s02-c02 >fb-scm-name-uniq-mids-byalpha-s02-c02
 wc -l fb-scm-name-uniq-mids-s02-c02
 
 
+# Predicates
+# Counts of all domain-sliced predicates
+cat fb-rdf-s01-c01-test4 | parallel --pipe --block 2M --progress 
+awk -F"\t" \'' { q = "</type.*"; if($2 ~ q) { count++; }} END {print q"\t"count} '\' >>test
+
 
 ## s2-c3 Extract Schema
 
@@ -225,12 +230,6 @@ printf ("scm-prop-details: Processed %d lines \n", FNR);} } }' fb-rdf-rest-11
 
 rm fb-rdf-rest-11
 printf "rm'ed fb-rdf-rest-11 \n"
-
-
-# Predicates
-# Counts of all domain-sliced predicates
-cat fb-rdf-s01-c01-test4 | parallel --pipe --block 2M --progress 
-awk -F"\t" \'' { q = "</type.*"; if($2 ~ q) { count++; }} END {print q"\t"count} '\' >>test
 
 
 
