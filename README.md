@@ -24,6 +24,7 @@ A repository to document a project to clean and analyze the Freebase data dumps.
     * [Google Developers Resources](#google-developers-resources)
 
 
+
 ## Background
 
 ### Freebase
