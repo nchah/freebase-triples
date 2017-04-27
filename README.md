@@ -102,12 +102,16 @@ $ tree
 .
 ├── README.md
 ├── data
-│   ├── fb-rdf-10k-head-s01-c01.nt
-│   ├── fb-rdf-10k-head-s01-c02.nt
-│   ├── fb-rdf-10k-head-s01-c03.nt
-│   ├── fb-rdf-10k-head.nt
-│   ├── fb-rdf-10k-...
-│   └── ... additional files
+│   ├── 10k-head
+│   │   ├── fb-rdf-10k-head-s01-c01.nt
+│   │   ├── fb-rdf-10k-head-s01-c02.nt
+│   │   ├── fb-rdf-10k-head-s01-c03.nt
+│   │   ├── fb-rdf-10k-head.nt
+│   │   └── ... additional files
+│   ├── CHANGELOG.MD
+│   ├── type-unique-counts-byalpha.txt
+│   ├── type-unique-counts-byfreq.txt
+│   └── type-unique.txt
 ├── documents
 │   └── mql-reference-guide.pdf
 ├── images
@@ -115,11 +119,14 @@ $ tree
 │   ├── screenshot-cayley-visualization.png
 │   └── screenshot-freebase-com.png
 └── scripts
-    ├── s1-c1-parse-triples.sh
-    ├── s1-c2-parse-triples.sh
-    ├── s1-c3-parse-triples.sh
-    ├── s1-parse-triples-full.sh
-    └── s2-c1-extract-triples.sh
+    ├── parse-triples.py
+    ├── s1-parse-triples.sh
+    ├── s2-extract-triples.sh
+    ├── s2-fb-scm-domn-uniq-pred-counts.sh
+    ├── s2-fb-scm-domn-uniq-pred-slices.sh
+    ├── s3-query-triples.sh
+    ├── s3-query-triples.sql
+    └── sql-install-note.md
 ```
 
 ### Scripts
@@ -226,7 +233,11 @@ The data dumps encode Freebase data in a few ways that are different from the us
     - i18n Support - Text values are associated with an ISO language code (e.g. "String value"@en )
     - Using `awk` to parse data. 
     - ...
-3. Interpreting/Visualizing Data
+3. Querying Data
+    - `[s3-c1]` - Query triples by specific prediciates, by domain, or other criteria of interest.
+    - `[s3-c2]` - Obtain analytics/statistics on the data distribution, shape of the data, etc.
+    - `[s3-c3]` - Merge data together to understand a specific domain, object, etc.
+4. Interpreting/Visualizing Data
     - [Cayley](https://github.com/cayleygraph/cayley) - Try the Cayley graph database
     - [Gephi](https://en.wikipedia.org/wiki/Gephi) - Try Gephi open-source software
     - [Neo4j](https://en.wikipedia.org/wiki/Neo4j) - Try the Neo4j graph database
