@@ -7,7 +7,7 @@ A repository to document a project to clean and analyze the Freebase data dumps.
  * [Background](#background)
     * [Freebase](#freebase)
     * [Freebase Data Dumps](#freebase-data-dumps)
- * [This Repository](#this-repository)
+ * [In This Repository](#in-this-repository)
     * [Directory](#directory)
     * [Scripts](#scripts)
     * [Data](#data)
@@ -92,7 +92,7 @@ Viewing this with `vim`, using `:set list` to show these hidden characters:
 ```
 
 
-## This Repository
+## In This Repository
 
 ### Directory
 
@@ -119,17 +119,22 @@ $ tree
 │   ├── screenshot-cayley-visualization.png
 │   └── screenshot-freebase-com.png
 └── scripts
-    ├── parse-triples.py
-    ├── s1-parse-triples.sh
-    ├── s2-extract-triples.sh
-    ├── s2-fb-scm-domn-uniq-pred-counts.sh
-    ├── s2-fb-scm-domn-uniq-pred-slices.sh
-    ├── s3-query-triples.sh
-    ├── s3-query-triples.sql
-    └── sql-install-note.md
+    ├── python
+    │   └── parse-triples.py
+    ├── shell
+    │   ├── s1-parse-triples.sh
+    │   ├── s2-extract-triples.sh
+    │   ├── s2-fb-scm-domn-uniq-pred-counts.sh
+    │   ├── s2-fb-scm-domn-uniq-pred-slices.sh
+    │   └── s3-query-triples.sh
+    └── sql
+        ├── s3-query-triples.sql
+        └── sql-install-note.md
 ```
 
 ### Scripts
+
+**Languages**
 
 The scripts in this repo are mostly written in Bash and Python. 
 Bash/Shell scripts handled the initial parsing stages for the massive data dumps. 
