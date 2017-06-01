@@ -232,6 +232,80 @@ rm fb-rdf-rest-11
 printf "rm'ed fb-rdf-rest-11 \n"
 
 
+# RDF SCHEMA - OWL
+# LABEL
+gawk '{ fname = "fb-rdf-w3-label-s02-c01"; fname_rest = "fb-rdf-rest-14";
+if($2 == "<rdf-schema#label>") 
+{ print $0 >> fname; } 
+else { print $0 >> fname_rest; }
+{ if(FNR % 200000000 == 0) { 
+printf strftime("%Y-%m-%d %H:%M:%S = "); 
+printf ("scm-prop-details: Processed %d lines \n", FNR);} } }' fb-rdf-rest-13
+
+rm fb-rdf-rest-13
+printf "rm'ed fb-rdf-rest-13 \n"
+
+# # DOMAIN
+gawk '{ fname = "fb-rdf-w3-domain-s02-c01"; fname_rest = "fb-rdf-rest-15";
+if($2 == "<rdf-schema#domain>") 
+{ print $0 >> fname; } 
+else { print $0 >> fname_rest; }
+{ if(FNR % 200000000 == 0) { 
+printf strftime("%Y-%m-%d %H:%M:%S = "); 
+printf ("scm-prop-details: Processed %d lines \n", FNR);} } }' fb-rdf-rest-14
+
+rm fb-rdf-rest-14
+printf "rm'ed fb-rdf-rest-14 \n"
+
+# # TYPE
+gawk '{ fname = "fb-rdf-w3-type-s02-c01"; fname_rest = "fb-rdf-rest-16";
+if($2 == "<rdf-syntax-ns#type>") 
+{ print $0 >> fname; } 
+else { print $0 >> fname_rest; }
+{ if(FNR % 200000000 == 0) { 
+printf strftime("%Y-%m-%d %H:%M:%S = "); 
+printf ("scm-prop-details: Processed %d lines \n", FNR);} } }' fb-rdf-rest-15
+
+rm fb-rdf-rest-15
+printf "rm'ed fb-rdf-rest-15 \n"
+
+# # TYPE RANGE
+gawk '{ fname = "fb-rdf-w3-type-range-s02-c01"; fname_rest = "fb-rdf-rest-17";
+if($2 == "<rdf-schema#range>") 
+{ print $0 >> fname; } 
+else { print $0 >> fname_rest; }
+{ if(FNR % 200000000 == 0) { 
+printf strftime("%Y-%m-%d %H:%M:%S = "); 
+printf ("scm-prop-details: Processed %d lines \n", FNR);} } }' fb-rdf-rest-16
+
+rm fb-rdf-rest-16
+printf "rm'ed fb-rdf-rest-16 \n"
+
+# # InverseOf
+gawk '{ fname = "fb-rdf-w3-inverseof-s02-c01"; fname_rest = "fb-rdf-rest-18";
+if($2 == "<owl#inverseOf>") 
+{ print $0 >> fname; } 
+else { print $0 >> fname_rest; }
+{ if(FNR % 200000000 == 0) { 
+printf strftime("%Y-%m-%d %H:%M:%S = "); 
+printf ("scm-prop-details: Processed %d lines \n", FNR);} } }' fb-rdf-rest-17
+
+rm fb-rdf-rest-17
+printf "rm'ed fb-rdf-rest-17 \n"
+
+
+# # Other /common types 
+# # notable-for
+gawk '{ fname = "fb-rdf-notablefor-s02-c01"; fname_rest = "fb-rdf-rest-19";
+if($2 ~ "</common.notable_for.*") 
+{ print $0 >> fname; } 
+else { print $0 >> fname_rest; }
+{ if(FNR % 200000000 == 0) { 
+printf strftime("%Y-%m-%d %H:%M:%S = "); 
+printf ("scm-prop-details: Processed %d lines \n", FNR);} } }' fb-rdf-rest-18
+
+rm fb-rdf-rest-18
+printf "rm'ed fb-rdf-rest-18 \n"
 
 
 
