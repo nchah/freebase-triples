@@ -2,6 +2,11 @@
 
 A repository to document a project to clean and analyze the Freebase data dumps.
 
+## Citation
+
+Citation for this repository to be added as this goes through the publication pipeline.
+Or, if this applies to your repo, GitHub allows publishing code with DOIs ([Making Your Code Citable](https://guides.github.com/activities/citable-code/))
+
 
 ## Table of Contents
 
@@ -306,6 +311,7 @@ Many Freebase and Knowledge Graph related updates are posted on the once active 
 
 ### Freebase
 
+- Bollacker, K., Evans, C., Paritosh, P., Sturge, T., & Taylor, J. (2008, June). Freebase: a collaboratively created graph database for structuring human knowledge. In Proceedings of the 2008 ACM SIGMOD international conference on Management of data (pp. 1247-1250). AcM.
 - http://www.freebase.com/ (shutdown on May 02, 2016, now redirects to the data dumps)
 - http://wiki.freebase.com/wiki/Main_Page
 
