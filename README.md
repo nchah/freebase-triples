@@ -2,6 +2,7 @@
 
 A repository to document a project to clean and analyze the Freebase data dumps.
 
+
 ## Table of Contents
 
  * [Background](#background)
