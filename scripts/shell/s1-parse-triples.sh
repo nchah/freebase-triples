@@ -32,8 +32,6 @@ FB_URI='http:\/\/rdf.freebase.com'
 FB_NS_URI='http:\/\/rdf.freebase.com\/ns'
 W3_URI='http:\/\/www.w3.org\/[0-9]*\/[0-9]*\/[0-9]*-*'
 
-
-
 sed "s/$FB_NS_URI//g; s/$W3_URI//g; s/$FB_URI//g" $INPUT_FILE | pv -pterbl -s 425229008315 >$OUTPUT_FILE_S01_C01
 
 

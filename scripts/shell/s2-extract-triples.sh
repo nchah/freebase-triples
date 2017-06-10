@@ -7,9 +7,7 @@
 ########## ########## ########## ########## ##########
 
 ## s2-c0 Setting File Names
-INPUT_FILE=$1
-
-OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"  # template
+# N/A set
 
 
 ## s2-c1 Extract Triples: Name, Description, 

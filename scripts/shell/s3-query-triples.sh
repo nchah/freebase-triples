@@ -6,13 +6,6 @@
 ## Stages and Changes
 ########## ########## ########## ########## ##########
 
-## s3-c0 Setting File Names
-INPUT_FILE=$1
-
-OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"  # template
-OUTPUT_FILE_=${INPUT_FILE:0:${#INPUT_FILE}-11}"--s02-c01.nt"  # template
-
-
 ## s3-c0 Browse Data
 
 # Scroll up and down!
