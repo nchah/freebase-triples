@@ -109,28 +109,23 @@ $ tree
 ├── README.md
 ├── data
 │   ├── 10k-head
-│   │   ├── fb-rdf-10k-head-s01-c01.nt
-│   │   ├── fb-rdf-10k-head-s01-c02.nt
-│   │   ├── fb-rdf-10k-head-s01-c03.nt
-│   │   ├── fb-rdf-10k-head.nt
-│   │   └── ... additional files
-│   ├── CHANGELOG.MD
-│   ├── type-unique-counts-byalpha.txt
-│   ├── type-unique-counts-byfreq.txt
-│   └── type-unique.txt
-├── documents
-│   └── mql-reference-guide.pdf
+│   │   ├── fb-rdf-10k-desc-all-s01-c01.nt
+│   │   ├── fb-rdf-10k-head-desc-all-s02-c01.nt
+│   │   └── fb-rdf-10k-tail-s01-c01.nt
+│   └── schema
+│       ├── unique-predicates-sorted.txt
+│       └── unique-types-sorted-and-counts.txt
 ├── images
 │   ├── Freebase_Logo_optimised.svg
 │   ├── screenshot-cayley-visualization.png
 │   └── screenshot-freebase-com.png
 └── scripts
     ├── python
-    │   └── parse-triples.py
+    │   └── [offline]
     ├── shell
+    │   ├── s0-run-parse-extract-triples.sh
     │   ├── s1-parse-triples.sh
     │   ├── s2-extract-triples.sh
-    │   ├── s2-fb-scm-domn-uniq-pred-counts.sh
     │   ├── s2-fb-scm-domn-uniq-pred-slices.sh
     │   └── s3-query-triples.sh
     └── sql
