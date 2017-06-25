@@ -130,7 +130,6 @@ sort -t$'\t' -k 2,2 -g fb-scm-type-uniq-byalpha-counts-s02-c02
 
 # Sum the column of type assertion counts
 cut -f2 fb-scm-type-uniq-byfreq-counts-s02-c02 | awk '{s+=$1} END {print s}'
-# -> 266321867/3130753066.0 -> 0.08506639
 
 
 # Unique MIDs
