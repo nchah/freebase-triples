@@ -5,7 +5,9 @@ A repository to document a project to clean and analyze the Freebase data dumps.
 ## Citation
 
 Citation for this repository to be added as this goes through the publication pipeline.
-Or, if this applies to your repo, GitHub allows publishing code with DOIs ([Making Your Code Citable](https://guides.github.com/activities/citable-code/))
+Or, cite this GitHub repository.
+
+FYI, if this applies to your repo, GitHub allows publishing code with DOIs ([Making Your Code Citable](https://guides.github.com/activities/citable-code/))
 
 
 ## Table of Contents
@@ -121,7 +123,7 @@ $ tree
 │   └── screenshot-freebase-com.png
 └── scripts
     ├── python
-    │   └── [offline]
+    │   └── [offline for now]
     ├── shell
     │   ├── s0-run-parse-extract-triples.sh
     │   ├── s1-parse-triples.sh
