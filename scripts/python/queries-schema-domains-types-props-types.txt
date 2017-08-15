@@ -1,0 +1,3 @@
+schema-domains, $2 == "</type.object.type>" && $3 == "</type.domain>"
+schema-types, $2 == "</type.object.type>" && $3 == "</type.type>"
+schema-properties, $2 == "</type.object.type>" && $3 == "</type.property>"

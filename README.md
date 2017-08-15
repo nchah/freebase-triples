@@ -4,34 +4,27 @@ A repository to document a project to clean and analyze the Freebase data dumps.
 
 ## Citation
 
-Citation for this repository to be added as this goes through the publication pipeline.
-Or, cite this GitHub repository.
-
-FYI, if this applies to your repo, GitHub allows publishing code with DOIs ([Making Your Code Citable](https://guides.github.com/activities/citable-code/))
 
 
 ## Table of Contents
 
- * [Background](#background)
-    * [Freebase](#freebase)
-    * [Freebase Data Dumps](#freebase-data-dumps)
- * [In This Repository](#in-this-repository)
-    * [Directory](#directory)
-    * [Scripts](#scripts)
-    * [Data](#data)
-    * [Computing Resources](#computing-resources)
- * [ETL Changes](#etl-changes)
-    * [Tasks](#tasks)
- * [Analysis](#analysis)
-    * [Cayley](#cayley)
- * [License](#license)
- * [Sources](#sources)
-    * [Announcements Timeline](#announcements-timeline)
-    * [Freebase](#freebase-1)
-    * [Knowledge Graph](#knowledge-graph)
-    * [Google Developers Resources](#google-developers-resources)
-
-
+  * [Background](#background)
+     * [Freebase](#freebase)
+     * [Freebase Data Dumps](#freebase-data-dumps)
+  * [In This Repository](#in-this-repository)
+     * [Directory](#directory)
+     * [Scripts](#scripts)
+        * [Command Line Usage](#command-line-usage)
+     * [Computing Resources](#computing-resources)
+  * [ETL Changes](#etl-changes)
+     * [Tasks](#tasks)
+  * [Sample Analysis](#sample-analysis)
+     * [Cayley](#cayley)
+  * [License](#license)
+  * [Sources](#sources)
+     * [Announcements Timeline](#announcements-timeline)
+     * [Freebase](#freebase-1)
+     * [Google Developers Resources](#google-developers-resources)
 
 ## Background
 
@@ -110,29 +103,27 @@ $ tree
 .
 ├── README.md
 ├── data
-│   ├── 10k-head
-│   │   ├── fb-rdf-10k-desc-all-s01-c01.nt
-│   │   ├── fb-rdf-10k-head-desc-all-s02-c01.nt
-│   │   └── fb-rdf-10k-tail-s01-c01.nt
 │   └── schema
 │       ├── unique-predicates-sorted.txt
 │       └── unique-types-sorted-and-counts.txt
 ├── images
-│   ├── Freebase_Logo_optimised.svg
 │   ├── screenshot-cayley-visualization.png
 │   └── screenshot-freebase-com.png
 └── scripts
     ├── python
-    │   └── [offline for now]
-    ├── shell
-    │   ├── s0-run-parse-extract-triples.sh
-    │   ├── s1-parse-triples.sh
-    │   ├── s2-extract-triples.sh
-    │   ├── s2-fb-scm-domn-uniq-pred-slices.sh
-    │   └── s3-query-triples.sh
-    └── sql
-        ├── s3-query-triples.sql
-        └── sql-install-note.md
+    │   ├── queries-common.txt
+    │   ├── queries-schema-domains-types-props-types.txt
+    │   ├── queries-slices-all.txt
+    │   ├── queries-type.txt
+    │   ├── s2-c1-extract-triples.py
+    │   ├── s2-c2-extract-schema.py
+    │   ├── s2-c3-extract-schema-ids.py
+    │   └── s2-c4-extract-schema-desc.py
+    └─── shell
+        ├── s0-run-parse-extract-triples.sh
+        ├── s1-parse-triples.sh
+        ├── s2-extract-triples.sh
+        └── s3-query-triples.sh
 ```
 
 ### Scripts
@@ -141,10 +132,9 @@ $ tree
 
 The scripts in this repo are mostly written in Bash and Python. 
 Bash/Shell scripts handled the initial parsing stages for the massive data dumps. 
-Python, with its many libraries, is a simple way to use the triples data after the initial processing.
+Python, with its many libraries, is ideal to use after the initial processing.
 
 - `Bash` commands used: `awk`, `cat`, `cut`, `grep`, `gsed`*, `less`, `more`, `parallel`, `pv`, `sed`, `sort`, `wc`, `zless`, `zmore`, `zgrep`
-- `Python` libraries: TBA
 
 *`gsed` is GNU sed. Mac/OS X's `sed` does not handle '\t' as tab characters so gsed is preferred in some instances.
 
@@ -157,15 +147,9 @@ All stopped and background jobs can be listed with the `jobs` command.
 To bring background jobs back into the foreground, use `fg [job]`.
 
 
-### Data
-
-The original files are extremely large and cannot be stored on GitHub. 
-Only a small sample of the output files are included here. 
-For consistency, output data is named according t the script used to process it (sX-cX for stage and change versions respectively).
-
 ### Computing Resources
 
-Unless specified differently, the scripts that were run "locally" indicates a MacBook Pro (Early 2015, 2.7 GHz Intel Core i5, 8 GB memory) was used.
+Unless specified differently, scripts were run on a MacBook Pro (Early 2015, 2.7 GHz Intel Core i5, 8 GB memory).
 
 
 ## ETL Changes
@@ -246,12 +230,13 @@ The data dumps encode Freebase data in a few ways that are different from the us
     - `[s3-c2]` - Obtain analytics/statistics on the data distribution, shape of the data, etc.
     - `[s3-c3]` - Merge data together to understand a specific domain, object, etc.
 4. Interpreting/Visualizing Data
-    - [Cayley](https://github.com/cayleygraph/cayley) - Try the Cayley graph database
-    - [Gephi](https://en.wikipedia.org/wiki/Gephi) - Try Gephi open-source software
-    - [Neo4j](https://en.wikipedia.org/wiki/Neo4j) - Try the Neo4j graph database
+    - Possible tools include:
+        - [Cayley](https://github.com/cayleygraph/cayley)
+        - [Gephi](https://en.wikipedia.org/wiki/Gephi)
+        - [Neo4j](https://en.wikipedia.org/wiki/Neo4j)
 
 
-## Analysis
+## Sample Analysis
 
 Once the data is cleaned and ready, this section outlines some of the software to manipluate, visualize, and analyze it.
 
@@ -275,13 +260,6 @@ $ ./cayley http --dbpath=data/testdata.nq
 ```
 
 ![Cayley visualization screenshot](https://github.com/nchah/freebase-triples/blob/master/images/screenshot-cayley-visualization.png)
-
-
-...
-
-...
-
-...
 
 
 ## License
@@ -309,12 +287,7 @@ Many Freebase and Knowledge Graph related updates are posted on the once active 
 ### Freebase
 
 - Bollacker, K., Evans, C., Paritosh, P., Sturge, T., & Taylor, J. (2008, June). Freebase: a collaboratively created graph database for structuring human knowledge. In Proceedings of the 2008 ACM SIGMOD international conference on Management of data (pp. 1247-1250). AcM.
-- http://www.freebase.com/ (shutdown on May 02, 2016, now redirects to the data dumps)
-- http://wiki.freebase.com/wiki/Main_Page
-
-### Knowledge Graph
-
-- https://www.google.com/intl/bn/insidesearch/features/search/knowledge.html (Google Inside Search explaining the Knowledge Graph)
+- Google, Freebase Data Dumps, https://developers.google.com/freebase/data, August 15, 2017.
 
 ### Google Developers Resources
 
@@ -327,10 +300,4 @@ Many Freebase and Knowledge Graph related updates are posted on the once active 
 
 - https://plus.google.com/109936836907132434202/posts/iY8NZGFF6DN (released on Dec 16, 2015)
 - https://developers.google.com/knowledge-graph/
-
-**Google Search**
-
-- https://developers.google.com/search/
-- https://developers.google.com/structured-data/
-- https://developers.google.com/structured-data/customize/overview
 
