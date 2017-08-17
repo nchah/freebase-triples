@@ -110,10 +110,11 @@ $ tree
 │   └── screenshot-freebase-com.png
 └── scripts
     ├── python
-    │   ├── queries-common.txt
-    │   ├── queries-schema-domains-types-props-types.txt
-    │   ├── queries-slices-all.txt
-    │   ├── queries-type.txt
+    │   ├── queries
+    │   │   ├── queries-common.txt
+    │   │   ├── queries-schema-domains-types-props-types.txt
+    │   │   ├── queries-slices-all.txt
+    │   │   └── queries-type.txt
     │   ├── s2-c1-extract-triples.py
     │   ├── s2-c2-extract-schema.py
     │   ├── s2-c3-extract-schema-ids.py
