@@ -103,18 +103,23 @@ $ tree
 ├── README.md
 ├── data
 │   └── schema
-│       ├── unique-predicates-sorted.txt
-│       └── unique-types-sorted-and-counts.txt
+│       ├── fb-rdf-pred-schema-domains-ids-1-byalpha-desc
+│       ├── fb-rdf-pred-schema-properties-ids-1-byalpha-desc
+│       ├── fb-rdf-pred-schema-types-ids-1-byalpha-desc
+│       ├── unique-predicates-sorted
+│       └── unique-types-sorted-and-counts
 ├── images
 │   ├── screenshot-cayley-visualization.png
 │   └── screenshot-freebase-com.png
 └── scripts
     ├── python
     │   ├── queries
-    │   │   ├── queries-common.txt
-    │   │   ├── queries-schema-domains-types-props-types.txt
-    │   │   ├── queries-slices-all.txt
-    │   │   └── queries-type.txt
+    │   │   ├── queries-common--properties
+    │   │   ├── queries-common--types
+    │   │   ├── queries-schema-for-domains-types-properties
+    │   │   ├── queries-slices-for-all-domains
+    │   │   ├── queries-type--properties
+    │   │   └── queries-type--types
     │   ├── s2-c1-extract-triples.py
     │   ├── s2-c2-extract-schema.py
     │   ├── s2-c3-extract-schema-ids.py
