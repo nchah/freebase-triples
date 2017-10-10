@@ -14,7 +14,7 @@ import time
 
 # Note: path to the query file has been hardcoded here
 #       queries.txt file has a schema of [slice_title],[query]
-queries = open('queries/schema-domains-types-props-types').readlines()
+queries = open('queries/queries-schema-for-domains-types-properties').readlines()
 
 
 def main(input_file):
