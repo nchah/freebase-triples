@@ -170,6 +170,7 @@ The data dumps encode Freebase data in a few ways that are different from the us
     - `[s1-c3]` - Convert "." back to "/" in the domain, type, and property schemas to return a more Freebase-like format (e.g. "/award/award_winner" for the type).
 2. Slicing Data
     - `[s2-c1]` - Create predicate-based slices for each domain, type, and property. 
+    - `[s2-c2, 3, 4]` - Extract data on the schema (ontology) from the slices.
 3. Querying Data
     - `[s3-c1]` - Query triples by specific prediciates, by domain, or other criteria of interest.
     - `[s3-c2]` - Obtain analytics/statistics on the data distribution, shape of the data, etc.
