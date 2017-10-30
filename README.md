@@ -104,8 +104,11 @@ $ tree
 ├── data
 │   └── schema
 │       ├── fb-rdf-pred-schema-domains-ids-1-byalpha-desc
+│       ├── fb-rdf-pred-schema-domains-ids-1-byalpha-typeinfo
 │       ├── fb-rdf-pred-schema-properties-ids-1-byalpha-desc
+│       ├── fb-rdf-pred-schema-properties-ids-1-byalpha-typeinfo
 │       ├── fb-rdf-pred-schema-types-ids-1-byalpha-desc
+│       ├── fb-rdf-pred-schema-types-ids-1-byalpha-typeinfo
 │       ├── unique-predicates-sorted
 │       └── unique-types-sorted-and-counts
 ├── images
@@ -204,7 +207,6 @@ $ ./cayley http --dbpath=data/testdata.nq
 > // Visualizing instances of /award/award_winner
 > // Set GetLimit() as getting All() creates a large cluster of thousands of nodes
 > g.V("/award.award_winner").Tag("source").Out("/type.type.instance").Tag("target").GetLimit(10)
-
 ```
 
 ![Cayley visualization screenshot](https://github.com/nchah/freebase-triples/blob/master/images/screenshot-cayley-visualization.png)
