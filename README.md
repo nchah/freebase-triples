@@ -126,7 +126,9 @@ $ tree
     │   ├── s2-c1-extract-triples.py
     │   ├── s2-c2-extract-schema.py
     │   ├── s2-c3-extract-schema-ids.py
-    │   └── s2-c4-extract-schema-desc.py
+    │   ├── s2-c4-extract-schema-desc.py
+    │   ├── s2-c5-extract-schema-typeinfo.py
+    │   └── s2-c6-extract-merge-triples.py
     └─── shell
         ├── s0-run-parse-extract-triples.sh
         ├── s1-parse-triples.sh
@@ -178,7 +180,8 @@ The data dumps encode Freebase data in a few ways that are different from the us
     - `[s1-c3]` - Convert "." back to "/" in the domain, type, and property schemas to return a more Freebase-like format (e.g. "/award/award_winner" for the type).
 2. Slicing Data
     - `[s2-c1]` - Create predicate-based slices for each domain, type, and property. 
-    - `[s2-c2, 3, 4]` - Extract data on the schema (ontology) from the slices.
+    - `[s2-c2, 3, 4, 5]` - Extract data on the schema (ontology) from the slices.
+    - `[s2-c6]` - Extract and merge a slice's data concerning a domain(s) with other slices, like `name`, `desc`, etc.
 3. Querying Data
     - `[s3-c1]` - Query triples by specific prediciates, by domain, or other criteria of interest.
     - `[s3-c2]` - Obtain analytics/statistics on the data distribution, shape of the data, etc.
