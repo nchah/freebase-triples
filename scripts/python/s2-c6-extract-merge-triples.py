@@ -25,7 +25,7 @@ def main(input_file):
 
     # Preserve the triples with the ids, and get additional triples on description
     query_count = 0
-    fname_output = fname_input + "merged-name-desc"
+    fname_output = fname_input + "-merged-name-desc"
 
     t0 = subprocess.check_output(['gdate','+"%s%3N"'])
     print(t0.decode('ascii').strip())
