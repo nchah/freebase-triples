@@ -3,17 +3,26 @@
 This repository contains Bash and Python code to process the Freebase RDF triples data dumps.
 Portions of this README document steps to clean and analyze the Freebase data dumps.
 
-[![DOI](https://zenodo.org/badge/60580082.svg)](https://zenodo.org/badge/latestdoi/60580082)
-
 
 ## Citation
 
-If you use this code, please cite the following DOI.
+The accompanying paper is available at [arXiv](https://arxiv.org/abs/1712.08707).
+
+BibTeX entry for citation:
+
+```
+@article{chah2017freebase,
+  title={Freebase-triples: A Methodology for Processing the Freebase Data Dumps},
+  author={Chah, Niel},
+  journal={arXiv preprint arXiv:1712.08707},
+  year={2017}
+}
+```
+
+The code is archived with a DOI on Zenodo: [![DOI](https://zenodo.org/badge/60580082.svg)](https://zenodo.org/badge/latestdoi/60580082)
 
 `Niel Chah. (2017, November 10). nchah/freebase-triples v1.1.0 (Version v1.1.0). Zenodo. http://doi.org/10.5281/zenodo.1045306`
 
-First version released as:
-`Niel Chah. (2017, August 15). nchah/freebase-triples v1.0.0. Zenodo. http://doi.org/10.5281/zenodo.843599`
 
 ## Table of Contents
 
