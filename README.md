@@ -241,13 +241,13 @@ Some sources may no longer be available following the deprecation of the Freebas
 
 Many Freebase and Knowledge Graph related updates are posted on the once active [freebase-discuss](https://groups.google.com/forum/#!forum/freebase-discuss) Google Group and the [Google+](https://plus.google.com/u/0/109936836907132434202/posts) community.
 
-- Jul 16, 2010 (Freebase joining Google) https://groups.google.com/d/msg/freebase-discuss/NkCF1DayKzA/QQufQ9gDwBsJ
-- Dec 16, 2014 (timeline for Freebase sunsetting announced) https://plus.google.com/u/0/109936836907132434202/posts/bu3z2wVqcQc and https://groups.google.com/d/msg/freebase-discuss/s_BPoL92edc/Y585r7_2E1YJ
-- Mar 26, 2015 (details on Wikidata and new KG API projected) https://plus.google.com/u/0/109936836907132434202/posts/3aYFVNf92A1
-- Sep 28, 2015 (short update on KG API) https://plus.google.com/u/0/109936836907132434202/posts/3aYFVNf92A1
-- Dec 16, 2015 (KG Search API releasted) https://plus.google.com/u/0/109936836907132434202/posts/iY8NZGFF6DN
-- Jan 28, 2016 (KG Search Widget released) https://plus.google.com/u/0/109936836907132434202/posts/MCKpjUpx1H1
-- May 02, 2016 (Freebase.com shutdown) https://groups.google.com/forum/#!topic/freebase-discuss/WEnyO8f7xOQ
+- Jul 16, 2010 - Freebase joining Google ([freebase-discuss](https://groups.google.com/d/msg/freebase-discuss/NkCF1DayKzA/QQufQ9gDwBsJ))
+- Dec 16, 2014 - timeline for Freebase sunsetting announced ([Google+ archive link](https://web.archive.org/web/20190206213838/https://plus.google.com/109936836907132434202/posts/bu3z2wVqcQc)) and ([freebase-discuss](https://groups.google.com/d/msg/freebase-discuss/s_BPoL92edc/Y585r7_2E1YJ))
+- Mar 26, 2015 - details on Wikidata and new KG API projected ([Google+ archive link](https://web.archive.org/web/20190206213923/https://plus.google.com/109936836907132434202/posts/3aYFVNf92A1))
+- Sep 28, 2015 - short update on KG API ([Google+ archive link](https://web.archive.org/web/20190206214155/https://plus.google.com/109936836907132434202/posts/JntBzAinjRr))
+- Dec 16, 2015 - KG Search API released ([Google+ archive link](https://web.archive.org/web/20190206214009/https://plus.google.com/109936836907132434202/posts/iY8NZGFF6DN))
+- Jan 28, 2016 - KG Search Widget released ([Google+ archive link](https://web.archive.org/web/20190206214059/https://plus.google.com/109936836907132434202/posts/MCKpjUpx1H1))
+- May 02, 2016 - Freebase.com shutdown ([freebase-discuss](https://groups.google.com/forum/#!topic/freebase-discuss/WEnyO8f7xOQ))
 
 ### Freebase
 
@@ -263,6 +263,6 @@ Many Freebase and Knowledge Graph related updates are posted on the once active 
 
 **Knowledge Graph Search API**
 
-- https://plus.google.com/109936836907132434202/posts/iY8NZGFF6DN (released on Dec 16, 2015)
+- [Google+ archive link](https://web.archive.org/web/20190206214009/https://plus.google.com/109936836907132434202/posts/iY8NZGFF6DN) (released on Dec 16, 2015)
 - https://developers.google.com/knowledge-graph/
 
